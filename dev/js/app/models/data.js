@@ -486,8 +486,8 @@ console.log( localStorage.categories);
 // data.remTotalTimaStat('spaday', 500, 'year', 'incomes')
 console.log(LS.get(todayKeyWord+'_statistic'))
 console.log(data);
-console.log(LS.get('regular'))
-console.log(LS.get('forecast'))
+// console.log(LS.get('regular'))
+// console.log(LS.get('forecast'))
 
 
 //Date
