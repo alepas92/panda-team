@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Panda</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="lib/pandastrap/pandastrap.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div id='root'>
+            
+           <div class="top-line-bar">
+	<div class='box' id='logo'>
+	    <img src="img/main/logo.png">
+	    <span id="logotype">Panda-Economist<span>
+	</div>
+
+	<div class='box' id='nav-bar'>
+	    <nav tabindex="0" class="adapt-nav">
+	        <ul tabindex="0">
+		        <li><a href="#outlay-section">New outlay</a></li>
+		        <li><a href="#income-section">New income</a></li>
+		        <li><a href="#manage-forecast">Manage forecast</a></li>
+		        <li><a href="#manage-balance">Manage balance</a></li>
+		        <li><a href="#statistics">Statistics</a></li>
+		    </ul>
+	    </nav>
+	</div>
+</div>
+
+            <div class='box' id='container'>
+                
+                <div class='box' id='calendar-section'>
+    <div class="header-text">
+        Calendar
+    </div>
+    <table id="calendar2">
+        <thead>
+            <tr>
+                <td>‹</td>
+                <td colspan="5"></td>
+                <td>›</td>
+            </tr>
+            <tr>
+                <td>Mo</td>
+                <td>Tu</td>
+                <td>We</td>
+                <td>Th</td>
+                <td>Fr</td>
+                <td>Sa</td>
+                <td>Su</td>
+            </tr>
+        <tbody>
+    </table>
+    <script src="lib/pandastrap/calendar.js"></script>
+</div>
+
+                <div class='box' id='outlay-section'>
+    <div class='box' id='new-outlay'>
+        <div class="header-text-lg">
+            New Outlay
+        </div>
+        <form>
+            <input type="text" class="inp-cat" placeholder="Create new category">
+            <input type="button" class="btn-add" value="Add">
+            <select class="sel-cat">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+                <option>Option 4</option>
+                <option>Option 5</option>
+            </select>
+            <input type="text" placeholder="Set cost" class="inp-cos"> uah
+            <input type="submit" value="Submit" class="btn-submit">
+        </form>
+    </div>
+    <div class='box' id='regular-outlay'>
+        <div class="header-text-lg-right">
+            Regular Outlay
+        </div>
+        <input type="text" class="inp-cat hidden-block" placeholder="Create new category">
+        <input type="button" class="btn-add hidden-block" value="Add">
+        <input type="date" class="inp-dat">
+        <select class="sel-cat">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+            <option>Option 4</option>
+            <option>Option 5</option>
+        </select>
+        <input type="text" placeholder="Set cost" class="inp-cos"> uah
+        <input type="submit" value="Submit" class="btn-submit">
+        <span class="small-menu">Manage outlays - Go to main menu</span>
+    </div>
+    <div class='box' id='manage-outlay'>
+        <div class="header-text-lg hidden-block">
+            <img class="left-ic-img" src="lib/pandastrap/svg/left1.svg"> Manage Outlay <img class="right-ic-img" src="lib/pandastrap/svg/navigate3.svg">
+        </div>
+    </div>
+</div>
+
+                <div class='box' id='income-section'>
+    <div class='box' id='new-income'>
+        <div class="header-text-lg">
+            New income
+        </div>
+        <form>
+            <input type="text" class="inp-cat" placeholder="Create new category">
+            <input type="button" class="btn-add" value="Add">
+            <select class="sel-cat">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+                <option>Option 4</option>
+                <option>Option 5</option>
+            </select>
+            <input type="text" placeholder="Set cost" class="inp-cos"> uah
+            <input type="submit" value="Submit" class="btn-submit">
+        </form>
+    </div>
+    <div class='box' id='regular-income'>
+        <div class="header-text-lg-right">
+            Regular Income
+        </div>
+        <input type="text" class="inp-cat hidden-block" placeholder="Create new category">
+        <input type="button" class="btn-add hidden-block" value="Add">
+        <input type="date" class="inp-dat">
+        <select class="sel-cat">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+            <option>Option 4</option>
+            <option>Option 5</option>
+        </select>
+        <input type="text" placeholder="Set cost" class="inp-cos"> uah
+        <input type="submit" value="Submit" class="btn-submit">
+        <span class="small-menu">Manage incomes - Go to main menu</span>
+    </div>
+    <div class='box' id='manage-income'>
+        <div class="header-text-lg hidden-block">
+            <img class="left-ic-img" src="lib/pandastrap/svg/left1.svg"> Manage Outlay <img class="right-ic-img" src="lib/pandastrap/svg/navigate3.svg">
+        </div>
+    </div>
+</div>
+
+                <div class='box' id='manage-forecast'>
+    <div class="header-text-lg">
+        Manage forecast
+    </div>
+    <form>
+        <input type="text" class="inp-cat" placeholder="Create new category">
+        <input type="button" class="btn-add" value="Add">
+        <select class="sel-cat">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+            <option>Option 4</option>
+            <option>Option 5</option>
+        </select>
+        <input type="text" placeholder="Set cost" class="inp-cos"> uah
+        <input type="submit" value="Submit" class="btn-submit">
+    </form>
+</div>
+                
+                <div class='box' id='manage-balance'>
+    <div class="header-text-lg">
+        Manage balance
+    </div>
+    <form>
+        <input type="text" class="inp-cat" placeholder="Set current balance">
+        <input type="button" class="btn-add" value="Set">
+    </form>
+    Your current balance:
+</div>
+                
+                <div class='box' id='statistics'>
+    <div class="header-text-lg">
+        Statistics
+    </div>
+</div>
+Some statistics!!!
+
+            </div>
+
+            <div class='box' id='footer'>Footer</div>
+        
+        </div>
+        <script src="js/vendor/jquery-1.10.2.min.js"></script>
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="js/vendor/smoothscroll.js"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>
