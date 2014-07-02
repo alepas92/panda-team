@@ -346,6 +346,11 @@ html {
   font-size: 1em;
   line-height: 1.4; }
 
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
+  font-size: 1em;
+  margin: 0; }
+
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection rule sets have to be separate.
