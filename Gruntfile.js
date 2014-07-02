@@ -21,7 +21,7 @@ module.exports = function(grunt) {
             },
 
             apps: {
-                src: ['dev/js/app/controllers/controllers.js', 'dev/js/app/models/LSmethods.js', 'dev/js/app/models/data.js', 'dev/js/app/views/layoutPainting.js'],
+                src: ['dev/js/app/controllers/*.js', 'dev/js/app/models/*.js', 'dev/js/app/views/*.js'],
                 dest: 'build/js/script.js',
             },
 
@@ -58,7 +58,7 @@ module.exports = function(grunt) {
             },
 
             js: {
-                files: ['dev/js/*.js'],
+                files: ['dev/js/app/models/*.js','dev/js/app/controllers/*.js','dev/js/app/views/*.js'],
                 tasks: ['concat'],
             },
 
