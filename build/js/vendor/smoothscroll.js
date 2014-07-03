@@ -12,7 +12,7 @@
 var ss = {
   fixAllLinks: function() {
     // Get a list of all links in the page
-    var allLinks = document.getElementsByTagName('a');
+    var allLinks = document.getElementById('smoot-scroll-nav').getElementsByTagName('a');
     // Walk through the list
     for (var i=0;i<allLinks.length;i++) {
       var lnk = allLinks[i];
