@@ -6,12 +6,10 @@
         <title>Panda</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
         <link rel="stylesheet" href="lib/pandastrap/pandastrap.css">
         <link rel="stylesheet" href="css/style.css">
     </head>
+    
     <body>
         <div id='root'>
             
@@ -37,9 +35,8 @@
             <div class='box' id='container'>
                 
                 <div class='box' id='calendar-section'>
-    <div class="header-text">
-        Calendar
-    </div>
+    <h2 class="header-text">Calendar</h2>
+    
     <table id="calendar2">
         <thead>
             <tr>
@@ -56,12 +53,15 @@
                 <td>Sa</td>
                 <td>Su</td>
             </tr>
-        <tbody>
+        </thead>
+
+        <tbody></tbody>
     </table>
+    
     <script src="lib/pandastrap/calendar.js"></script>
 </div>
 
-                <div class='box' id='outlay-section'>
+                <section class='box' id='outlay-section'>
     <div class='box' id='new-outlay'>
         <h2 class="header-text-lg">New Outlay</h2>
 
@@ -86,13 +86,15 @@
         <span class="small-menu">Manage outlays - Go to main menu</span>
     </div>
 
-    <div class='box' id='manage-outlay'>
+    <div class="box" id="manage-outlay">
         <div class="header-text-lg hidden-block">
             <img class="left-ic-img" src="lib/pandastrap/svg/left1.svg"> Manage Outlay 
             <img class="right-ic-img" src="lib/pandastrap/svg/navigate3.svg">
         </div>
     </div>
-</div>
+</section>
+
+<section class="box" id="all-outlays"></section>
 
                 <div class='box' id='income-section'>
     <div class='box' id='new-income'>
@@ -169,9 +171,10 @@ Some statistics!!!
             <div class='box' id='footer'>Footer</div>
         
         </div>
-        <script src="js/vendor/jquery-1.10.2.min.js"></script>
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-        <script src="js/vendor/smoothscroll.js"></script>
-        <script src="js/script.js"></script>
     </body>
+    
+    <script src="js/vendor/jquery-1.10.2.min.js"></script>
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="js/vendor/smoothscroll.js"></script>
+    <script src="js/script.js"></script>
 </html>
