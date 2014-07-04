@@ -10,17 +10,16 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     
-    <body>
-        <div id='root'>
-            
-           <div class="top-line-bar">
+    <body>  
+    
+       <header class="top-line-bar">
 	<div class='box' id='logo'>
 	    <img src="img/main/logo.png">
 	    <span id="logotype">Panda-Economist<span>
 	</div>
 
 	<div class='box' id='nav-bar'>
-	    <nav tabindex="0" class="adapt-nav">
+	    <nav tabindex="0" class="adapt-nav" id="smoot-scroll-nav">
 	        <ul tabindex="0">
 		        <li><a href="#outlay-section">New outlay</a></li>
 		        <li><a href="#income-section">New income</a></li>
@@ -30,11 +29,11 @@
 		    </ul>
 	    </nav>
 	</div>
-</div>
+</header>
 
-            <div class='box' id='container'>
-                
-                <div class='box' id='calendar-section'>
+        <div class='box' id='container'>
+            
+            <div class='box' id='calendar-section'>
     <h2 class="header-text">Calendar</h2>
     
     <table id="calendar2">
@@ -61,49 +60,45 @@
     <script src="lib/pandastrap/calendar.js"></script>
 </div>
 
-                <section class='box' id='outlay-section'>
-    <div class='box' id='new-outlay'>
-        <h2 class="header-text-lg">New Outlay</h2>
+            <section class="box tabs" id="outlay-section">
+    <ul class="tab-links">
+        <li class="active"><a href="#new-outlay">New outlay</a></li>
+        <li><a href="#regular-outlays">Regular outlays</a></li>
+        <li><a href="#manage-outlay">Manage outlays</a></li>
+    </ul>
 
-        <form>
+    <div class="tab-content">
+        <form class="box incomes-outlays-tab tab active" id="new-outlay">
             <input type="text" class="inp-cat" placeholder="Create new category">
             <input type="button" class="btn-add" value="Add">
-            <input list="outlaysCategoriesDatalist" class="sel-cat">
+            <input list="outlaysCategoriesDatalist" class="sel-cat" placeholder="Choose category">
             <input type="text" placeholder="Set cost" class="inp-cos"> uah
             <input type="submit" value="Submit" class="btn-submit">
         </form>
-    </div>
 
-    <div class='box' id='regular-outlay'>
-        <h2 class="header-text-lg-right">Regular Outlay</h2>
+        <form class="box incomes-outlays-tab tab" id="regular-outlays">
+            <input type="text" class="inp-cat hidden-block" placeholder="Create new category">
+            <input type="button" class="btn-add hidden-block" value="Add">
+            <input type="date" class="inp-dat">
+            <input list="outlaysCategoriesDatalist" class="sel-cat" placeholder="Choose category">
+            <input type="text" placeholder="Set cost" class="inp-cos"> uah
+            <input type="submit" value="Submit" class="btn-submit">
+        </form>
 
-        <input type="text" class="inp-cat hidden-block" placeholder="Create new category">
-        <input type="button" class="btn-add hidden-block" value="Add">
-        <input type="date" class="inp-dat">
-        <input list="outlaysCategoriesDatalist" class="sel-cat">
-        <input type="text" placeholder="Set cost" class="inp-cos"> uah
-        <input type="submit" value="Submit" class="btn-submit">
-        <span class="small-menu">Manage outlays - Go to main menu</span>
-    </div>
-
-    <div class="box" id="manage-outlay">
-        <div class="header-text-lg hidden-block">
-            <img class="left-ic-img" src="lib/pandastrap/svg/left1.svg"> Manage Outlay 
-            <img class="right-ic-img" src="lib/pandastrap/svg/navigate3.svg">
-        </div>
+        <form class="box incomes-outlays-tab tab" id="manage-outlay">
+            Manage-panel
+        </form>
     </div>
 </section>
 
-<section class="box" id="all-outlays"></section>
-
-                <div class='box' id='income-section'>
+            <div class='box' id='income-section'>
     <div class='box' id='new-income'>
         <h2 class="header-text-lg">New income</h2>
 
         <form>
             <input type="text" class="inp-cat" placeholder="Create new category">
             <input type="button" class="btn-add" value="Add">
-            <input list="incomesCategoriesDatalist" class="sel-cat">
+            <input list="incomesCategoriesDatalist" class="sel-cat" placeholder="Choose category">
             <input type="text" placeholder="Set cost" class="inp-cos"> uah
             <input type="submit" value="Submit" class="btn-submit">
         </form>
@@ -115,7 +110,7 @@
         <input type="text" class="inp-cat hidden-block" placeholder="Create new category">
         <input type="button" class="btn-add hidden-block" value="Add">
         <input type="date" class="inp-dat">
-        <input list="incomesCategoriesDatalist" class="sel-cat">
+        <input list="incomesCategoriesDatalist" class="sel-cat" placeholder="Choose category">
         <input type="text" placeholder="Set cost" class="inp-cos"> uah
         <input type="submit" value="Submit" class="btn-submit">
         <span class="small-menu">Manage incomes - Go to main menu</span>
@@ -129,7 +124,7 @@
     </div>
 </div>
 
-                <div class='box' id='manage-forecast'>
+            <div class='box' id='manage-forecast'>
     <div class="header-text-lg">
         Manage forecast
     </div>
@@ -147,8 +142,8 @@
         <input type="submit" value="Submit" class="btn-submit">
     </form>
 </div>
-                
-                <div class='box' id='manage-balance'>
+            
+            <div class='box' id='manage-balance'>
     <div class="header-text-lg">
         Manage balance
     </div>
@@ -158,23 +153,22 @@
     </form>
     Your current balance:
 </div>
-                
-                <div class='box' id='statistics'>
+            
+            <div class='box' id='statistics'>
     <div class="header-text-lg">
         Statistics
     </div>
 </div>
 Some statistics!!!
 
-            </div>
-
-            <div class='box' id='footer'>Footer</div>
-        
         </div>
-    </body>
+
+        <footer class='box' id='footer'></footer>
     
-    <script src="js/vendor/jquery-1.10.2.min.js"></script>
-    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-    <script src="js/vendor/smoothscroll.js"></script>
-    <script src="js/script.js"></script>
+
+        <script src="js/vendor/jquery-1.10.2.min.js"></script>
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="js/vendor/smoothscroll.js"></script>
+        <script src="js/script.js"></script>
+    </body>
 </html>
