@@ -4,6 +4,7 @@ var todayKeyWord = 'day' + date.day + '_' + date.month + '_' + date.year;
 function DataDayly () {
 	this[todayKeyWord] = {};
 	this[todayKeyWord + '_statistic'] = {};
+	this[todayKeyWord + '_plan']
 }
 
 DataDayly.prototype.getDayly = function () {
@@ -29,7 +30,22 @@ DataDayly.prototype.getDaylyStatistic = function () {
 		};
 
 		LS.set(keyWord, defaultDaylyStatistic);
-		this[keyWord] = LS.get(keyWord, defaultDaylyStatistic);
+		this[keyWord] = LS.get(keyWord);
+	} else {
+		this[keyWord] = LS.get(keyWord);
+	}
+};
+
+DataDayly.prototype.getDaylyPlan = function () {
+	var keyWord = todayKeyWord + '_plan';
+	if (!localStorage[keyWord]){
+		var defaultDaylyPlan = {
+			'outlays' : {},
+			'incomes' : {}
+		};
+
+		LS.set(keyWord, defaultDaylyPlan);
+		this[keyWord] = LS.get(keyWord);
 	} else {
 		this[keyWord] = LS.get(keyWord);
 	}
@@ -78,8 +94,26 @@ DataDayly.prototype.removeDaily = function(keyWord, category, cost, type) {
 	}
 
 	LS.set(keyWord, removeDay);
-	this.regular = LS.get(keyWord);
+	this[keyWord] = LS.get(keyWord);
 }
+
+
+DataDayly.prototype.changeDaily = function(keyWord, category, cost, type, id) {
+	var changeDay = LS.get(keyWord);
+	var buffObj = {};
+
+	buffObj['cat'] = category;
+	buffObj['cost'] = cost;
+
+	if (id in changeDay[type]) {
+		changeDay[type][id] = buffObj;
+	} else {
+		console.log('in your data are some mistake')
+	}
+
+	LS.set(keyWord, changeDay);
+	this[keyWord] = LS.get(keyWord);
+}	
 
 
 // set dayly Statistick outlays and incomes
@@ -127,14 +161,135 @@ DataDayly.prototype.removeDailyStat = function(keyWord, category, cost, type) {
 	}
 
 	LS.set(keyW, removeDayStat);
-	this.regular = LS.get(keyW);
+	this[keyW] = LS.get(keyW);
 }
+
+DataDayly.prototype.changeDailyStat = function(keyWord, category, cost, type, id) {
+	var keyW = keyWord + '_statistic';
+	var changeDayStat = LS.get(keyW;
+
+	var buffObj = {};
+	buffObj['cat'] = category;
+	buffObj['cost'] = cost;
+
+	if (id in changeDayStat[type]) {
+		changeDayStat[type][id] = buffObj;
+	} else{else {
+		console.log('in your data are some mistake')
+	};
+
+
+	LS.set(keyW, changeDayStat);
+	this[keyW] = LS.get(keyW);
+}
+
+
+
+// set daylyPlan outlays and incomes
+DataDayly.prototype.setDailyPlan = function(keyWord, category, cost, type) {
+	var keyWordPlan = keyWord + '_plan'
+	var defDaylyPlan = LS.get(keyWordPlan),
+		count = 0,
+		keyWordL = '';
+
+	if (type == "outlays") {
+		keyWordL = 'out';
+	} else if (type == "incomes") {
+		keyWordL = 'inc';
+	};
+
+	for (key in defDaylyPlan[type]) {
+		count++;
+	}
+
+	var setDaylyPlanObj = {};
+	setDaylyPlanObj['cat'] = category;
+	setDaylyPlanObj['cost'] = cost;
+	defDaylyPlan[type]['' + keyWordL + count + '_' + Math.floor((Math.random() * 100) + 1)] = setDaylyPlanObj;
+
+	LS.set(keyWordPlan, defDaylyPlan);
+	this[keyWordPlan] = LS.get(keyWordPlan);
+}
+
+// remove daylyPlan outlays and incomes
+DataDayly.prototype.removeDailyPlan = function(keyWord, category, cost, type) {
+	var keyWordPlan = keyWord + '_plan'
+	var removeDaylyPlan = LS.get(keyWordPlan),
+		ind;
+
+	for (key in removeDaylyPlan[type]) {
+		if (removeDaylyPlan[type][key]['cat'] == category && removeDaylyPlan[type][key]['cost'] == cost) {
+			ind = key;
+		}
+	}
+		
+	if (ind) {
+		delete removeDaylyPlan[type][ind]
+	} else {
+		console.log('in your data are some mistake'); // only for debugging
+	}
+
+	LS.set(keyWordPlan, removeDaylyPlan);
+	this[keyWordPlan] = LS.get(keyWordPlan);
+}
+
+
+DataDayly.prototype.changeDailyPlan = function(keyWord, category, cost, type, id) {
+	var keyW = keyWord + '_plan';
+	var changeDayPlan = LS.get(keyW;
+
+	var buffObj = {};
+	buffObj['cat'] = category;
+	buffObj['cost'] = cost;
+
+	if (id in changeDayPlan[type]) {
+		changeDayPlan[type][id] = buffObj;
+	} else{else {
+		console.log('in your data are some mistake')
+	};
+
+
+	LS.set(keyW, changeDayPlan);
+	this[keyW] = LS.get(keyW);
+}
+
 
 var dataDayly = new DataDayly();
 dataDayly.getDaylyStatistic();
 dataDayly.getDayly();
+dataDayly.getDaylyPlan();
 
 console.log('dataDayly  -  ' + dataDayly);
+
+
+
+
+
+// dataDayly.setDaily(todayKeyWord, 'habar1', '160', 'incomes');
+// dataDayly.setDaily(todayKeyWord, 'habar11', '260', 'incomes');
+// dataDayly.setDaily(todayKeyWord, 'habar12', '360', 'incomes');
+// dataDayly.setDaily(todayKeyWord, 'habar13', '432', 'outlays');
+// dataDayly.setDaily(todayKeyWord, 'habar14', '544', 'outlays');
+// dataDayly.removeDaily(todayKeyWord, 'habar1', '160', 'incomes');
+// dataDayly.removeDaily(todayKeyWord, 'habar14', '544', 'outlays');
+
+// dataDayly.setDailyStat(todayKeyWord, 'habar2', '350', 'outlays');
+// dataDayly.setDailyStat(todayKeyWord, 'habar21', '350', 'outlays');
+// dataDayly.setDailyStat(todayKeyWord, 'habar22', '350', 'outlays');
+// dataDayly.setDailyStat(todayKeyWord, 'habar33', '350', 'incomes');
+// dataDayly.setDailyStat(todayKeyWord, 'habar24', '350', 'incomes');
+// dataDayly.removeDailyStat(todayKeyWord, 'habar33', '350', 'incomes');
+// dataDayly.removeDailyStat(todayKeyWord, 'habar21', '350', 'outlays');
+
+// dataDayly.setDailyPlan(todayKeyWord, 'pivo1', '350', 'outlays');
+// dataDayly.setDailyPlan(todayKeyWord, 'pivo2', '350', 'outlays');
+// dataDayly.setDailyPlan(todayKeyWord, 'pivo3', '350', 'outlays');
+// dataDayly.setDailyPlan(todayKeyWord, 'pivo4', '350', 'incomes');
+// // dataDayly.setDailyPlan(todayKeyWord, 'pivo5', '350', 'incomes');
+dataDayly.removeDailyPlan(todayKeyWord, 'pivo2', '350', 'outlays');
+dataDayly.removeDailyPlan(todayKeyWord, 'pivo5', '350', 'incomes');
+
+
 
 //Date
 function getDate() {

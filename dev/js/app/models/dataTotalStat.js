@@ -63,29 +63,28 @@ DataTotalStat.prototype.setTotalTimeStat = function(category, cost, time, number
 	if (numberMonth < 10) {
 		numbMonth = '0' + numberMonth;
 	};
-
 	if (type == "outlays") {
 		keyWordL = 'out';
 	} else if (type == "incomes") {
 		keyWordL = 'inc';
 	};
 
-	if (totalTime[time + '_' + numberMonth + '_' + numberYear]) {
-		for (key in totalTime[time + '_' + numberMonth + '_' + numberYear][type]) {
+	if (totalTime[time + '_' + numbMonth + '_' + numbYear]) {
+		for (key in totalTime[time + '_' + numbMonth + '_' + numbYear][type]) {
 			count++;
 		}
 		console.log('this month is')
 	} else {
 		if (time == 'month') {
-			totalTime['month_' + numberMonth + '_' + numberYear] = {
+			totalTime['month_' + numbMonth + '_' + numbYear] = {
 				'outlays' : {},
 				'incomes' : {}
 			};
 		};		
 	}
-	if (totalTime[time + '_' + numberYear]) {
+	if (totalTime[time + '_' + numbYear]) {
 		console.log('this year is')
-		for (key in totalTime[time + '_' + numberYear][type]) {
+		for (key in totalTime[time + '_' + numbYear][type]) {
 			count++;
 		}
 	} else {
@@ -98,9 +97,9 @@ DataTotalStat.prototype.setTotalTimeStat = function(category, cost, time, number
 	}
 
 	if (time == "month") {
-		totalTime[time + '_' + numberMonth + '_' + numberYear][type]['' + keyWordL + count + '_' + Math.floor((Math.random() * 100) + 1)] = buffObj;
+		totalTime[time + '_' + numbMonth + '_' + numbYear][type]['' + keyWordL + count + '_' + Math.floor((Math.random() * 100) + 1)] = buffObj;
 	} else {
-		totalTime[time + '_' + numberYear][type]['' + keyWordL + count + '_' + Math.floor((Math.random() * 100) + 1)] = buffObj;
+		totalTime[time + '_' + numbYear][type]['' + keyWordL + count + '_' + Math.floor((Math.random() * 100) + 1)] = buffObj;
 	};
 	
 	console.log('totalTime  -   ' + totalTime)
@@ -110,7 +109,7 @@ DataTotalStat.prototype.setTotalTimeStat = function(category, cost, time, number
 	this.totalStatistic = LS.get('totalStatistic');
 }
 
-DataTotalStat.prototype.remTotalTimaStat = function(category, cost, time, numberMonth, numberYear, type) {
+DataTotalStat.prototype.remTotalTimeStat = function(category, cost, time, numberMonth, numberYear, type) {
 	var removeFor = LS.get('totalStatistic'),
 		ind,
 		numbMonth = numberMonth;
@@ -120,14 +119,12 @@ DataTotalStat.prototype.remTotalTimaStat = function(category, cost, time, number
 		numbMonth = '0' + numberMonth;
 	};
 
-
 	if (removeFor[time + '_' + numbMonth + '_' + numbYear]) {
 		for (key in removeFor[time + '_' + numbMonth + '_' + numbYear][type]) {
 			if (removeFor[time + '_' + numbMonth + '_' + numbYear][type][key]['cat'] == category && removeFor[time + '_' + numbMonth + '_' + numbYear][type][key]['cost'] == cost) {
 				ind = key;
 			}
 		}
-			
 		if (ind) {
 			delete removeFor[time + '_' + numbMonth + '_' + numbYear][type][ind]
 		} else {
@@ -154,14 +151,48 @@ DataTotalStat.prototype.remTotalTimaStat = function(category, cost, time, number
 	}     
 
 	LS.set('totalStatistic', removeFor);
-	this.regular = LS.get('totalStatistic');            
+	this.totalStatistic = LS.get('totalStatistic');            
 }
+
+DataTotalStat.prototype.changeTotalTimeStat = function(category, cost, time, numberMonth, numberYear, type, id) {
+	var changeTotal = LS.get('totalStatistic'),
+		ind,
+		numbMonth = numberMonth;
+		numbYear = numberYear;
+
+	if (numbMonth < 10) {
+		numbMonth = '0' + numberMonth;
+	};
+	var buffObj = {};
+	buffObj['cat'] = category;
+	buffObj['cost'] = cost;
+
+	if (changeTotal[time + '_' + numbMonth + '_' + numbYear]) {
+		if (id in changeTotal[time + '_' + numbMonth + '_' + numbYear][type]){
+			changeTotal[time + '_' + numbMonth + '_' + numbYear][type][id] = buffObj;
+		}
+	}
+
+	if (changeTotal[time + '_' + numbYear]) {
+		if (id in changeTotal[time + '_' + numbYear][type]){
+			changeTotal[time + '_' + numbYear][type][id] = buffObj;
+		}
+	}
+
+	LS.set('totalStatistic', changeTotal);
+	this.totalStatistic = LS.get('totalStatistic'); 
+}
+
 
 // numberTime - це номер місяця або року для якого записуються дані в статистику
 // наприклад dataTotalStat.setTotalTimeStat('transport', 12, month, 6, 2014, 'outlays')
-// створиться властивість з назвою - (time + '_' + numbMonth + '_' + numbYear) -> 'month_06_2014'
+// створиться властивість з назвою - (time + '_' + numbMonth + '_' + numbYear) -> 'month_07_2014'
 
 var dataTotalStat = new DataTotalStat();
 dataTotalStat.getTotalStatistic();
 
 console.log('dataTotalStat  -  ' + dataTotalStat);
+// dataTotalStat.setTotalCurrentStat('balance', 2420.25);
+// dataTotalStat.setTotalTimeStat('habar11', 1111, 'month', 7, 2014, 'incomes');
+// dataTotalStat.setTotalTimeStat('car', 555555, 'year', '', 2015, 'outlays');
+// dataTotalStat.remTotalTimeStat('habar11', 1111, 'month', 7, 2014, 'incomes');

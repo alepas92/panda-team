@@ -7,7 +7,7 @@ DataRegular.prototype.getRegular = function () {
 		var defaultRegular = {
 			'day' : {
 				'outlays' : {
-					'out0' : {
+					'out0_12' : {
 						'cat' : 'transport',
 						'cost' : 500
 					}
@@ -18,7 +18,7 @@ DataRegular.prototype.getRegular = function () {
 			'month' : {
 				'outlays' : {},
 				'incomes' : {
-					'inc0' : {
+					'inc0_45' : {
 						'cat' : 'salary',
 						'cost' : 1000
 					}
@@ -83,7 +83,36 @@ DataRegular.prototype.removeRegular = function(category, cost, time, type) {
 	this.regular = LS.get('regular');
 }
 
+DataRegular.prototype.changeRegular = function(category, cost, time, type, id) {
+	var changeReg = LS.get('regular');
+
+	var bufObj = {};
+	bufObj['cat'] = category;
+	bufObj['cost'] = cost;
+
+	if (id in changeReg[time][type]) {
+		changeReg[time][type][id] = bufObj;
+		LS.set('regular', removeReg);
+		this.regular = LS.get('regular');
+	} else {
+		console.log('some arguments in function are invalid')
+	};
+	
+	LS.set('regular', removeReg);
+	this.regular = LS.get('regular');
+}
+
+
 var dataRegular = new DataRegular();
 dataRegular.getRegular();
 
 console.log('dataRegular  -  ' + dataRegular);
+
+// dataRegular.setRegular('guns', 500, 'month', 'incomes');
+// dataRegular.setRegular('guns', 600, 'month', 'outlays');
+// dataRegular.setRegular('guns1', 800, 'year', 'outlays');
+// dataRegular.setRegular('guns2', 700, 'year', 'outlays');
+// dataRegular.setRegular('guns3', 600, 'year', 'outlays');
+// dataRegular.setRegular('guns4', 500, 'year', 'outlays');
+
+// dataRegular.removeRegular('guns', 500, 'month', 'incomes');
