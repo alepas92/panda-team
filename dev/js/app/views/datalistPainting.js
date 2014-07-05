@@ -4,7 +4,7 @@
 function datalistPainting (category) {
 	var datalist = document.createElement("datalist");
 		datalist.id = category + "CategoriesDatalist",
-		categories = data.categories[category];
+		categories = dataCategories.categories[category];
 
 	for (var i = 0; i < categories.length; i++) {
 		var option = document.createElement("option");

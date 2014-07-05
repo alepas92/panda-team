@@ -101,10 +101,7 @@ DataTotalStat.prototype.setTotalTimeStat = function(category, cost, time, number
 	} else {
 		totalTime[time + '_' + numbYear][type]['' + keyWordL + count + '_' + Math.floor((Math.random() * 100) + 1)] = buffObj;
 	};
-	
-	console.log('totalTime  -   ' + totalTime)
-	
-	
+		
 	LS.set('totalStatistic', totalTime);
 	this.totalStatistic = LS.get('totalStatistic');
 }
@@ -193,8 +190,8 @@ dataTotalStat.getTotalStatistic();
 
 console.log('dataTotalStat  -  ' + dataTotalStat);
 // dataTotalStat.setTotalCurrentStat('balance', 2420.25);
-dataTotalStat.setTotalTimeStat('bla', 1111, 'month', 9, 2015, 'incomes');
-dataTotalStat.setTotalTimeStat('vla1', 555555, 'year', '', 2013, 'outlays');
-dataTotalStat.setTotalTimeStat('bla', 1111, 'month', 9, 2019, 'incomes');
-dataTotalStat.setTotalTimeStat('vla1', 555555, 'year', '', 2019, 'outlays');
+// dataTotalStat.setTotalTimeStat('bla', 1111, 'month', 9, 2015, 'incomes');
+// dataTotalStat.setTotalTimeStat('vla1', 555555, 'year', '', 2013, 'outlays');
+// dataTotalStat.setTotalTimeStat('bla', 1111, 'month', 9, 2019, 'incomes');
+// dataTotalStat.setTotalTimeStat('vla1', 555555, 'year', '', 2019, 'outlays');
 // dataTotalStat.remTotalTimeStat('habar11', 1111, 'month', 7, 2014, 'incomes');

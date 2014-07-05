@@ -54,6 +54,9 @@
 #calendar2 tbody td:nth-child(n+6) span, #calendar2 .holiday span {
   color: rgb(231, 140, 92);
 }
+#calendar2 tbody td:nth-child(n+6) .myCssClass {
+  color: #000;
+}
 #calendar2 tbody td.today span {
   border: 1px solid #d8b950;
   background: #F3E2A9;
