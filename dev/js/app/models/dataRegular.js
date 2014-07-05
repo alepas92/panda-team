@@ -108,6 +108,7 @@ dataRegular.getRegular();
 
 console.log('dataRegular  -  ' + dataRegular);
 
+
 // dataRegular.setRegular('guns', 500, 'month', 'incomes');
 // dataRegular.setRegular('guns', 600, 'month', 'outlays');
 // dataRegular.setRegular('guns1', 800, 'year', 'outlays');
