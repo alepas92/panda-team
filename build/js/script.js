@@ -1,6 +1,6 @@
 
 //New Outlay/Income    Daily
-function readDailyOutlays(){
+/*function readDailyOutlays(){
 	var category = $( '#new-outlay input.sel-cat' ).val(),
 		cost = $('#new-outlay .inp-cos').val();
 		if (category && cost) {
@@ -23,7 +23,7 @@ function readDailyIncomes(){
 }
 
 $('#new-income .btn-submit').click(function() {	
-	alert('click');
+	
 	readDailyIncomes();
 });
 
@@ -65,7 +65,7 @@ $('#regular-outlay .btn-submit').click(function() {
 	readRegularOutlays();
 });
 
-*/
+
 
 //Manage forecast(month, outlays)
 function readForecastOutlays(){
@@ -83,7 +83,7 @@ $('#manage-forecast .btn-submit').click(function() {
 
 
 
-
+*/
 
 
 
@@ -103,7 +103,172 @@ $('#manage-forecast .btn-submit').click(function() {
 
 //Manage balance
 //Statistics
-;function LS () {}
+;//Daily Categories outlays/income
+
+function readCategoryOutlays(){
+	var category = $( '#new-outlay .inp-cat' ).val();
+	dataCategories.setCategory(category, 'outlays' );
+}
+
+$('#new-outlay .btn-add').click(function() {	
+	
+	readCategoryOutlays();
+});
+
+
+function readCategoryIncomes(){
+	var category = $( '#new-income .inp-cat' ).val();
+	dataCategories.setCategory(category, 'incomes' );
+}
+
+$('#new-income .btn-add').click(function() {	
+	readCategoryIncomes();
+});
+
+
+
+function removeCategoryOutlays(){
+	var category = $( '' ).val();
+	dataCategories.setCategory(category, 'outlays' );
+}
+
+$('').click(function() {	
+	
+	removeCategoryOutlays();
+});
+
+
+function removeCategoryIncomes(){
+	var category = $( '' ).val();
+	dataCategories.setCategory(category, 'incomes' );
+}
+
+$('').click(function() {	
+	
+	removeCategoryIncomes();
+});;function readDailyOutlays(){
+	var category = $( '#new-outlay input.sel-cat' ).val(),
+		cost = $('#new-outlay .inp-cos').val();
+		if (category && cost) {
+			dataDaily.setDaily(todayKeyWord, category, cost, 'outlays' );
+		} else{
+			console.log('you have some problem with data')
+		};
+	
+}
+
+$('#new-outlay .btn-submit').click(function() {	
+	
+	readDailyOutlays();
+});
+
+function readDailyIncomes(){
+	var category = $( '#new-income input.sel-cat' ).val(),
+		cost = $('#new-income .inp-cos').val();
+	dataDaily.setDaily(todayKeyWord, category, cost, 'incomes' );
+}
+
+$('#new-income .btn-submit').click(function() {	
+	
+	readDailyIncomes();
+});
+
+
+function removeDailyOutlays(){
+	var category = $( '' ).val(),
+		cost = $('').val();
+		if (category && cost) {
+			dataDaily.setDaily(todayKeyWord, category, cost, 'outlays' );
+		} else{
+			console.log('you have some problem with data')
+		};
+	
+}
+
+$('').click(function() {	
+	
+	readDailyOutlays();
+});
+
+function removeDailyIncomes(){
+	var category = $( '' ).val(),
+		cost = $('').val();
+	dataDaily.setDaily(todayKeyWord, category, cost, 'incomes' );
+}
+
+$('').click(function() {	
+	
+	readDailyIncomes();
+});
+
+function changeDailyOutlays(){
+	var category = $( '' ).val(),
+		cost = $('').val();
+		if (category && cost) {
+			dataDaily.setDaily(todayKeyWord, category, cost, 'outlays' );
+		} else{
+			console.log('you have some problem with data')
+		};
+	
+}
+
+$('').click(function() {	
+	
+	readDailyOutlays();
+});
+
+function changeDailyIncomes(){
+	var category = $( '' ).val(),
+		cost = $('').val();
+	dataDaily.setDaily(todayKeyWord, category, cost, 'incomes' );
+}
+
+$('').click(function() {	
+	
+	readDailyIncomes();
+});;//неточність введення з сторінки
+function readForecastOutlays(){
+	var category = $( '#manage-forecast select.sel-cat' ).val();
+	var cost = $('#manage-forecast .inp-cos').val();
+	data.setForecast(category, cost, 'month', 'outlays' );
+}
+
+$('#manage-forecast .btn-submit').click(function() {	
+	alert('click');
+	readForecastOutlays();
+});
+
+function removeForecastOutlays(){
+	var category = $( '' ).val();
+	var cost = $('').val();
+	data.setForecast(category, cost, 'month', 'outlays' );
+}
+
+$('').click(function() {	
+	alert('click');
+	removeForecastOutlays();
+});
+
+function changeForecastOutlays(){
+	var category = $( '' ).val();
+	var cost = $('').val();
+	data.setForecast(category, cost, 'month', 'outlays' );
+}
+
+$('').click(function() {	
+	alert('click');
+	removeForecastOutlays();
+});;function readRegularOutlays(){
+	var category = $( '#regular-outlay .sel-cat' ).val(),
+		cost = $('#regular-outlay .inp-cos').val();
+		//time = $('#regular-outlay .inp-dat').val();
+	dataRegular.setRegular(category, cost, 'day', 'outlays' );
+}
+
+$('#regular-outlay .btn-submit').click(function() {	
+	alert('click');
+	readRegularOutlays();
+});;;function LS () {}
 
 LS.get = function (keyWord) {
 	if (localStorage[name] !== null) {
@@ -195,13 +360,13 @@ dataCategories.setCategory('car', 'outlays');
 console.log('dataCategories  -  ' + dataCategories);var date = getDate();
 var todayKeyWord = 'day' + date.day + '_' + date.month + '_' + date.year;
 
-function DataDayly () {
+function DataDaily () {
 	this[todayKeyWord] = {};
 	this[todayKeyWord + '_statistic'] = {};
 	this[todayKeyWord + '_plan']
 }
 
-DataDayly.prototype.getDayly = function () {
+DataDaily.prototype.getDaily = function () {
 	if (!localStorage[todayKeyWord]){
 		var defaultDayly = {
 			'outlays' : {},
@@ -215,7 +380,7 @@ DataDayly.prototype.getDayly = function () {
 	}
 };
 
-DataDayly.prototype.getDaylyStatistic = function () {
+DataDaily.prototype.getDailyStatistic = function () {
 	var keyWord = todayKeyWord + '_statistic';
 	if (!localStorage[keyWord]){
 		var defaultDaylyStatistic = {
@@ -230,7 +395,7 @@ DataDayly.prototype.getDaylyStatistic = function () {
 	}
 };
 
-DataDayly.prototype.getDaylyPlan = function () {
+DataDaily.prototype.getDailyPlan = function () {
 	var keyWord = todayKeyWord + '_plan';
 	if (!localStorage[keyWord]){
 		var defaultDaylyPlan = {
@@ -246,7 +411,7 @@ DataDayly.prototype.getDaylyPlan = function () {
 };
 
 // set dayly outlays and incomes
-DataDayly.prototype.setDaily = function(keyWord, category, cost, type) {
+DataDaily.prototype.setDaily = function(keyWord, category, cost, type) {
 	var defDayly = LS.get(keyWord),
 		count = 0,
 		keyWordL = '';
@@ -271,7 +436,7 @@ DataDayly.prototype.setDaily = function(keyWord, category, cost, type) {
 }
 
 // remove dayly outlays and incomes
-DataDayly.prototype.removeDaily = function(keyWord, category, cost, type) {
+DataDaily.prototype.removeDaily = function(keyWord, category, cost, type) {
 	var removeDay = LS.get(keyWord),
 		ind;
 
@@ -292,8 +457,26 @@ DataDayly.prototype.removeDaily = function(keyWord, category, cost, type) {
 }
 
 
+DataDaily.prototype.changeDaily = function(keyWord, category, cost, type, id) {
+	var changeDay = LS.get(keyWord);
+	var buffObj = {};
+
+	buffObj['cat'] = category;
+	buffObj['cost'] = cost;
+
+	if (id in changeDay[type]) {
+		changeDay[type][id] = buffObj;
+	} else {
+		console.log('in your data are some mistake')
+	}
+
+	LS.set(keyWord, changeDay);
+	this[keyWord] = LS.get(keyWord);
+}	
+
+
 // set dayly Statistick outlays and incomes
-DataDayly.prototype.setDailyStat = function(keyWord, category, cost, type) {
+DataDaily.prototype.setDailyStat = function(keyWord, category, cost, type) {
 	var keyWordStat = keyWord + '_statistic';
 	var defDaylyStat = LS.get(keyWordStat),
 		count = 0,
@@ -319,7 +502,7 @@ DataDayly.prototype.setDailyStat = function(keyWord, category, cost, type) {
 }
 
 // remove Dayly Statistic
-DataDayly.prototype.removeDailyStat = function(keyWord, category, cost, type) {
+DataDaily.prototype.removeDailyStat = function(keyWord, category, cost, type) {
 	var keyW = keyWord + '_statistic';
 	var removeDayStat = LS.get(keyW),
 		ind;
@@ -340,9 +523,29 @@ DataDayly.prototype.removeDailyStat = function(keyWord, category, cost, type) {
 	this[keyW] = LS.get(keyW);
 }
 
+DataDaily.prototype.changeDailyStat = function(keyWord, category, cost, type, id) {
+	var keyW = keyWord + '_statistic';
+	var changeDayStat = LS.get(keyW);
+
+	var buffObj = {};
+	buffObj['cat'] = category;
+	buffObj['cost'] = cost;
+
+	if (id in changeDayStat[type]) {
+		changeDayStat[type][id] = buffObj;
+	} else{
+		console.log('in your data are some mistake')
+	};
+
+
+	LS.set(keyW, changeDayStat);
+	this[keyW] = LS.get(keyW);
+}
+
+
 
 // set daylyPlan outlays and incomes
-DataDayly.prototype.setDailyPlan = function(keyWord, category, cost, type) {
+DataDaily.prototype.setDailyPlan = function(keyWord, category, cost, type) {
 	var keyWordPlan = keyWord + '_plan'
 	var defDaylyPlan = LS.get(keyWordPlan),
 		count = 0,
@@ -368,7 +571,7 @@ DataDayly.prototype.setDailyPlan = function(keyWord, category, cost, type) {
 }
 
 // remove daylyPlan outlays and incomes
-DataDayly.prototype.removeDailyPlan = function(keyWord, category, cost, type) {
+DataDaily.prototype.removeDailyPlan = function(keyWord, category, cost, type) {
 	var keyWordPlan = keyWord + '_plan'
 	var removeDaylyPlan = LS.get(keyWordPlan),
 		ind;
@@ -390,12 +593,31 @@ DataDayly.prototype.removeDailyPlan = function(keyWord, category, cost, type) {
 }
 
 
-var dataDayly = new DataDayly();
-dataDayly.getDaylyStatistic();
-dataDayly.getDayly();
-dataDayly.getDaylyPlan();
+DataDaily.prototype.changeDailyPlan = function(keyWord, category, cost, type, id) {
+	var keyW = keyWord + '_plan';
+	var changeDayPlan = LS.get(keyW);
 
-console.log('dataDayly  -  ' + dataDayly);
+	var buffObj = {};
+	buffObj['cat'] = category;
+	buffObj['cost'] = cost;
+
+	if (id in changeDayPlan[type]) {
+		changeDayPlan[type][id] = buffObj;
+	} else
+		console.log('in your data are some mistake');
+
+
+	LS.set(keyW, changeDayPlan);
+	this[keyW] = LS.get(keyW);
+}
+
+
+var dataDaily = new DataDaily();
+dataDaily.getDailyStatistic();
+dataDaily.getDaily();
+dataDaily.getDailyPlan();
+
+console.log('dataDaily  -  ' + dataDaily);
 
 
 
@@ -422,8 +644,8 @@ console.log('dataDayly  -  ' + dataDayly);
 // dataDayly.setDailyPlan(todayKeyWord, 'pivo3', '350', 'outlays');
 // dataDayly.setDailyPlan(todayKeyWord, 'pivo4', '350', 'incomes');
 // // dataDayly.setDailyPlan(todayKeyWord, 'pivo5', '350', 'incomes');
-dataDayly.removeDailyPlan(todayKeyWord, 'pivo2', '350', 'outlays');
-dataDayly.removeDailyPlan(todayKeyWord, 'pivo5', '350', 'incomes');
+dataDaily.removeDailyPlan(todayKeyWord, 'pivo2', '350', 'outlays');
+dataDaily.removeDailyPlan(todayKeyWord, 'pivo5', '350', 'incomes');
 
 
 
@@ -517,6 +739,25 @@ DataForecast.prototype.removeForecast = function(category, cost, time, type) {
 	LS.set('forecast', removeFor);
 	this.forecast = LS.get('forecast');
 }
+
+
+DataForecast.prototype.changeForecast = function(category, cost, time, type, id) {
+	var changeFor = LS.get('forecast');
+	
+	var buffObj = {};
+	buffObj['cat'] = category;
+	buffObj['cost'] = cost;
+
+	if (id in changeFor[time][type]) {
+		changeFor[time][type][id] = buffObj
+	} else {
+		console.log('in your data are some mistake'); // only for debugging
+	};
+
+	LS.set('forecast', removeFor);
+	this.forecast = LS.get('forecast');
+}
+
 
 var dataForecast = new DataForecast();
 dataForecast.getForecast();
@@ -618,6 +859,26 @@ DataRegular.prototype.removeRegular = function(category, cost, time, type) {
 	LS.set('regular', removeReg);
 	this.regular = LS.get('regular');
 }
+
+DataRegular.prototype.changeRegular = function(category, cost, time, type, id) {
+	var changeReg = LS.get('regular');
+
+	var bufObj = {};
+	bufObj['cat'] = category;
+	bufObj['cost'] = cost;
+
+	if (id in changeReg[time][type]) {
+		changeReg[time][type][id] = bufObj;
+		LS.set('regular', removeReg);
+		this.regular = LS.get('regular');
+	} else {
+		console.log('some arguments in function are invalid')
+	};
+	
+	LS.set('regular', removeReg);
+	this.regular = LS.get('regular');
+}
+
 
 var dataRegular = new DataRegular();
 dataRegular.getRegular();
@@ -743,7 +1004,7 @@ DataTotalStat.prototype.setTotalTimeStat = function(category, cost, time, number
 	this.totalStatistic = LS.get('totalStatistic');
 }
 
-DataTotalStat.prototype.remTotalTimaStat = function(category, cost, time, numberMonth, numberYear, type) {
+DataTotalStat.prototype.remTotalTimeStat = function(category, cost, time, numberMonth, numberYear, type) {
 	var removeFor = LS.get('totalStatistic'),
 		ind,
 		numbMonth = numberMonth;
@@ -788,6 +1049,36 @@ DataTotalStat.prototype.remTotalTimaStat = function(category, cost, time, number
 	this.totalStatistic = LS.get('totalStatistic');            
 }
 
+DataTotalStat.prototype.changeTotalTimeStat = function(category, cost, time, numberMonth, numberYear, type, id) {
+	var changeTotal = LS.get('totalStatistic'),
+		ind,
+		numbMonth = numberMonth;
+		numbYear = numberYear;
+
+	if (numbMonth < 10) {
+		numbMonth = '0' + numberMonth;
+	};
+	var buffObj = {};
+	buffObj['cat'] = category;
+	buffObj['cost'] = cost;
+
+	if (changeTotal[time + '_' + numbMonth + '_' + numbYear]) {
+		if (id in changeTotal[time + '_' + numbMonth + '_' + numbYear][type]){
+			changeTotal[time + '_' + numbMonth + '_' + numbYear][type][id] = buffObj;
+		}
+	}
+
+	if (changeTotal[time + '_' + numbYear]) {
+		if (id in changeTotal[time + '_' + numbYear][type]){
+			changeTotal[time + '_' + numbYear][type][id] = buffObj;
+		}
+	}
+
+	LS.set('totalStatistic', changeTotal);
+	this.totalStatistic = LS.get('totalStatistic'); 
+}
+
+
 // numberTime - це номер місяця або року для якого записуються дані в статистику
 // наприклад dataTotalStat.setTotalTimeStat('transport', 12, month, 6, 2014, 'outlays')
 // створиться властивість з назвою - (time + '_' + numbMonth + '_' + numbYear) -> 'month_07_2014'
@@ -799,7 +1090,7 @@ console.log('dataTotalStat  -  ' + dataTotalStat);
 // dataTotalStat.setTotalCurrentStat('balance', 2420.25);
 // dataTotalStat.setTotalTimeStat('habar11', 1111, 'month', 7, 2014, 'incomes');
 // dataTotalStat.setTotalTimeStat('car', 555555, 'year', '', 2015, 'outlays');
-// dataTotalStat.remTotalTimaStat('habar11', 1111, 'month', 7, 2014, 'incomes');
+// dataTotalStat.remTotalTimeStat('habar11', 1111, 'month', 7, 2014, 'incomes');
 ;//
 // Datalist painting painting
 //

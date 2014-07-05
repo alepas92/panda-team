@@ -1,13 +1,13 @@
 var date = getDate();
 var todayKeyWord = 'day' + date.day + '_' + date.month + '_' + date.year;
 
-function DataDayly () {
+function DataDaily () {
 	this[todayKeyWord] = {};
 	this[todayKeyWord + '_statistic'] = {};
 	this[todayKeyWord + '_plan']
 }
 
-DataDayly.prototype.getDayly = function () {
+DataDaily.prototype.getDaily = function () {
 	if (!localStorage[todayKeyWord]){
 		var defaultDayly = {
 			'outlays' : {},
@@ -21,7 +21,7 @@ DataDayly.prototype.getDayly = function () {
 	}
 };
 
-DataDayly.prototype.getDaylyStatistic = function () {
+DataDaily.prototype.getDailyStatistic = function () {
 	var keyWord = todayKeyWord + '_statistic';
 	if (!localStorage[keyWord]){
 		var defaultDaylyStatistic = {
@@ -36,7 +36,7 @@ DataDayly.prototype.getDaylyStatistic = function () {
 	}
 };
 
-DataDayly.prototype.getDaylyPlan = function () {
+DataDaily.prototype.getDailyPlan = function () {
 	var keyWord = todayKeyWord + '_plan';
 	if (!localStorage[keyWord]){
 		var defaultDaylyPlan = {
@@ -52,7 +52,7 @@ DataDayly.prototype.getDaylyPlan = function () {
 };
 
 // set dayly outlays and incomes
-DataDayly.prototype.setDaily = function(keyWord, category, cost, type) {
+DataDaily.prototype.setDaily = function(keyWord, category, cost, type) {
 	var defDayly = LS.get(keyWord),
 		count = 0,
 		keyWordL = '';
@@ -77,7 +77,7 @@ DataDayly.prototype.setDaily = function(keyWord, category, cost, type) {
 }
 
 // remove dayly outlays and incomes
-DataDayly.prototype.removeDaily = function(keyWord, category, cost, type) {
+DataDaily.prototype.removeDaily = function(keyWord, category, cost, type) {
 	var removeDay = LS.get(keyWord),
 		ind;
 
@@ -98,7 +98,7 @@ DataDayly.prototype.removeDaily = function(keyWord, category, cost, type) {
 }
 
 
-DataDayly.prototype.changeDaily = function(keyWord, category, cost, type, id) {
+DataDaily.prototype.changeDaily = function(keyWord, category, cost, type, id) {
 	var changeDay = LS.get(keyWord);
 	var buffObj = {};
 
@@ -117,7 +117,7 @@ DataDayly.prototype.changeDaily = function(keyWord, category, cost, type, id) {
 
 
 // set dayly Statistick outlays and incomes
-DataDayly.prototype.setDailyStat = function(keyWord, category, cost, type) {
+DataDaily.prototype.setDailyStat = function(keyWord, category, cost, type) {
 	var keyWordStat = keyWord + '_statistic';
 	var defDaylyStat = LS.get(keyWordStat),
 		count = 0,
@@ -143,7 +143,7 @@ DataDayly.prototype.setDailyStat = function(keyWord, category, cost, type) {
 }
 
 // remove Dayly Statistic
-DataDayly.prototype.removeDailyStat = function(keyWord, category, cost, type) {
+DataDaily.prototype.removeDailyStat = function(keyWord, category, cost, type) {
 	var keyW = keyWord + '_statistic';
 	var removeDayStat = LS.get(keyW),
 		ind;
@@ -164,9 +164,9 @@ DataDayly.prototype.removeDailyStat = function(keyWord, category, cost, type) {
 	this[keyW] = LS.get(keyW);
 }
 
-DataDayly.prototype.changeDailyStat = function(keyWord, category, cost, type, id) {
+DataDaily.prototype.changeDailyStat = function(keyWord, category, cost, type, id) {
 	var keyW = keyWord + '_statistic';
-	var changeDayStat = LS.get(keyW;
+	var changeDayStat = LS.get(keyW);
 
 	var buffObj = {};
 	buffObj['cat'] = category;
@@ -174,7 +174,7 @@ DataDayly.prototype.changeDailyStat = function(keyWord, category, cost, type, id
 
 	if (id in changeDayStat[type]) {
 		changeDayStat[type][id] = buffObj;
-	} else{else {
+	} else{
 		console.log('in your data are some mistake')
 	};
 
@@ -186,7 +186,7 @@ DataDayly.prototype.changeDailyStat = function(keyWord, category, cost, type, id
 
 
 // set daylyPlan outlays and incomes
-DataDayly.prototype.setDailyPlan = function(keyWord, category, cost, type) {
+DataDaily.prototype.setDailyPlan = function(keyWord, category, cost, type) {
 	var keyWordPlan = keyWord + '_plan'
 	var defDaylyPlan = LS.get(keyWordPlan),
 		count = 0,
@@ -212,7 +212,7 @@ DataDayly.prototype.setDailyPlan = function(keyWord, category, cost, type) {
 }
 
 // remove daylyPlan outlays and incomes
-DataDayly.prototype.removeDailyPlan = function(keyWord, category, cost, type) {
+DataDaily.prototype.removeDailyPlan = function(keyWord, category, cost, type) {
 	var keyWordPlan = keyWord + '_plan'
 	var removeDaylyPlan = LS.get(keyWordPlan),
 		ind;
@@ -234,9 +234,9 @@ DataDayly.prototype.removeDailyPlan = function(keyWord, category, cost, type) {
 }
 
 
-DataDayly.prototype.changeDailyPlan = function(keyWord, category, cost, type, id) {
+DataDaily.prototype.changeDailyPlan = function(keyWord, category, cost, type, id) {
 	var keyW = keyWord + '_plan';
-	var changeDayPlan = LS.get(keyW;
+	var changeDayPlan = LS.get(keyW);
 
 	var buffObj = {};
 	buffObj['cat'] = category;
@@ -244,9 +244,8 @@ DataDayly.prototype.changeDailyPlan = function(keyWord, category, cost, type, id
 
 	if (id in changeDayPlan[type]) {
 		changeDayPlan[type][id] = buffObj;
-	} else{else {
-		console.log('in your data are some mistake')
-	};
+	} else
+		console.log('in your data are some mistake');
 
 
 	LS.set(keyW, changeDayPlan);
@@ -254,12 +253,12 @@ DataDayly.prototype.changeDailyPlan = function(keyWord, category, cost, type, id
 }
 
 
-var dataDayly = new DataDayly();
-dataDayly.getDaylyStatistic();
-dataDayly.getDayly();
-dataDayly.getDaylyPlan();
+var dataDaily = new DataDaily();
+dataDaily.getDailyStatistic();
+dataDaily.getDaily();
+dataDaily.getDailyPlan();
 
-console.log('dataDayly  -  ' + dataDayly);
+console.log('dataDaily  -  ' + dataDaily);
 
 
 
@@ -286,8 +285,8 @@ console.log('dataDayly  -  ' + dataDayly);
 // dataDayly.setDailyPlan(todayKeyWord, 'pivo3', '350', 'outlays');
 // dataDayly.setDailyPlan(todayKeyWord, 'pivo4', '350', 'incomes');
 // // dataDayly.setDailyPlan(todayKeyWord, 'pivo5', '350', 'incomes');
-dataDayly.removeDailyPlan(todayKeyWord, 'pivo2', '350', 'outlays');
-dataDayly.removeDailyPlan(todayKeyWord, 'pivo5', '350', 'incomes');
+dataDaily.removeDailyPlan(todayKeyWord, 'pivo2', '350', 'outlays');
+dataDaily.removeDailyPlan(todayKeyWord, 'pivo5', '350', 'incomes');
 
 
 

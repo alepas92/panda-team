@@ -1,6 +1,6 @@
 
 //New Outlay/Income    Daily
-function readDailyOutlays(){
+/*function readDailyOutlays(){
 	var category = $( '#new-outlay input.sel-cat' ).val(),
 		cost = $('#new-outlay .inp-cos').val();
 		if (category && cost) {
@@ -23,7 +23,7 @@ function readDailyIncomes(){
 }
 
 $('#new-income .btn-submit').click(function() {	
-	alert('click');
+	
 	readDailyIncomes();
 });
 
@@ -65,7 +65,7 @@ $('#regular-outlay .btn-submit').click(function() {
 	readRegularOutlays();
 });
 
-*/
+
 
 //Manage forecast(month, outlays)
 function readForecastOutlays(){
@@ -83,7 +83,7 @@ $('#manage-forecast .btn-submit').click(function() {
 
 
 
-
+*/
 
 
 
