@@ -48,28 +48,15 @@ function Calendar2(id, year, month) {
     var tableA = document.getElementsByTagName('tbody')[0];
     var tableLink = tableA.getElementsByTagName('td');
     for (var i = 0; i < tableLink.length; i++) {
-        tableLink[i].onclick = function(){
-            var tableA = document.getElementsByTagName('tbody')[0];
-            var tableLink = tableA.getElementsByTagName('span');
-            for (var j = 0; j < tableLink.length; j++) {
-                tableLink[j].classList.remove('myCssClass')
-            };
-            var k = this;
-            console.log(LS.get(k.firstChild.getAttribute('data-day')))
-            k.firstChild.classList.add('myCssClass');
-        }
+        tableLink[i].onclick = callendarDayClick;
     };
 
 
 
     var tableMonth = document.getElementsByTagName('thead')[0].getElementsByTagName('td')[1];
-    tableMonth.onclick = function() {
-        console.log(this.getAttribute('data-month-work'))
-    }
+    tableMonth.onclick = callendarMonthClick;
     var tableYear = document.getElementsByTagName('thead')[0].getElementsByTagName('td')[3];
-    tableYear.onclick = function() {
-        console.log(this.getAttribute('data-year-work'))
-    }
+    tableYear.onclick = callendarYearClick;
 }
 
 Calendar2("calendar2", new Date().getFullYear(), new Date().getMonth());
