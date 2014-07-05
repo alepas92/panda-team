@@ -261,10 +261,6 @@ dataDayly.getDaylyPlan();
 
 console.log('dataDayly  -  ' + dataDayly);
 
-
-
-
-
 // dataDayly.setDaily(todayKeyWord, 'habar1', '160', 'incomes');
 // dataDayly.setDaily(todayKeyWord, 'habar11', '260', 'incomes');
 // dataDayly.setDaily(todayKeyWord, 'habar12', '360', 'incomes');
