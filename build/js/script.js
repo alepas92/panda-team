@@ -1,4 +1,21 @@
+function callendarDayClick() {
+    var tableA = document.getElementsByTagName('tbody')[0];
+    var tableLink = tableA.getElementsByTagName('span');
+    for (var j = 0; j < tableLink.length; j++) {
+        tableLink[j].classList.remove('myCssClass')
+    };
+    var k = this;
+    console.log(LS.get(k.firstChild.getAttribute('data-day')))
+    k.firstChild.classList.add('myCssClass');
+}
 
+function callendarMonthClick() {
+    console.log(this.getAttribute('data-month-work'))
+}
+
+function callendarYearClick() {
+    console.log(this.getAttribute('data-year-work'))
+};
 //New Outlay/Income    Daily
 function readDailyOutlays(){
 	var category = $( '#new-outlay select.sel-cat' ).val(),
@@ -101,7 +118,7 @@ $('#manage-forecast .btn-submit').click(function() {
 ;function LS () {}
 
 LS.get = function (keyWord) {
-	if (localStorage[name] !== null) {
+	if (localStorage[keyWord] !== null && localStorage[keyWord] !== undefined ) {
 		return JSON.parse(localStorage[keyWord]);
 	}
 
@@ -128,540 +145,6 @@ LS.getMonthStatistic = function () {
 
 LS.clear = function(){
 	localStorage.clear();
-};var date = getDate();
-var todayKeyWord = 'day' + date.day + '_' + date.month + '_' + date.year;
-
-
-// Categories
-function Data () {
-	this.categories = {};
-	this.regular = {};
-	this.forecast = {};
-	this[todayKeyWord] = {};
-	this[todayKeyWord + '_statistic'] = {};
-	this.totalStatistic = {};
-}
-	Data.prototype.getCategories = function () {
-		if (!localStorage.categories) {
-			var defaultCategories = {
-				'outlays' : ['hobbies', 'eating', 'transport'], 
-				'incomes' : ['salary']
-			};
-
-			LS.set('categories', defaultCategories);
-			this.categories = LS.get('categories');
-		} else {
-			this.categories = LS.get('categories');
-		}
-	};
-
-
-
-
-
-
-
-
-	Data.prototype.getRegular = function () {
-		if (!localStorage.regular) {
-			var defaultRegular = {
-				'day' : {
-					'outlays' : {
-						'out0' : {
-							'cat' : 'transport',
-							'cost' : 500
-						}
-					},
-					'incomes' : {}
-				},
-
-				'month' : {
-					'outlays' : {},
-					'incomes' : {
-						'inc0' : {
-							'cat' : 'salary',
-							'cost' : 1000
-						}
-					}
-				},
-
-				'year' : {
-					'outlays' : {},
-					'incomes' : {}
-				}
-			};
-
-			LS.set('regular', defaultRegular);
-			this.regular = LS.get('regular');
-		} else {
-			this.regular = LS.get('regular');
-		}
-	};
-
-
-
-
-	Data.prototype.getForecast = function () {
-		if (!localStorage.forecast) {
-			var defaultForecast = {
-				'month' : {
-					'outlays' : {},
-					'incomes' : {}
-				},
-
-				'year' : {
-					'outlays' : {},
-					'incomes' : {}
-				}
-			};
-
-			LS.set('forecast', defaultForecast);
-			this.forecast = LS.get('forecast');
-		} else {
-			this.forecast = LS.get('forecast');
-		}
-	};
-
-	Data.prototype.getDayly = function () {
-		if (!localStorage[todayKeyWord]){
-			var defaultDayly = {
-				'outlays' : {},
-				'incomes' : {}
-			};
-
-			LS.set(todayKeyWord, defaultDayly);
-			this[todayKeyWord] = LS.get(todayKeyWord);
-		} else {
-			this[todayKeyWord] = LS.get(todayKeyWord);
-		}
-	};
-
-	Data.prototype.getDaylyStatistic = function () {
-		var keyWord = todayKeyWord + '_statistic';
-		if (!localStorage[keyWord]){
-			var defaultDaylyStatistic = {
-				'outlays' : {},
-				'incomes' : {}
-			};
-
-			LS.set(keyWord, defaultDaylyStatistic);
-			this[keyWord] = LS.get(keyWord, defaultDaylyStatistic);
-		} else {
-			this[keyWord] = LS.get(keyWord);
-		}
-	};
-
-	Data.prototype.getTotalStatistic = function () {
-		if (!localStorage.totalStatistic){
-			var defaultTotalStatistic = {
-				'currentBalance' : 0,
-				'currentOutlays' : 0,
-				'currentIncomes' : 0
-			};
-
-			defaultTotalStatistic['month_' + date.month] = {
-				'outlays' : {},
-				'incomes' : {}
-			};
-
-			defaultTotalStatistic['year_' + date.year] = {
-				'outlays' : {},
-				'incomes' : {}
-			};
-
-			LS.set('totalStatistic', defaultTotalStatistic);
-			this.totalStatistic = LS.get('totalStatistic');
-		} else {
-			this.totalStatistic = LS.get('totalStatistic');
-		}
-	};
-
-// Roman Volkov
-
-// set category outlays and incomes 
-	Data.prototype.setCategory = function(category, type){
-		var setCat = LS.get('categories');
-		if (setCat[type].indexOf(category) == (-1)) {
-			setCat[type].push(category);
-
-			LS.set('categories', setCat)
-		} else{
-			return false
-		}; 
-		this.outlayCat = LS.get('categories');
-	}
-
-// remove category outlays and incomes
-	Data.prototype.removeCategory = function(category, type){
-		var removeCat = LS.get('categories');
-		var ind = -1;
-		removeCat[type].forEach(function(value, index, ar){
-			if (value == category) {
-				ind = index;
-				console.log(ind)
-			} 
-		})
-		if (ind >= 0) {
-			removeCat[type].splice(ind, 1);
-
-			LS.set('categories', removeCat)
-		} else {
-			return false
-		}		
-		this[type] = LS.get('categories');
-	}
-// set regulars outlays and incomes
-	Data.prototype.setRegular = function(category, cost, time, type) {
-		var setReg = LS.get('regular'), 
-			count = 0,
-			keyWordL = '';
-
-		if (type == "outlays") {
-			keyWordL = 'out';
-		} else if (type == "incomes") {
-			keyWordL = 'inc';
-		};
-
-		for (key in setReg[time][type]) {
-			count++;
-		}
-
-		var setRegObj = {};
-		setRegObj['cat'] = category;
-		setRegObj['cost'] = cost;
-		setReg[time][type]['' + keyWordL + count + '_' + Math.floor((Math.random() * 100) + 1)] = setRegObj;
-
-		LS.set('regular', setReg);
-		this.regular = LS.get('regular');
-	}
-// remove regulars outlays and incomes
-	Data.prototype.removeRegular = function(category, cost, time, type) {
-		var removeReg = LS.get('regular'),
-			ind;
-
-		for (key in removeReg[time][type]) {
-			if (removeReg[time][type][key]['cat'] == category && removeReg[time][type][key]['cost'] == cost) {
-				ind = key;
-			}
-		}
-			
-		if (ind) {
-			delete removeReg[time][type][ind]
-		} else {
-			console.log('in your data are some mistake'); // only for debugging
-		}
-
-		LS.set('regular', removeReg);
-		this.regular = LS.get('regular');
-	}
-
-// set forecast
-	Data.prototype.setForecast = function(category, cost, time, type) {
-		var setFor = LS.get('forecast'), 
-			count = 0,
-			keyWordL = '';
-
-		if (type == "outlays") {
-			keyWordL = 'out';
-		} else if (type == "incomes") {
-			keyWordL = 'inc';
-		};
-
-		for (key in setFor[time][type]) {
-			count++;
-		}
-
-		var setForObj = {};
-		setForObj['cat'] = category;
-		setForObj['cost'] = cost;
-		setFor[time][type]['' + keyWordL + count + '_' + Math.floor((Math.random() * 100) + 1)] = setForObj;
-
-		LS.set('forecast', setFor);
-		this.forecast = LS.get('forecast');
-	}
-
-// remove forecast outlays and incomes
-	Data.prototype.removeForecast = function(category, cost, time, type) {
-		var removeFor = LS.get('forecast'),
-			ind;
-
-		for (key in removeFor[time][type]) {
-			if (removeFor[time][type][key]['cat'] == category && removeFor[time][type][key]['cost'] == cost) {
-				ind = key;
-			}
-		}
-			
-		if (ind) {
-			delete removeFor[time][type][ind]
-		} else {
-			console.log('in your data are some mistake'); // only for debugging
-		}
-
-		LS.set('forecast', removeFor);
-		this.regular = LS.get('forecast');
-		this.key = ind; //                                    !!! - key for change value if it needs
-	}
-
-// set dayly outlays and incomes
-	Data.prototype.setDaily = function(keyWord, category, cost, type) {
-		var defDayly = LS.get(keyWord),
-			count = 0,
-			keyWordL = '';
-
-		if (type == "outlays") {
-			keyWordL = 'out';
-		} else if (type == "incomes") {
-			keyWordL = 'inc';
-		};
-
-		for (key in defDayly[type]) {
-			count++;
-		}
-
-		var setDaylyObj = {};
-		setDaylyObj['cat'] = category;
-		setDaylyObj['cost'] = cost;
-		defDayly[type]['' + keyWordL + count + '_' + Math.floor((Math.random() * 100) + 1)] = setDaylyObj;
-
-		LS.set(keyWord, defDayly);
-		this[keyWord] = LS.get(keyWord);
-	}
-
-	Data.prototype.removeDaily = function(keyWord, category, cost, type) {
-		var removeDay = LS.get(keyWord),
-			ind;
-
-		for (key in removeDay[type]) {
-			if (removeDay[type][key]['cat'] == category && removeDay[type][key]['cost'] == cost) {
-				ind = key;
-			}
-		}
-			
-		if (ind) {
-			delete removeDay[type][ind]
-		} else {
-			console.log('in your data are some mistake'); // only for debugging
-		}
-
-		LS.set(keyWord, removeDay);
-		this.regular = LS.get(keyWord);
-	}
-
-
-// set dayly Statistick outlays and incomes
-	Data.prototype.setDailyStat = function(keyWord, category, cost, type) {
-		var keyWordStat = keyWord + '_statistic';
-		var defDaylyStat = LS.get(keyWordStat),
-			count = 0,
-			keyWordL = '';
-
-		if (type == "outlays") {
-			keyWordL = 'out';
-		} else if (type == "incomes") {
-			keyWordL = 'inc';
-		};
-
-		for (key in defDaylyStat[type]) {
-			count++;
-		}
-
-		var setDaylyStatObj = {};
-		setDaylyStatObj['cat'] = category;
-		setDaylyStatObj['cost'] = cost;
-		defDaylyStat[type]['' + keyWordL + count + '_' + Math.floor((Math.random() * 100) + 1)] = setDaylyStatObj;
-
-		LS.set(keyWordStat, defDaylyStat);
-		this[keyWordStat] = LS.get(keyWordStat);
-	}
-
-// remove Dayly Statistic
-	Data.prototype.removeDailyStat = function(keyWord, category, cost, type) {
-		var keyW = keyWord + '_statistic';
-		var removeDayStat = LS.get(keyW),
-			ind;
-
-		for (key in removeDayStat[type]) {
-			if (removeDayStat[type][key]['cat'] == category && removeDayStat[type][key]['cost'] == cost) {
-				ind = key;
-			}
-		}
-			
-		if (ind) {
-			delete removeDayStat[type][ind]
-		} else {
-			console.log('in your data are some mistake'); // only for debugging
-		}
-
-		LS.set(keyW, removeDayStat);
-		this.regular = LS.get(keyW);
-	}
-
-
-// set total statistic
-	
-	Data.prototype.setTotalCurrentStat = function(type, cost) {
-		var CurrentT = LS.get('totalStatistic');
-		var buffType = '';
-		if (type == 'balance') {
-			buffType = 'currentBalance';
-		} else if (type == 'outlays') {
-			buffType = 'currentOutlays';
-		} else if (type == 'incomes') {
-			buffType = 'currentIncomes'
-		}
-		CurrentT[buffType] = cost;
-
-		LS.set('totalStatistic', CurrentT);
-		this.totalStatistic =  LS.get('totalStatistic');
-	} 
-	// для setTotalCurrentStat не має смислу писати метод видалення - ці значення можна просто перезаписати
-
-	// month and year ststistic
-	Data.prototype.setTotalTimeStat = function(category, cost, time, numberTime, type) {
-		var totalTime = LS.get('totalStatistic'),
-			buffObj = {},
-			count = 0,
-			keyWordL = '',
-			numbTime = numberTime;
-
-
-		if (numberTime < 10) {
-			numbTime = '0' + numbTime;
-		};
-
-		if (totalTime[time + '_' + numbTime]) {
-			console.log('this day is')
-		} else {
-			if (time == 'month') {
-				totalTime['month_' + numbTime] = {
-					'outlays' : {},
-					'incomes' : {}
-				};
-			};
-			if (time == 'year') {
-				totalTime['year_' + numbTime] = {
-					'outlays' : {},
-					'incomes' : {}
-				};
-			};
-		}
-
-		if (type == "outlays") {
-			keyWordL = 'out';
-		} else if (type == "incomes") {
-			keyWordL = 'inc';
-		};
-
-		for (key in totalTime[time + '_' + numbTime][type]) {
-			count++;
-		}
-
-		buffObj['cat'] = category;
-		buffObj['cost'] = cost;	
-		console.log(totalTime[time + '_' + numbTime])
-		totalTime[time + '_' + numbTime][type]['' + keyWordL + count + '_' + Math.floor((Math.random() * 100) + 1)] = buffObj;
-		
-		LS.set('totalStatistic', totalTime);
-		this.totalStatistic = LS.get('totalStatistic');
-	}
-	Data.prototype.remTotalTimaStat = function(category, cost, time, numberTime, type) {
-		var removeFor = LS.get('totalStatistic'),
-			ind,
-			numbTime = numberTime;
-
-		if (numberTime < 10) {
-			numbTime = '0' + numbTime;
-		};
-
-		if (totalTime[time + '_' + numbTime]) {
-			for (key in removeFor[time + '_' + numbTime][type]) {
-				if (removeFor[time + '_' + numbTime][type][key]['cat'] == category && removeFor[time + '_' + numbTime][type][key]['cost'] == cost) {
-					ind = key;
-				}
-			}
-				
-			if (ind) {
-				delete removeFor[time + '_' + numbTime][type][ind]
-			} else {
-				console.log('in your data are some mistake'); // only for debugging
-			}
-
-			LS.set('totalStatistic', removeFor);
-			this.regular = LS.get('totalStatistic'); 
-		} else {
-			console.log('in your data are some mistake')
-		}
-		                
-	}
-// LS.clear();
-
-var data = new Data();
-data.getCategories();
-data.getRegular();
-data.getForecast();
-data.getDaylyStatistic();
-data.getDayly();
-data.getTotalStatistic();
-
-
-
-// set
-console.log( localStorage.categories);
-// data.setCategory('car', 'outlays');
-// data.setCategory('car', 'incomes');
-// data.removeCategory('girls111', 'incomes');
-// data.setRegular('sex1', '250', 'year', 'outlays');
-// data.removeRegular('sex1', '250', 'day', 'outlays');
-// data.setForecast('salary', '2550', 'month', 'incomes')
-// data.setForecast('car', '250', 'month', 'incomes')
-// data.setForecast('hobbies', '250', 'month', 'outlays')
-// data.setForecast('eating', '250', 'month', 'outlays')
-// data.setForecast('transport', '250', 'month', 'outlays')
-// data.setForecast('girlsw', '250', 'month', 'outlays')
-// data.setForecast('car', '250', 'month', 'outlays')
-
-// data.setForecast('salary', '2550', 'year', 'incomes')
-// data.setForecast('car', '250', 'year', 'incomes')
-// data.setForecast('hobbies', '250', 'year', 'outlays')
-// data.setForecast('eating', '250', 'year', 'outlays')
-// data.setForecast('transport', '250', 'year', 'outlays')
-// data.setForecast('girlsw', '250', 'year', 'outlays')
-// data.setForecast('car', '250', 'year', 'outlays')
-// console.log(LS.get(todayKeyWord))
-// data.removeForecast('car', '250', 'year', 'outlays');
-// data.setDaily(todayKeyWord, 'habar_1', '260', 'incomes')
-// data.removeDaily(todayKeyWord, 'habar', '250', 'incomes')
-//data.setDailyStat(todayKeyWord, 'habar1111z111', '250', 'incomes')
-// data.removeDailyStat(todayKeyWord, 'habar', '250', 'outlays')
-// data.setTotalCurrentStat('incomes', 700)
-data.setTotalTimeStat('play', 50000, 'month', 6, 'incomes')
-// data.remTotalTimaStat('spaday', 500, 'year', 'incomes')
-console.log(LS.get(todayKeyWord+'_statistic'))
-console.log(data);
-console.log(LS.get('regular'))
-console.log(LS.get('forecast'))
-
-
-//Date
-function getDate() {
-	var d = new Date(),
-		date = {};
-
-
-	date.day = d.getDate(),
-	date.month = d.getMonth()+1,
-	date.year = d.getFullYear();
-	
-	if (date.day < 10) {
-		date.day = '0' + date.day;
-	}
-
-	if (date.month < 10) {
-		date.month = '0' + date.month;
-	}
-
-
-	return date;
 };function DataCategories () {
 	this.categories = {};
 }
@@ -720,6 +203,10 @@ var dataCategories = new DataCategories();
 dataCategories.getCategories();
 dataCategories.setCategory('car', 'incomes');
 dataCategories.setCategory('car', 'outlays');
+dataCategories.setCategory('car1', 'incomes');
+dataCategories.setCategory('car2', 'outlays');
+dataCategories.setCategory('car3', 'incomes');
+dataCategories.setCategory('car4', 'outlays');
 // dataCategories.removeCategory('transport', 'outlays');
 console.log('dataCategories  -  ' + dataCategories);var date = getDate();
 var todayKeyWord = 'day' + date.day + '_' + date.month + '_' + date.year;
@@ -776,6 +263,14 @@ DataDayly.prototype.getDaylyPlan = function () {
 
 // set dayly outlays and incomes
 DataDayly.prototype.setDaily = function(keyWord, category, cost, type) {
+	if (!localStorage[keyWord]){
+		var defaultDayly = {
+			'outlays' : {},
+			'incomes' : {}
+		};
+
+		LS.set(keyWord, defaultDayly);
+	}
 	var defDayly = LS.get(keyWord),
 		count = 0,
 		keyWordL = '';
@@ -793,6 +288,9 @@ DataDayly.prototype.setDaily = function(keyWord, category, cost, type) {
 	var setDaylyObj = {};
 	setDaylyObj['cat'] = category;
 	setDaylyObj['cost'] = cost;
+	console.log(setDaylyObj);
+	console.log(defDayly);
+	console.log(defDayly[type]);
 	defDayly[type]['' + keyWordL + count + '_' + Math.floor((Math.random() * 100) + 1)] = setDaylyObj;
 
 	LS.set(keyWord, defDayly);
@@ -842,6 +340,14 @@ DataDayly.prototype.changeDaily = function(keyWord, category, cost, type, id) {
 // set dayly Statistick outlays and incomes
 DataDayly.prototype.setDailyStat = function(keyWord, category, cost, type) {
 	var keyWordStat = keyWord + '_statistic';
+	if (!localStorage[keyWordStat]){
+		var defaultDaylyStatistic = {
+			'outlays' : {},
+			'incomes' : {}
+		};
+
+		LS.set(keyWordStat, defaultDaylyStatistic);
+	}
 	var defDaylyStat = LS.get(keyWordStat),
 		count = 0,
 		keyWordL = '';
@@ -911,6 +417,14 @@ DataDayly.prototype.changeDailyStat = function(keyWord, category, cost, type, id
 // set daylyPlan outlays and incomes
 DataDayly.prototype.setDailyPlan = function(keyWord, category, cost, type) {
 	var keyWordPlan = keyWord + '_plan'
+	if (!localStorage[keyWordPlan]){
+		var defaultDaylyPlan = {
+			'outlays' : {},
+			'incomes' : {}
+		};
+
+		LS.set(keyWordPlan, defaultDaylyPlan);
+	}
 	var defDaylyPlan = LS.get(keyWordPlan),
 		count = 0,
 		keyWordL = '';
@@ -984,6 +498,7 @@ dataDayly.getDaylyPlan();
 
 console.log('dataDayly  -  ' + dataDayly);
 
+dataDayly.setDaily('day30_07_2014', 'habar1', '160', 'incomes');
 // dataDayly.setDaily(todayKeyWord, 'habar1', '160', 'incomes');
 // dataDayly.setDaily(todayKeyWord, 'habar11', '260', 'incomes');
 // dataDayly.setDaily(todayKeyWord, 'habar12', '360', 'incomes');
@@ -992,7 +507,7 @@ console.log('dataDayly  -  ' + dataDayly);
 // dataDayly.removeDaily(todayKeyWord, 'habar1', '160', 'incomes');
 // dataDayly.removeDaily(todayKeyWord, 'habar14', '544', 'outlays');
 
-// dataDayly.setDailyStat(todayKeyWord, 'habar2', '350', 'outlays');
+dataDayly.setDailyStat('day30_07_2014', 'habar2', '350', 'outlays');
 // dataDayly.setDailyStat(todayKeyWord, 'habar21', '350', 'outlays');
 // dataDayly.setDailyStat(todayKeyWord, 'habar22', '350', 'outlays');
 // dataDayly.setDailyStat(todayKeyWord, 'habar33', '350', 'incomes');
@@ -1000,13 +515,13 @@ console.log('dataDayly  -  ' + dataDayly);
 // dataDayly.removeDailyStat(todayKeyWord, 'habar33', '350', 'incomes');
 // dataDayly.removeDailyStat(todayKeyWord, 'habar21', '350', 'outlays');
 
-// dataDayly.setDailyPlan(todayKeyWord, 'pivo1', '350', 'outlays');
+dataDayly.setDailyPlan('day30_07_2014', 'pivo1', '350', 'outlays');
 // dataDayly.setDailyPlan(todayKeyWord, 'pivo2', '350', 'outlays');
 // dataDayly.setDailyPlan(todayKeyWord, 'pivo3', '350', 'outlays');
 // dataDayly.setDailyPlan(todayKeyWord, 'pivo4', '350', 'incomes');
 // // dataDayly.setDailyPlan(todayKeyWord, 'pivo5', '350', 'incomes');
-dataDayly.removeDailyPlan(todayKeyWord, 'pivo2', '350', 'outlays');
-dataDayly.removeDailyPlan(todayKeyWord, 'pivo5', '350', 'incomes');
+// dataDayly.removeDailyPlan(todayKeyWord, 'pivo2', '350', 'outlays');
+// dataDayly.removeDailyPlan(todayKeyWord, 'pivo5', '350', 'incomes');
 
 
 
@@ -1358,10 +873,7 @@ DataTotalStat.prototype.setTotalTimeStat = function(category, cost, time, number
 	} else {
 		totalTime[time + '_' + numbYear][type]['' + keyWordL + count + '_' + Math.floor((Math.random() * 100) + 1)] = buffObj;
 	};
-	
-	console.log('totalTime  -   ' + totalTime)
-	
-	
+		
 	LS.set('totalStatistic', totalTime);
 	this.totalStatistic = LS.get('totalStatistic');
 }
@@ -1450,13 +962,15 @@ dataTotalStat.getTotalStatistic();
 
 console.log('dataTotalStat  -  ' + dataTotalStat);
 // dataTotalStat.setTotalCurrentStat('balance', 2420.25);
-// dataTotalStat.setTotalTimeStat('habar11', 1111, 'month', 7, 2014, 'incomes');
-// dataTotalStat.setTotalTimeStat('car', 555555, 'year', '', 2015, 'outlays');
+// dataTotalStat.setTotalTimeStat('bla', 1111, 'month', 9, 2015, 'incomes');
+// dataTotalStat.setTotalTimeStat('vla1', 555555, 'year', '', 2013, 'outlays');
+// dataTotalStat.setTotalTimeStat('bla', 1111, 'month', 9, 2019, 'incomes');
+// dataTotalStat.setTotalTimeStat('vla1', 555555, 'year', '', 2019, 'outlays');
 // dataTotalStat.remTotalTimeStat('habar11', 1111, 'month', 7, 2014, 'incomes');
 ;function datalistPainting (category) {
 	var datalist = document.createElement('datalist');
 		datalist.id = category + 'CategoriesDatalist',
-		categories = data.categories[category];
+		categories = dataCategories.categories[category];
 
 	for (var i = 0; i < categories.length; i++) {
 		var option = document.createElement('option');
@@ -1485,7 +999,7 @@ function managePanelPainting (type) {
 		var placeholder = document.getElementById('manage-outlay'),
 			fieldset;
 		
-		for (var key in data[todayKeyWord].outlays) {
+		for (var key in dataDayly[todayKeyWord].outlays) {
 			fieldset = document.createElement('fieldset');
 			fieldset.className = 'manage-panel-fieldset';
 
@@ -1496,7 +1010,7 @@ function managePanelPainting (type) {
 		var placeholder = document.getElementById('manage-income'),
 			fieldset;
 
-		for (var key in data[todayKeyWord].incomes) {
+		for (var key in dataDayly[todayKeyWord].incomes) {
 			fieldset = document.createElement('fieldset');
 			fieldset.className = 'manage-panel-fieldset';
 

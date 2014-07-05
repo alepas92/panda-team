@@ -14,8 +14,36 @@
   color: rgb(85, 85, 85);
   background: #F3E2A9;
 }
+
+#calendar2 tbody td span{
+  display: block;
+  width: 90%;
+  height: 90%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #000;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid #fff;
+}
+#calendar2 tbody td span:hover{
+  background-color: #ddd;
+}
+
 #calendar2 thead tr:nth-child(1) td:nth-child(2) {
   color: black;
+  cursor: pointer;
+}
+#calendar2 thead tr:nth-child(1) td:nth-child(2):hover {
+  background-color: #d3d1cc;
+}
+#calendar2 thead tr:nth-child(1) td:nth-child(4) {
+  color: black;
+  cursor: pointer;
+}
+#calendar2 thead tr:nth-child(1) td:nth-child(4):hover {
+  background-color: #d3d1cc;
 }
 #calendar2 thead tr:nth-child(1) td:nth-child(1):hover, #calendar2 thead tr:nth-child(1) td:nth-child(3):hover {
   cursor: pointer;
@@ -23,13 +51,26 @@
 #calendar2 tbody td {
   color: #2F0B3A;
 }
-#calendar2 tbody td:nth-child(n+6), #calendar2 .holiday {
+#calendar2 tbody td:nth-child(n+6) span, #calendar2 .holiday span {
   color: rgb(231, 140, 92);
 }
-#calendar2 tbody td.today {
-  border: 2px solid #F3E2A9;
+#calendar2 tbody td:nth-child(n+6) .myCssClass {
+  color: #000;
+}
+#calendar2 tbody td.today span {
+  border: 1px solid #d8b950;
+  background: #F3E2A9;
   color: #000;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
+}
+#calendar2 tbody td.today span:hover{
+  background-color: #c2b27a;
+}
+
+#calendar2 tbody td .myCssClass {
+  background-color: #61da08;
+  border: 1px solid #718e5c;
+  color: #000;
 }

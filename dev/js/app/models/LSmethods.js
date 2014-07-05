@@ -1,7 +1,7 @@
 function LS () {}
 
 LS.get = function (keyWord) {
-	if (localStorage[name] !== null) {
+	if (localStorage[keyWord] !== null && localStorage[keyWord] !== undefined ) {
 		return JSON.parse(localStorage[keyWord]);
 	}
 
