@@ -56,5 +56,9 @@ var dataCategories = new DataCategories();
 dataCategories.getCategories();
 dataCategories.setCategory('car', 'incomes');
 dataCategories.setCategory('car', 'outlays');
+dataCategories.setCategory('car1', 'incomes');
+dataCategories.setCategory('car2', 'outlays');
+dataCategories.setCategory('car3', 'incomes');
+dataCategories.setCategory('car4', 'outlays');
 // dataCategories.removeCategory('transport', 'outlays');
 console.log('dataCategories  -  ' + dataCategories)

@@ -53,6 +53,7 @@ DataDayly.prototype.getDaylyPlan = function () {
 
 // set dayly outlays and incomes
 DataDayly.prototype.setDaily = function(keyWord, category, cost, type) {
+	this.getDayly(keyWord);
 	var defDayly = LS.get(keyWord),
 		count = 0,
 		keyWordL = '';
@@ -70,6 +71,9 @@ DataDayly.prototype.setDaily = function(keyWord, category, cost, type) {
 	var setDaylyObj = {};
 	setDaylyObj['cat'] = category;
 	setDaylyObj['cost'] = cost;
+	console.log(setDaylyObj);
+	console.log(defDayly);
+	console.log(defDayly[type]);
 	defDayly[type]['' + keyWordL + count + '_' + Math.floor((Math.random() * 100) + 1)] = setDaylyObj;
 
 	LS.set(keyWord, defDayly);
@@ -166,7 +170,7 @@ DataDayly.prototype.removeDailyStat = function(keyWord, category, cost, type) {
 
 DataDayly.prototype.changeDailyStat = function(keyWord, category, cost, type, id) {
 	var keyW = keyWord + '_statistic';
-	var changeDayStat = LS.get(keyW;
+	var changeDayStat = LS.get(keyW);
 
 	var buffObj = {};
 	buffObj['cat'] = category;
@@ -174,7 +178,7 @@ DataDayly.prototype.changeDailyStat = function(keyWord, category, cost, type, id
 
 	if (id in changeDayStat[type]) {
 		changeDayStat[type][id] = buffObj;
-	} else{else {
+	} else {
 		console.log('in your data are some mistake')
 	};
 
@@ -236,7 +240,7 @@ DataDayly.prototype.removeDailyPlan = function(keyWord, category, cost, type) {
 
 DataDayly.prototype.changeDailyPlan = function(keyWord, category, cost, type, id) {
 	var keyW = keyWord + '_plan';
-	var changeDayPlan = LS.get(keyW;
+	var changeDayPlan = LS.get(keyW);
 
 	var buffObj = {};
 	buffObj['cat'] = category;
@@ -244,7 +248,7 @@ DataDayly.prototype.changeDailyPlan = function(keyWord, category, cost, type, id
 
 	if (id in changeDayPlan[type]) {
 		changeDayPlan[type][id] = buffObj;
-	} else{else {
+	} else {
 		console.log('in your data are some mistake')
 	};
 
@@ -261,6 +265,7 @@ dataDayly.getDaylyPlan();
 
 console.log('dataDayly  -  ' + dataDayly);
 
+dataDayly.setDaily('day01_07_2014', 'habar1', '160', 'incomes');
 // dataDayly.setDaily(todayKeyWord, 'habar1', '160', 'incomes');
 // dataDayly.setDaily(todayKeyWord, 'habar11', '260', 'incomes');
 // dataDayly.setDaily(todayKeyWord, 'habar12', '360', 'incomes');
@@ -282,8 +287,8 @@ console.log('dataDayly  -  ' + dataDayly);
 // dataDayly.setDailyPlan(todayKeyWord, 'pivo3', '350', 'outlays');
 // dataDayly.setDailyPlan(todayKeyWord, 'pivo4', '350', 'incomes');
 // // dataDayly.setDailyPlan(todayKeyWord, 'pivo5', '350', 'incomes');
-dataDayly.removeDailyPlan(todayKeyWord, 'pivo2', '350', 'outlays');
-dataDayly.removeDailyPlan(todayKeyWord, 'pivo5', '350', 'incomes');
+// dataDayly.removeDailyPlan(todayKeyWord, 'pivo2', '350', 'outlays');
+// dataDayly.removeDailyPlan(todayKeyWord, 'pivo5', '350', 'incomes');
 
 
 
