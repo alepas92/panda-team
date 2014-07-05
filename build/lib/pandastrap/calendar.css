@@ -27,7 +27,7 @@
   color: rgb(231, 140, 92);
 }
 #calendar2 tbody td.today {
-  background: #F3E2A9;
+  border: 2px solid #F3E2A9;
   color: #000;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;

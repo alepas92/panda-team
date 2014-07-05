@@ -35,35 +35,40 @@ h1, h2, h3, h4, h5 {
 
 .tab-links {
     margin: 0;
-    background: white;
-    border-top: solid black 3px;
+    background: #f3d796;
+    padding: 0px;
+    display: block;
+    width: 100%;
 
     li {
         float: left;
         list-style: none;
-        width: 33.3%;
+        width: 33.3333%;
         text-align: center;
     }
+
+    li:hover {
+        background: #ecc76e;
+    }   
 
     a {
         padding: 13px 25px;
         display: inline-block;
         color: #333;
         transition:all linear 0.15s;
+        text-decoration: none; 
     }
 
-    a:hover {
-        background:#a7cce5;
-        text-decoration:none;
-    }
-} 
-
-li.active a, li.active a:hover {
-    background: #b3d4fc;
 }
+
+li.active {
+    background: #ecc76e;
+}
+
 
 .tab-content {
     overflow: hidden;
+    width: 100%;
 }
     .tab {
         display:none;
