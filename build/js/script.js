@@ -263,7 +263,14 @@ DataDayly.prototype.getDaylyPlan = function () {
 
 // set dayly outlays and incomes
 DataDayly.prototype.setDaily = function(keyWord, category, cost, type) {
-	this.getDayly(keyWord);
+	if (!localStorage[keyWord]){
+		var defaultDayly = {
+			'outlays' : {},
+			'incomes' : {}
+		};
+
+		LS.set(keyWord, defaultDayly);
+	}
 	var defDayly = LS.get(keyWord),
 		count = 0,
 		keyWordL = '';
@@ -333,6 +340,14 @@ DataDayly.prototype.changeDaily = function(keyWord, category, cost, type, id) {
 // set dayly Statistick outlays and incomes
 DataDayly.prototype.setDailyStat = function(keyWord, category, cost, type) {
 	var keyWordStat = keyWord + '_statistic';
+	if (!localStorage[keyWordStat]){
+		var defaultDaylyStatistic = {
+			'outlays' : {},
+			'incomes' : {}
+		};
+
+		LS.set(keyWordStat, defaultDaylyStatistic);
+	}
 	var defDaylyStat = LS.get(keyWordStat),
 		count = 0,
 		keyWordL = '';
@@ -402,6 +417,14 @@ DataDayly.prototype.changeDailyStat = function(keyWord, category, cost, type, id
 // set daylyPlan outlays and incomes
 DataDayly.prototype.setDailyPlan = function(keyWord, category, cost, type) {
 	var keyWordPlan = keyWord + '_plan'
+	if (!localStorage[keyWordPlan]){
+		var defaultDaylyPlan = {
+			'outlays' : {},
+			'incomes' : {}
+		};
+
+		LS.set(keyWordPlan, defaultDaylyPlan);
+	}
 	var defDaylyPlan = LS.get(keyWordPlan),
 		count = 0,
 		keyWordL = '';
@@ -475,7 +498,7 @@ dataDayly.getDaylyPlan();
 
 console.log('dataDayly  -  ' + dataDayly);
 
-dataDayly.setDaily('day01_07_2014', 'habar1', '160', 'incomes');
+dataDayly.setDaily('day30_07_2014', 'habar1', '160', 'incomes');
 // dataDayly.setDaily(todayKeyWord, 'habar1', '160', 'incomes');
 // dataDayly.setDaily(todayKeyWord, 'habar11', '260', 'incomes');
 // dataDayly.setDaily(todayKeyWord, 'habar12', '360', 'incomes');
@@ -484,7 +507,7 @@ dataDayly.setDaily('day01_07_2014', 'habar1', '160', 'incomes');
 // dataDayly.removeDaily(todayKeyWord, 'habar1', '160', 'incomes');
 // dataDayly.removeDaily(todayKeyWord, 'habar14', '544', 'outlays');
 
-// dataDayly.setDailyStat(todayKeyWord, 'habar2', '350', 'outlays');
+dataDayly.setDailyStat('day30_07_2014', 'habar2', '350', 'outlays');
 // dataDayly.setDailyStat(todayKeyWord, 'habar21', '350', 'outlays');
 // dataDayly.setDailyStat(todayKeyWord, 'habar22', '350', 'outlays');
 // dataDayly.setDailyStat(todayKeyWord, 'habar33', '350', 'incomes');
@@ -492,7 +515,7 @@ dataDayly.setDaily('day01_07_2014', 'habar1', '160', 'incomes');
 // dataDayly.removeDailyStat(todayKeyWord, 'habar33', '350', 'incomes');
 // dataDayly.removeDailyStat(todayKeyWord, 'habar21', '350', 'outlays');
 
-// dataDayly.setDailyPlan(todayKeyWord, 'pivo1', '350', 'outlays');
+dataDayly.setDailyPlan('day30_07_2014', 'pivo1', '350', 'outlays');
 // dataDayly.setDailyPlan(todayKeyWord, 'pivo2', '350', 'outlays');
 // dataDayly.setDailyPlan(todayKeyWord, 'pivo3', '350', 'outlays');
 // dataDayly.setDailyPlan(todayKeyWord, 'pivo4', '350', 'incomes');
@@ -942,8 +965,10 @@ dataTotalStat.getTotalStatistic();
 
 console.log('dataTotalStat  -  ' + dataTotalStat);
 // dataTotalStat.setTotalCurrentStat('balance', 2420.25);
-// dataTotalStat.setTotalTimeStat('habar11', 1111, 'month', 7, 2014, 'incomes');
-// dataTotalStat.setTotalTimeStat('car', 555555, 'year', '', 2015, 'outlays');
+dataTotalStat.setTotalTimeStat('bla', 1111, 'month', 9, 2015, 'incomes');
+dataTotalStat.setTotalTimeStat('vla1', 555555, 'year', '', 2013, 'outlays');
+dataTotalStat.setTotalTimeStat('bla', 1111, 'month', 9, 2019, 'incomes');
+dataTotalStat.setTotalTimeStat('vla1', 555555, 'year', '', 2019, 'outlays');
 // dataTotalStat.remTotalTimeStat('habar11', 1111, 'month', 7, 2014, 'incomes');
 ;//
 // Datalist painting painting
