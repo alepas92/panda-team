@@ -166,7 +166,7 @@ DataDayly.prototype.removeDailyStat = function(keyWord, category, cost, type) {
 
 DataDayly.prototype.changeDailyStat = function(keyWord, category, cost, type, id) {
 	var keyW = keyWord + '_statistic';
-	var changeDayStat = LS.get(keyW;
+	var changeDayStat = LS.get(keyW);
 
 	var buffObj = {};
 	buffObj['cat'] = category;
@@ -174,7 +174,7 @@ DataDayly.prototype.changeDailyStat = function(keyWord, category, cost, type, id
 
 	if (id in changeDayStat[type]) {
 		changeDayStat[type][id] = buffObj;
-	} else{else {
+	} else {
 		console.log('in your data are some mistake')
 	};
 
@@ -236,7 +236,7 @@ DataDayly.prototype.removeDailyPlan = function(keyWord, category, cost, type) {
 
 DataDayly.prototype.changeDailyPlan = function(keyWord, category, cost, type, id) {
 	var keyW = keyWord + '_plan';
-	var changeDayPlan = LS.get(keyW;
+	var changeDayPlan = LS.get(keyW);
 
 	var buffObj = {};
 	buffObj['cat'] = category;
@@ -244,7 +244,7 @@ DataDayly.prototype.changeDailyPlan = function(keyWord, category, cost, type, id
 
 	if (id in changeDayPlan[type]) {
 		changeDayPlan[type][id] = buffObj;
-	} else{else {
+	} else {
 		console.log('in your data are some mistake')
 	};
 
