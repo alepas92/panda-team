@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="lib/pandastrap/pandastrap.css">
         <link rel="stylesheet" href="css/style.css">
-    </head>s
+    </head>
     
     <body>  
     
@@ -19,8 +19,8 @@
 	</div>
 
 	<div class='box' id='nav-bar'>
-	    <nav tabindex="0" class="adapt-nav" id="smoot-scroll-nav">
-	        <ul tabindex="0">
+	    <nav class="adapt-nav" id="smoot-scroll-nav">
+	        <ul>
 		        <li><a href="#outlay-section">New outlay</a></li>
 		        <li><a href="#income-section">New income</a></li>
 		        <li><a href="#manage-forecast">Manage forecast</a></li>
@@ -34,7 +34,10 @@
         <div class='box' id='container'>
             
             <div class='box' id='calendar-section'>
-    <h2 class="header-text">Calendar</h2>
+        <div class="title-flag-container">
+            <div class="rectangle-block"><h3>Calendar</h3></div>
+            <div class="triangle-block"></div>
+        </div>
     
     <table id="calendar2">
         <thead>
@@ -60,111 +63,107 @@
     <script src="lib/pandastrap/calendar.js"></script>
 </div>
 
-            <section class="box tabs" id="outlay-section">
+            <div class="title-flag-container">
+    <div class="rectangle-block"><h3>Outlays</h3></div>
+    <div class="triangle-block"></div>
+</div>
+<section class="box tabs" id="outlay-section">
     <ul class="tab-links">
         <li class="active"><a href="#new-outlay">New outlay</a></li>
-        <li><a href="#regular-outlay">Regular outlays</a></li>
+        <li><a href="#regular-outlays">Regular outlays</a></li>
         <li><a href="#manage-outlay">Manage outlays</a></li>
     </ul>
 
     <div class="tab-content">
-        <div class="box tab active" id="new-outlay">
-            <form>
-                <input type="text" class="inp-cat" placeholder="Create new category">
-                <input type="button" class="btn-add" value="Add">
-                <input list="outlaysCategoriesDatalist" class="sel-cat" placeholder="Choose category">
-                <input type="text" placeholder="Set cost" class="inp-cos"> uah
-                <input type="submit" value="Submit" class="btn-submit">
-            </form>
-        </div>
+        <form class="box incomes-outlays-tab tab active" id="new-outlay">
+            <input type="text" class="inp-cat" placeholder="Create new category">
+            <input type="button" class="btn-add" value="Add">
+            <input list="outlaysCategoriesDatalist" class="sel-cat" placeholder="Choose category">
+            <input type="text" placeholder="Set cost in uah" class="inp-cos">
+            <input type="submit" value="Submit" class="btn-submit">
+        </form>
 
-        <div class="box tab" id="regular-outlay">
-            <form>
-                <input type="text" class="inp-cat hidden-block" placeholder="Create new category">
-                <input type="button" class="btn-add hidden-block" value="Add">
-                <input type="date" class="inp-dat">
-                <input list="outlaysCategoriesDatalist" class="sel-cat" placeholder="Choose category">
-                <input type="text" placeholder="Set cost" class="inp-cos"> uah
-                <input type="submit" value="Submit" class="btn-submit">
-            </form>
-        </div>
+        <form class="box incomes-outlays-tab tab" id="regular-outlays">
+            <input type="text" class="inp-cat hidden-block" placeholder="Create new category">
+            <input type="button" class="btn-add hidden-block" value="Add">
+            <input type="date" class="inp-dat">
+            <input list="outlaysCategoriesDatalist" class="sel-cat" placeholder="Choose category">
+            <input type="text" placeholder="Set cost in uah" class="inp-cos">
+            <input type="submit" value="Submit" class="btn-submit">
+        </form>
 
-        <div class="box tab" id="manage-outlay">
+        <form class="box incomes-outlays-tab tab" id="manage-outlay">
             Manage-panel
-        </div>
+        </form>
     </div>
 </section>
 
-
-            <section class="box tabs" id='income-section'>
+            <div class="title-flag-container">
+    <div class="rectangle-block"><h3>Incomes</h3></div>
+    <div class="triangle-block"></div>
+</div>
+<section class="box tabs" id="income-section">
     <ul class="tab-links">
         <li class="active"><a href="#new-income">New income</a></li>
-        <li><a href="#regular-income">Regular income</a></li>
-        <li><a href="#manage-income">Manage outlays</a></li>
+        <li><a href="#regular-incomes">Regular incomes</a></li>
+        <li><a href="#manage-income">Manage incomes</a></li>
     </ul>
-    
- 	<div class="tab-content">
-	    <div class='box tab active' id='new-income'>
-	        <form>
-	            <input type="text" class="inp-cat" placeholder="Create new category">
-	            <input type="button" class="btn-add" value="Add">
-	            <input list="incomesCategoriesDatalist" class="sel-cat" placeholder="Choose category">
-	            <input type="text" placeholder="Set cost" class="inp-cos"> uah
-	            <input type="submit" value="Submit" class="btn-submit">
-	        </form>
-	    </div>
-    
-	    <div class='box tab' id='regular-income'>
-	      	<form>
-		        <input type="text" class="inp-cat hidden-block" placeholder="Create new category">
-		        <input type="button" class="btn-add hidden-block" value="Add">
-		        <input type="date" class="inp-dat">
-		        <input list="incomesCategoriesDatalist" class="sel-cat" placeholder="Choose category">
-		        <input type="text" placeholder="Set cost" class="inp-cos"> uah
-		        <input type="submit" value="Submit" class="btn-submit">
-	        </form>
-	    </div>
 
-	    <div class='box tab' id='manage-income'>Manage income</div>
-	</div>
+    <div class="tab-content">
+        <form class="box incomes-outlays-tab tab active" id="new-income">
+            <input type="text" class="inp-cat" placeholder="Create new category">
+            <input type="button" class="btn-add" value="Add">
+            <input list="incomesCategoriesDatalist" class="sel-cat" placeholder="Choose category">
+            <input type="text" placeholder="Set cost in uah" class="inp-cos">
+            <input type="submit" value="Submit" class="btn-submit">
+        </form>
+
+        <form class="box incomes-outlays-tab tab" id="regular-incomes">
+            <input type="text" class="inp-cat hidden-block" placeholder="Create new category">
+            <input type="button" class="btn-add hidden-block" value="Add">
+            <input type="date" class="inp-dat">
+            <input list="incomesCategoriesDatalist" class="sel-cat" placeholder="Choose category">
+            <input type="text" placeholder="Set cost in uah" class="inp-cos">
+            <input type="submit" value="Submit" class="btn-submit">
+        </form>
+
+        <form class="box incomes-outlays-tab tab" id="manage-income">
+            Manage-panel
+        </form>
+    </div>
 </section>
 
-            <div class='box' id='manage-forecast'>
-    <div class="header-text-lg">
-        Manage forecast
-    </div>
+            <div class="title-flag-container">
+    <div class="rectangle-block"><h3>Manage forecast</h3></div>
+    <div class="triangle-block"></div>
+</div>
+<section id='manage-forecast'>
     <form>
-        <input type="text" class="inp-cat" placeholder="Create new category">
-        <input type="button" class="btn-add" value="Add">
-        <select class="sel-cat">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-            <option>Option 4</option>
-            <option>Option 5</option>
-        </select>
-        <input type="text" placeholder="Set cost" class="inp-cos"> uah
+        <input list="incomesCategoriesDatalist" class="sel-cat" placeholder="Choose income category">
+        <input list="outlaysCategoriesDatalist" class="sel-cat" placeholder="Choose outlay category">
+        <input type="text" placeholder="Set cost in uah" class="inp-cos">
         <input type="submit" value="Submit" class="btn-submit">
     </form>
-</div>
+</section>
             
-            <div class='box' id='manage-balance'>
-    <div class="header-text-lg">
-        Manage balance
-    </div>
+            <div class="title-flag-container">
+    <div class="rectangle-block"><h3>Manage balance</h3></div>
+    <div class="triangle-block"></div>
+</div>
+<section id='manage-balance'>
     <form>
         <input type="text" class="inp-cat" placeholder="Set current balance">
         <input type="button" class="btn-add" value="Set">
     </form>
-    Your current balance:
-</div>
+    <p>Your current balance:</p>
+</section>
             
             <div class='box' id='statistics'>
-    <div class="header-text-lg">
-        Statistics
+    <div class="title-flag-container">
+        <div class="rectangle-block"><h3>Statistics</h3></div>
+        <div class="triangle-block"></div>
     </div>
 </div>
-Some statistics!!!
 
         </div>
 

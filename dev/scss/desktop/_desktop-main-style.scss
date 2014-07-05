@@ -66,28 +66,25 @@ body {
 	box-shadow:         0px 0px 5px 0px rgba(0, 0, 0, 0.58);
 }
 
-.inp-cat, .sel-cat, .inp-cos, .btn-submit, .btn-manage, .inp-dat, .btn-to-menu {
-	margin-left: 5%;
-	margin-top: 3%;
+.inp-cat, .sel-cat, .inp-cos, .btn-submit, .btn-manage, .inp-dat, .btn-to-menu, .btn-add {
+	margin-top: 2%;
 }
 
-.sel-cat {
-	width: 90%;
-}
-
-.btn-submit {
-	width: 90%;
+.btn-add, .btn-submit {
+	width: 10%;
+	float: right;
 }
 
 #calendar-section { width: 100%; }
 
 #outlay-section { 
 	width: 100%; 
-	background: #FFCC99;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 #income-section {
-	background: #BCF5A9;
+	margin-top: 20px;
 }
 
 #new-outlay, #regular-outlay, #new-income, #regular-income {
@@ -106,15 +103,28 @@ body {
 	font-family: 'Times';
 	font-style: italic;
 	float: right;
-	margin-right: 5%;
 	margin-top: 3%;
 }
-#new-outlay { width: 50%; }
-#regular-outlay { width: 50%; }
+
+form {
+	display: block;
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.title-flag-container {
+	width: 100%;
+	clear: both;
+}
+
+
+#new-outlay { }
+#regular-outlay { width: 100%; }
 #manage-outlay { width: 100%; }
 #income-section { width: 100%; }
-#new-income { width: 50%; }
-#regular-income { width: 50%; }
+#new-income { }
+#regular-income { width: 100%; }
 #manage-income { width: 100%; }
 #manage-forecast { width: 100%; }
 #manage-balance { width: 100%; }

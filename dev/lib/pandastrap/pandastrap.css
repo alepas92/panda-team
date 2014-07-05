@@ -2,8 +2,8 @@
 @import url(calendar.css);
 
 .inp-cat {
-	width: 300px;
-	height: 28px;
+	width: 100%;
+	height: 35px;
 	text-align: center;
 	font-family: 'Times';
 	font-style: italic;
@@ -21,8 +21,8 @@
 input::-webkit-input-placeholder { color: #6E6E6E; }
 
 .sel-cat {
-	width: 300px;
-	height: 28px;
+	width: 100%;
+	height: 35px;
 	text-align: center;
 	font-family: 'Times';
 	font-style: italic;
@@ -40,8 +40,8 @@ input::-webkit-input-placeholder { color: #6E6E6E; }
 }
 
 .inp-cos {
-	width: 100px;
-	height: 28px;
+	width: 100%;
+	height: 35px;
 	text-align: center;
 	font-family: 'Times';
 	font-style: italic;
@@ -57,8 +57,8 @@ input::-webkit-input-placeholder { color: #6E6E6E; }
 }
 
 .inp-dat {
-	width: 300px;
-	height: 30px;
+	width: 100%;
+	height: 35px;
 	border: 2px #F3E2A9 solid;
 	text-align: center;
 	font-size: 1em;
@@ -70,10 +70,10 @@ input::-webkit-input-placeholder { color: #6E6E6E; }
 }
 
 .btn-add {
-	width: 94px;
-	height: 32px;
+	width: 100%;
+	height: 45px;
 	border: 0px;
-	background: #088A4B;
+	background: #27ae60;
 	color: white;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -84,14 +84,14 @@ input::-webkit-input-placeholder { color: #6E6E6E; }
 }
 
 .btn-add:hover {
-	background: #04B486;
+	background: #2ecc71;
 }
 
 .btn-submit {
-	width: 400px;
-	height: 32px;
+	width: 100%;
+	height: 45px;
 	border: 0px;
-	background: #088A4B;
+	background: #27ae60;
 	color: white;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -102,7 +102,7 @@ input::-webkit-input-placeholder { color: #6E6E6E; }
 }
 
 .btn-submit:hover {
-	background: #04B486;
+	background: #2ecc71;
 }
 
 .btn-reset {
@@ -200,5 +200,38 @@ input::-webkit-input-placeholder { color: #6E6E6E; }
 
 .adapt-nav a:hover {
 	color: #F3E2A9;
+}
+
+/* Block for styles of title-flag */
+
+.title-flag-container {
+	margin-top: 20px;
+	width:100%;
+	display: block;
+}
+
+.rectangle-block, .triangle-block {
+	float: left;
+}
+
+.rectangle-block {
+	height: 50px;
+	width: 140px;
+	background: #330033; 
+	text-align: center;
+	color: white;
+}
+
+.rectangle-block h3 {
+	margin-top: 12px;
+}
+
+.triangle-block {
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-left: 50px solid #330033;
+    border-bottom: 25px solid transparent;
+    clear: right;
 }
 

@@ -25,6 +25,13 @@ function Data () {
 		}
 	};
 
+
+
+
+
+
+
+
 	Data.prototype.getRegular = function () {
 		if (!localStorage.regular) {
 			var defaultRegular = {
@@ -470,24 +477,39 @@ data.getTotalStatistic();
 
 // set
 console.log( localStorage.categories);
+// data.setCategory('car', 'outlays');
 // data.setCategory('car', 'incomes');
 // data.removeCategory('girls111', 'incomes');
 // data.setRegular('sex1', '250', 'year', 'outlays');
 // data.removeRegular('sex1', '250', 'day', 'outlays');
+// data.setForecast('salary', '2550', 'month', 'incomes')
+// data.setForecast('car', '250', 'month', 'incomes')
+// data.setForecast('hobbies', '250', 'month', 'outlays')
+// data.setForecast('eating', '250', 'month', 'outlays')
+// data.setForecast('transport', '250', 'month', 'outlays')
+// data.setForecast('girlsw', '250', 'month', 'outlays')
+// data.setForecast('car', '250', 'month', 'outlays')
+
+// data.setForecast('salary', '2550', 'year', 'incomes')
 // data.setForecast('car', '250', 'year', 'incomes')
 // data.setForecast('hobbies', '250', 'year', 'outlays')
+// data.setForecast('eating', '250', 'year', 'outlays')
+// data.setForecast('transport', '250', 'year', 'outlays')
+// data.setForecast('girlsw', '250', 'year', 'outlays')
+// data.setForecast('car', '250', 'year', 'outlays')
+// console.log(LS.get(todayKeyWord))
 // data.removeForecast('car', '250', 'year', 'outlays');
 // data.setDaily(todayKeyWord, 'habar_1', '260', 'incomes')
 // data.removeDaily(todayKeyWord, 'habar', '250', 'incomes')
 //data.setDailyStat(todayKeyWord, 'habar1111z111', '250', 'incomes')
 // data.removeDailyStat(todayKeyWord, 'habar', '250', 'outlays')
 // data.setTotalCurrentStat('incomes', 700)
-// data.setTotalTimeStat('play', 50000, 'month', 6, 'incomes')
+data.setTotalTimeStat('play', 50000, 'month', 6, 'incomes')
 // data.remTotalTimaStat('spaday', 500, 'year', 'incomes')
 console.log(LS.get(todayKeyWord+'_statistic'))
 console.log(data);
-// console.log(LS.get('regular'))
-// console.log(LS.get('forecast'))
+console.log(LS.get('regular'))
+console.log(LS.get('forecast'))
 
 
 //Date

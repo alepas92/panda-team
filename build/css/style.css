@@ -52,25 +52,23 @@ body {
   -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.58);
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.58); }
 
-.inp-cat, .sel-cat, .inp-cos, .btn-submit, .btn-manage, .inp-dat, .btn-to-menu {
-  margin-left: 5%;
-  margin-top: 3%; }
+.inp-cat, .sel-cat, .inp-cos, .btn-submit, .btn-manage, .inp-dat, .btn-to-menu, .btn-add {
+  margin-top: 2%; }
 
-.sel-cat {
-  width: 90%; }
-
-.btn-submit {
-  width: 90%; }
+.btn-add, .btn-submit {
+  width: 10%;
+  float: right; }
 
 #calendar-section {
   width: 100%; }
 
 #outlay-section {
   width: 100%;
-  background: #FFCC99; }
+  margin-top: 20px;
+  margin-bottom: 20px; }
 
 #income-section {
-  background: #BCF5A9; }
+  margin-top: 20px; }
 
 #new-outlay, #regular-outlay, #new-income, #regular-income {
   margin-bottom: 20px; }
@@ -85,14 +83,20 @@ body {
   font-family: 'Times';
   font-style: italic;
   float: right;
-  margin-right: 5%;
   margin-top: 3%; }
 
-#new-outlay {
-  width: 50%; }
+form {
+  display: block;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%; }
+
+.title-flag-container {
+  width: 100%;
+  clear: both; }
 
 #regular-outlay {
-  width: 50%; }
+  width: 100%; }
 
 #manage-outlay {
   width: 100%; }
@@ -100,11 +104,8 @@ body {
 #income-section {
   width: 100%; }
 
-#new-income {
-  width: 50%; }
-
 #regular-income {
-  width: 50%; }
+  width: 100%; }
 
 #manage-income {
   width: 100%; }
@@ -351,27 +352,30 @@ h1, h2, h3, h4, h5 {
 
 .tab-links {
   margin: 0;
-  background: white;
-  border-top: solid black 3px; }
+  background: #f3d796;
+  padding: 0px;
+  display: block;
+  width: 100%; }
   .tab-links li {
     float: left;
     list-style: none;
-    width: 33.3%;
+    width: 33.3333%;
     text-align: center; }
+  .tab-links li:hover {
+    background: #ecc76e; }
   .tab-links a {
     padding: 13px 25px;
     display: inline-block;
     color: #333;
-    transition: all linear 0.15s; }
-  .tab-links a:hover {
-    background: #a7cce5;
+    transition: all linear 0.15s;
     text-decoration: none; }
 
-li.active a, li.active a:hover {
-  background: #b3d4fc; }
+li.active {
+  background: #ecc76e; }
 
 .tab-content {
-  overflow: hidden; }
+  overflow: hidden;
+  width: 100%; }
 
 .tab {
   display: none; }
