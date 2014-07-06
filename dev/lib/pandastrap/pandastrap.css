@@ -217,7 +217,7 @@ input::-webkit-input-placeholder { color: #6E6E6E; }
 .rectangle-block {
 	height: 50px;
 	width: 140px;
-	background: #330033; 
+	background: #221831; 
 	text-align: center;
 	color: white;
 }
@@ -230,7 +230,7 @@ input::-webkit-input-placeholder { color: #6E6E6E; }
     width: 0;
     height: 0;
     border-top: 25px solid transparent;
-    border-left: 50px solid #330033;
+    border-left: 50px solid #221831;
     border-bottom: 25px solid transparent;
     clear: right;
 }
