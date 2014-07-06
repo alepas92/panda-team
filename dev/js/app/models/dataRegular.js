@@ -6,23 +6,13 @@ DataRegular.prototype.getRegular = function () {
 	if (!localStorage.regular) {
 		var defaultRegular = {
 			'day' : {
-				'outlays' : {
-					'out0_12' : {
-						'cat' : 'transport',
-						'cost' : 500
-					}
-				},
+				'outlays' : {},
 				'incomes' : {}
 			},
 
 			'month' : {
 				'outlays' : {},
-				'incomes' : {
-					'inc0_45' : {
-						'cat' : 'salary',
-						'cost' : 1000
-					}
-				}
+				'incomes' : {}
 			},
 
 			'year' : {
@@ -61,7 +51,28 @@ DataRegular.prototype.setRegular = function(category, cost, time, type) {
 
 	LS.set('regular', setReg);
 	this.regular = LS.get('regular');
+
+	setRegStat(category, cost, time, type);
+}
+
+function setRegStat(category, cost, time, type) {
+	if (!localStorage['stat_Reg_' + type]){
+		var defaultStat = [];
+
+		LS.set('stat_Reg_' + type, defaultStat);
 	}
+
+	var newArItem = [];
+	newArItem.push(time);
+	newArItem.push(category);
+	newArItem.push(cost);
+
+	var StatArr = LS.get('stat_Reg_' + type);
+	StatArr.push(newArItem);
+
+	LS.set('stat_Reg_' + type, StatArr);
+}
+
 // remove regulars outlays and incomes
 DataRegular.prototype.removeRegular = function(category, cost, time, type) {
 	var removeReg = LS.get('regular'),
@@ -81,6 +92,31 @@ DataRegular.prototype.removeRegular = function(category, cost, time, type) {
 
 	LS.set('regular', removeReg);
 	this.regular = LS.get('regular');
+
+	removeRegStat(time, category, cost, type);
+}
+
+function removeRegStat(time, category, cost, type) {
+	if (localStorage['stat_Reg_' + type]){
+
+		var StatArr = LS.get('stat_Reg_' + type);
+		var ind;
+		
+		for (var i = 0; i < StatArr.length; i++) {
+			if (StatArr[i][0] == time && StatArr[i][1] == category && parseInt(StatArr[i][2]) == parseInt(cost)) {
+				ind = i;
+			};
+		};
+		if (ind >= 0) {
+			StatArr.splice(ind, 1);
+		} else {
+			console.log('this data is undefined');
+		}
+
+		LS.set('stat_Reg_' + type, StatArr);
+	} else {
+		console.log('this localStorage item is undefined');
+	}
 }
 
 DataRegular.prototype.changeRegular = function(category, cost, time, type, id) {
@@ -116,4 +152,4 @@ console.log('dataRegular  -  ' + dataRegular);
 // dataRegular.setRegular('guns3', 600, 'year', 'outlays');
 // dataRegular.setRegular('guns4', 500, 'year', 'outlays');
 
-// dataRegular.removeRegular('guns', 500, 'month', 'incomes');
+// dataRegular.removeRegular('guns3', 600, 'year', 'outlays');
