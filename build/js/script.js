@@ -17,7 +17,7 @@ function callendarYearClick() {
     console.log(this.getAttribute('data-year-work'))
 };
 //New Outlay/Income    Daily
-function readDailyOutlays(){
+/*function readDailyOutlays(){
 	var category = $( '#new-outlay select.sel-cat' ).val(),
 		cost = $('#new-outlay .inp-cos').val();
 	data.setDaily(todayKeyWord, category, cost, 'outlays' );
@@ -77,7 +77,7 @@ $('#regular-outlay .btn-submit').click(function() {
 	readRegularOutlays();
 });
 
-*/
+
 
 //Manage forecast(month, outlays)
 function readForecastOutlays(){
@@ -94,7 +94,7 @@ $('#manage-forecast .btn-submit').click(function() {
 
 
 
-
+*/
 
 
 
@@ -115,7 +115,207 @@ $('#manage-forecast .btn-submit').click(function() {
 
 //Manage balance
 //Statistics
-;function LS () {}
+;//Daily Categories outlays/income
+
+//Daily Outlays
+$('#new-outlay .btn-add').click(function() {	
+	var category = $( '#new-outlay .inp-cat' ).val();
+	
+	if(dataCategories.setCategory(category, 'outlays' )){
+		optionPainting('outlays', category);
+	}
+	
+	$('#new-outlay .inp-cat').val('');
+});
+//Daily Incomes
+$('#new-income .btn-add').click(function() {	
+	var category = $( '#new-income .inp-cat' ).val();
+	
+	if (dataCategories.setCategory(category, 'incomes' )){
+		optionPainting('incomes', category);
+	}
+	$( '#new-income .inp-cat' ).val('');
+});
+
+$("#new-income .inp-cat").keyup( function(e) {
+
+    if ( e.keyCode !== 8) {
+
+    }
+
+    if ( e.keyCode !== 46 ) {
+
+            
+
+    }
+    
+});
+
+
+
+
+function removeCategoryOutlays(){
+	
+	var category = $( '' ).val();
+	dataCategories.setCategory(category, 'outlays' );
+}
+
+$('').click(function() {	
+	
+	removeCategoryOutlays();
+});
+
+
+function removeCategoryIncomes(){
+	var category = $( '' ).val();
+	dataCategories.setCategory(category, 'incomes' );
+}
+
+$('').click(function() {	
+	
+	removeCategoryIncomes();
+});;//read Daily Outlays
+$('#new-outlay .btn-submit').click(function() {	
+	var category = $( '#new-outlay input.sel-cat' ).val(),
+		cost = $('#new-outlay .inp-cos').val();
+	if (category && cost) {
+		dataDayly.setDaily(todayKeyWord, category, cost, 'outlays' );
+	} else{
+		console.log('you have some problem with data')
+	};
+	$('#new-outlay input.sel-cat').val('');
+	$('#new-outlay .inp-cos').val('');
+});
+
+
+//read Daily Incomes
+$('#new-income .btn-submit').click(function() {	
+	var category = $( '#new-income input.sel-cat' ).val(),
+		cost = $('#new-income .inp-cos').val();
+	if (category && cost) {
+		dataDayly.setDaily(todayKeyWord, category, cost, 'incomes' );
+	} else{
+		console.log('you have some problem with data')
+	};
+	$( '#new-income input.sel-cat' ).val('');
+	$('#new-income .inp-cos').val('');
+});
+
+
+
+
+function removeDailyOutlays(){
+	var category = $( '' ).val(),
+		cost = $('').val();
+		if (category && cost) {
+			dataDayly.setDaily(todayKeyWord, category, cost, 'outlays' );
+		} else{
+			console.log('you have some problem with data')
+		};
+	
+}
+
+$('').click(function() {	
+	
+	readDailyOutlays();
+});
+
+function removeDailyIncomes(){
+	var category = $( '' ).val(),
+		cost = $('').val();
+	dataDayly.setDaily(todayKeyWord, category, cost, 'incomes' );
+}
+
+$('').click(function() {	
+	
+	readDailyIncomes();
+});
+
+function changeDailyOutlays(){
+	var category = $( '' ).val(),
+		cost = $('').val();
+		if (category && cost) {
+			dataDayly.setDaily(todayKeyWord, category, cost, 'outlays' );
+		} else{
+			console.log('you have some problem with data')
+		};
+	
+}
+
+$('').click(function() {	
+	
+	readDailyOutlays();
+});
+
+function changeDailyIncomes(){
+	var category = $( '' ).val(),
+		cost = $('').val();
+	dataDayly.setDaily(todayKeyWord, category, cost, 'incomes' );
+}
+
+$('').click(function() {	
+	
+	readDailyIncomes();
+});;//неточність введення з сторінки
+/*function readForecastOutlays(){
+	var category = $( '#manage-forecast select.sel-cat' ).val();
+	var cost = $('#manage-forecast .inp-cos').val();
+	data.setForecast(category, cost, 'month', 'outlays' );
+}
+
+$('#manage-forecast .btn-submit').click(function() {	
+	
+	readForecastOutlays();
+	
+});
+
+function removeForecastOutlays(){
+	var category = $( '' ).val();
+	var cost = $('').val();
+	data.setForecast(category, cost, 'month', 'outlays' );
+}
+
+$('').click(function() {	
+	
+	removeForecastOutlays();
+});
+
+function changeForecastOutlays(){
+	var category = $( '' ).val();
+	var cost = $('').val();
+	data.setForecast(category, cost, 'month', 'outlays' );
+}
+
+$('').click(function() {	
+	
+	removeForecastOutlays();
+});*/;function readRegularOutlays(){
+	var category = $( '#regular-outlay .sel-cat' ).val(),
+		cost = $('#regular-outlay .inp-cos').val();
+		//time = $('#regular-outlay .inp-dat').val();
+	dataRegular.setRegular(category, cost, 'day', 'outlays' );
+}
+
+$('#regular-outlay .btn-submit').click(function() {	
+	
+	readRegularOutlays();
+});;
+$('#manage-balance .btn-add').click(function() {	
+	var cost = $('#manage-balance .inp-cat').val();
+	if (cost) {
+		dataTotalStat.setTotalCurrentStat('balance', cost );
+	} else{
+		console.log('you have some problem with data')
+	};
+	$('#manage-balance .inp-cat').val('');
+	$('#curBalance').html('Your current balance:' +cost);
+});
+$(function(){
+
+	var balance=dataTotalStat.totalStatistic['currentBalance'];
+	if(balance!==null)
+		$('#curBalance').html('Your current balance:' +balance);
+});function LS () {}
 
 LS.get = function (keyWord) {
 	if (localStorage[keyWord] !== null && localStorage[keyWord] !== undefined ) {
@@ -169,7 +369,8 @@ DataCategories.prototype.setCategory = function(category, type){
 	if (setCat[type].indexOf(category) == (-1)) {
 		setCat[type].push(category);
 
-		LS.set('categories', setCat)
+		LS.set('categories', setCat);
+		return true;
 	} else{
 		return false
 	}; 

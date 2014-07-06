@@ -22,7 +22,8 @@ DataCategories.prototype.setCategory = function(category, type){
 	if (setCat[type].indexOf(category) == (-1)) {
 		setCat[type].push(category);
 
-		LS.set('categories', setCat)
+		LS.set('categories', setCat);
+		return true;
 	} else{
 		return false
 	}; 
