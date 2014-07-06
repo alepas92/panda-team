@@ -126,6 +126,7 @@ $('#new-outlay .btn-add').click(function() {
 	}
 	
 	$('#new-outlay .inp-cat').val('');
+	appearInfoBlock();
 });
 //Daily Incomes
 $('#new-income .btn-add').click(function() {	
@@ -135,6 +136,7 @@ $('#new-income .btn-add').click(function() {
 		optionPainting('incomes', category);
 	}
 	$( '#new-income .inp-cat' ).val('');
+	appearInfoBlock()
 });
 
 $("#new-income .inp-cat").keyup( function(e) {
@@ -185,6 +187,7 @@ $('#new-outlay .btn-submit').click(function() {
 	};
 	$('#new-outlay input.sel-cat').val('');
 	$('#new-outlay .inp-cos').val('');
+	appearInfoBlock();
 });
 
 
@@ -199,6 +202,7 @@ $('#new-income .btn-submit').click(function() {
 	};
 	$( '#new-income input.sel-cat' ).val('');
 	$('#new-income .inp-cos').val('');
+	appearInfoBlock();
 });
 
 
@@ -309,6 +313,7 @@ $('#manage-balance .btn-add').click(function() {
 	};
 	$('#manage-balance .inp-cat').val('');
 	$('#curBalance').html('Your current balance:' +cost);
+	appearInfoBlock();
 });
 $(function(){
 

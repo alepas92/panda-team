@@ -9,6 +9,7 @@ $('#new-outlay .btn-submit').click(function() {
 	};
 	$('#new-outlay input.sel-cat').val('');
 	$('#new-outlay .inp-cos').val('');
+	appearInfoBlock();
 });
 
 
@@ -23,6 +24,7 @@ $('#new-income .btn-submit').click(function() {
 	};
 	$( '#new-income input.sel-cat' ).val('');
 	$('#new-income .inp-cos').val('');
+	appearInfoBlock();
 });
 
 
