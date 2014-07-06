@@ -85,6 +85,27 @@ DataDayly.prototype.setDaily = function(keyWord, category, cost, type) {
 
 	LS.set(keyWord, defDayly);
 	this[keyWord] = LS.get(keyWord);
+	var thisID = '' + keyWordL + count + '_' + Math.floor((Math.random() * 100) + 1);
+	setToStatistic(keyWord, category, cost, type, thisID);
+}
+
+function setToStatistic(keyWord, category, cost, type, thisID) {
+	if (!localStorage['stat_' + type]){
+		var defaultStat = [];
+
+		LS.set('stat_' + type, defaultStat);
+	}
+	
+	var newArItem = [];
+	newArItem.push(keyWord);
+	newArItem.push(category);
+	newArItem.push(cost);
+	newArItem.push(thisID);
+
+	var StatArr = LS.get('stat_' + type);
+	StatArr.push(newArItem);
+
+	LS.set('stat_' + type, StatArr);
 }
 
 // remove dayly outlays and incomes
@@ -106,6 +127,37 @@ DataDayly.prototype.removeDaily = function(keyWord, category, cost, type) {
 
 	LS.set(keyWord, removeDay);
 	this[keyWord] = LS.get(keyWord);
+
+	removeFromStatistic(keyWord, category, cost, type)
+}
+
+function removeFromStatistic(keyWord, category, cost, type) {
+	if (!localStorage['stat_' + type]){
+		var defaultStat = [];
+
+		LS.set('stat_' + type, defaultStat);
+	}
+	if (localStorage['stat_' + type]){
+		var StatArr = LS.get('stat_' + type);
+		var ind;
+		
+		for (var i = 0; i < StatArr.length; i++) {
+			if (StatArr[i][0] == keyWord && StatArr[i][1] == category && parseInt(StatArr[i][2]) == parseInt(cost)) {
+				ind = i;
+			};
+		};
+
+		if (ind >= 0) {
+			StatArr.splice(ind, 1);
+		} else {
+			console.log('this data is undefined');
+		}
+		console.log(i)
+
+		LS.set('stat_' + type, StatArr);
+	} else {
+		console.log('this localStorage item is undefined');
+	}
 }
 
 
@@ -124,8 +176,28 @@ DataDayly.prototype.changeDaily = function(keyWord, category, cost, type, id) {
 
 	LS.set(keyWord, changeDay);
 	this[keyWord] = LS.get(keyWord);
+
+	changeInStatistick(keyWord, category, cost, type, id);
 }	
 
+function changeInStatistick(keyWord, category, cost, type, id) {
+	if (!localStorage['stat_' + type]){
+		var StatArr = LS.get('stat_' + type);
+		var ind;
+		
+		for (var i = 0; i < StatArr.length; i++) {
+			if (StatArr[i][0] == keyWord && StatArr[i][3] == id) {
+				StatArr[i][0] = keyWord;
+				StatArr[i][1] = category;
+				StatArr[i][2] = cost;
+			};
+		};
+
+		LS.set('stat_' + type, StatArr);
+	} else {
+		console.log('this localStorage item is undefined');
+	}
+}
 
 // set dayly Statistick outlays and incomes
 DataDayly.prototype.setDailyStat = function(keyWord, category, cost, type) {
@@ -288,16 +360,16 @@ dataDayly.getDaylyPlan();
 
 console.log('dataDayly  -  ' + dataDayly);
 
-dataDayly.setDaily('day30_07_2014', 'habar1', '160', 'incomes');
+// dataDayly.setDaily('day30_07_2014', 'habar1', '160', 'incomes');
 // dataDayly.setDaily(todayKeyWord, 'habar1', '160', 'incomes');
 // dataDayly.setDaily(todayKeyWord, 'habar11', '260', 'incomes');
 // dataDayly.setDaily(todayKeyWord, 'habar12', '360', 'incomes');
 // dataDayly.setDaily(todayKeyWord, 'habar13', '432', 'outlays');
 // dataDayly.setDaily(todayKeyWord, 'habar14', '544', 'outlays');
-// dataDayly.removeDaily(todayKeyWord, 'habar1', '160', 'incomes');
-// dataDayly.removeDaily(todayKeyWord, 'habar14', '544', 'outlays');
+dataDayly.removeDaily(todayKeyWord, 'habar1', '160', 'incomes');
+dataDayly.removeDaily(todayKeyWord, 'habar14', '544', 'outlays');
 
-dataDayly.setDailyStat('day30_07_2014', 'habar2', '350', 'outlays');
+// dataDayly.setDailyStat('day30_07_2014', 'habar2', '350', 'outlays');
 // dataDayly.setDailyStat(todayKeyWord, 'habar21', '350', 'outlays');
 // dataDayly.setDailyStat(todayKeyWord, 'habar22', '350', 'outlays');
 // dataDayly.setDailyStat(todayKeyWord, 'habar33', '350', 'incomes');
@@ -305,7 +377,7 @@ dataDayly.setDailyStat('day30_07_2014', 'habar2', '350', 'outlays');
 // dataDayly.removeDailyStat(todayKeyWord, 'habar33', '350', 'incomes');
 // dataDayly.removeDailyStat(todayKeyWord, 'habar21', '350', 'outlays');
 
-dataDayly.setDailyPlan('day30_07_2014', 'pivo1', '350', 'outlays');
+// dataDayly.setDailyPlan('day30_07_2014', 'pivo1', '350', 'outlays');
 // dataDayly.setDailyPlan(todayKeyWord, 'pivo2', '350', 'outlays');
 // dataDayly.setDailyPlan(todayKeyWord, 'pivo3', '350', 'outlays');
 // dataDayly.setDailyPlan(todayKeyWord, 'pivo4', '350', 'incomes');

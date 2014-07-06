@@ -23,6 +23,8 @@ DataForecast.prototype.getForecast = function () {
 	}
 };
 
+
+
 // set forecast
 DataForecast.prototype.setForecast = function(category, cost, time, type) {
 	var setFor = LS.get('forecast'), 
@@ -46,6 +48,27 @@ DataForecast.prototype.setForecast = function(category, cost, time, type) {
 
 	LS.set('forecast', setFor);
 	this.forecast = LS.get('forecast');
+
+	setForecastStat(category, cost, time, type);
+}
+
+
+function setForecastStat(category, cost, time, type) {
+	if (!localStorage['stat_Forecast_' + type]){
+		var defaultStat = [];
+
+		LS.set('stat_Forecast_' + type, defaultStat);
+	}
+
+	var newArItem = [];
+	newArItem.push(time);
+	newArItem.push(category);
+	newArItem.push(cost);
+
+	var StatArr = LS.get('stat_Forecast_' + type);
+	StatArr.push(newArItem);
+
+	LS.set('stat_Forecast_' + type, StatArr);
 }
 
 // remove forecast outlays and incomes
@@ -67,8 +90,34 @@ DataForecast.prototype.removeForecast = function(category, cost, time, type) {
 
 	LS.set('forecast', removeFor);
 	this.forecast = LS.get('forecast');
+
+
+	removeForecastStat(time, category, cost, type);
 }
 
+
+function removeForecastStat(time, category, cost, type) {
+	if (localStorage['stat_Forecast_' + type]){
+
+		var StatArr = LS.get('stat_Forecast_' + type);
+		var ind;
+		
+		for (var i = 0; i < StatArr.length; i++) {
+			if (StatArr[i][0] == time && StatArr[i][1] == category && parseInt(StatArr[i][2]) == parseInt(cost)) {
+				ind = i;
+			};
+		};
+		if (ind >= 0) {
+			StatArr.splice(ind, 1);
+		} else {
+			console.log('this data is undefined');
+		}
+
+		LS.set('stat_Forecast_' + type, StatArr);
+	} else {
+		console.log('this localStorage item is undefined');
+	}
+}
 
 DataForecast.prototype.changeForecast = function(category, cost, time, type, id) {
 	var changeFor = LS.get('forecast');
@@ -100,7 +149,7 @@ console.log('dataForecast  -  ' + dataForecast);
 // dataForecast.setForecast('baby4', 4500, 'month', 'outlays');
 // dataForecast.setForecast('baby5', 5500, 'year', 'outlays');
 
-// dataForecast.removeForecast('baby3', 3500, 'month', 'outlays');
-// dataForecast.removeForecast('baby', 500, 'month', 'incomes');
-// dataForecast.removeForecast('baby2', 2500, 'year', 'incomes');
+dataForecast.removeForecast('baby4', 4500, 'month', 'outlays');
+dataForecast.removeForecast('baby3', 3500, 'month', 'outlays');
+dataForecast.removeForecast('baby5', 5500, 'year', 'outlays');
 
