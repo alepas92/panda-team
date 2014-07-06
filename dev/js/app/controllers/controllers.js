@@ -1,6 +1,6 @@
 
 //New Outlay/Income    Daily
-function readDailyOutlays(){
+/*function readDailyOutlays(){
 	var category = $( '#new-outlay select.sel-cat' ).val(),
 		cost = $('#new-outlay .inp-cos').val();
 	data.setDaily(todayKeyWord, category, cost, 'outlays' );
@@ -60,7 +60,7 @@ $('#regular-outlay .btn-submit').click(function() {
 	readRegularOutlays();
 });
 
-*/
+
 
 //Manage forecast(month, outlays)
 function readForecastOutlays(){
@@ -77,7 +77,7 @@ $('#manage-forecast .btn-submit').click(function() {
 
 
 
-
+*/
 
 
 
