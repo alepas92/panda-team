@@ -9,6 +9,7 @@ $('#new-outlay .btn-add').click(function() {
 	}
 	
 	$('#new-outlay .inp-cat').val('');
+	appearInfoBlock();
 });
 //Daily Incomes
 $('#new-income .btn-add').click(function() {	
@@ -18,6 +19,7 @@ $('#new-income .btn-add').click(function() {
 		optionPainting('incomes', category);
 	}
 	$( '#new-income .inp-cat' ).val('');
+	appearInfoBlock()
 });
 
 $("#new-income .inp-cat").keyup( function(e) {

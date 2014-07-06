@@ -8,6 +8,7 @@ $('#manage-balance .btn-add').click(function() {
 	};
 	$('#manage-balance .inp-cat').val('');
 	$('#curBalance').html('Your current balance:' +cost);
+	appearInfoBlock();
 });
 $(function(){
 
