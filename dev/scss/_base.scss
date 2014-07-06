@@ -45,6 +45,10 @@ h1, h2, h3, h4, h5 {
         list-style: none;
         width: 33.3333%;
         text-align: center;
+        -webkit-transition: all 0.2s ease-in;
+        -moz-transition: all 0.2s ease-in;
+        -o-transition: all 0.2s ease-in;
+        transition: all 0.2s ease-in;
     }
 
     li:hover {

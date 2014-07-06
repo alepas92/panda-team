@@ -44,6 +44,47 @@ body {
 .adapt-nav li + li {
   margin-left: 30px; }
 
+/* Left Nav Bar */
+.leftNavBar {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 15px;
+  background: #221831;
+  opacity: 0.75;
+  padding: 5px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  width: 150px;
+  text-align: center;
+  -webkit-transition: all 1s ease-in;
+  -moz-transition: all 1s ease-in;
+  -o-transition: all 1s ease-in;
+  transition: all 1s ease-in; }
+  .leftNavBar img {
+    width: 50px; }
+  .leftNavBar ul {
+    padding: 0px; }
+  .leftNavBar li {
+    list-style: none;
+    height: 25px; }
+    .leftNavBar li a {
+      color: white;
+      text-decoration: none; }
+  .leftNavBar li:hover {
+    background: #f3d796;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    color: #231934; }
+    .leftNavBar li:hover a {
+      color: black; }
+
+.leftNavBar:hover {
+  opacity: 0.95; }
+
+/* End of left nav bar */
 #container {
   width: 70%;
   background: white;
@@ -111,13 +152,56 @@ form {
   width: 100%; }
 
 #manage-forecast {
-  width: 100%; }
+  width: 100%;
+  text-align: center; }
+  #manage-forecast p {
+    margin-bottom: 5px; }
 
 #manage-balance {
   width: 100%; }
 
 #statistics {
   width: 100%; }
+
+.info-block {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 15px;
+  width: 250px;
+  height: 100px;
+  background: #221831;
+  opacity: 0.85;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding: 5px;
+  color: white;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.64);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.64);
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.64);
+  -webkit-transition: all 1s ease-in;
+  -moz-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in; }
+  .info-block header {
+    margin-left: 10px;
+    color: white;
+    font-weight: 800; }
+  .info-block img {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 15px;
+    height: 15px; }
+  .info-block img:hover {
+    right: 4px;
+    top: 4px;
+    width: 17px;
+    height: 17px; }
+
+.info-block:hover {
+  opacity: 1; }
 
 #footer {
   width: 100%;
@@ -360,7 +444,11 @@ h1, h2, h3, h4, h5 {
     float: left;
     list-style: none;
     width: 33.3333%;
-    text-align: center; }
+    text-align: center;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in; }
   .tab-links li:hover {
     background: #ecc76e; }
   .tab-links a {
