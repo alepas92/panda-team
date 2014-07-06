@@ -1,24 +1,47 @@
 function managePanelPainting (type) {
 	if (type === 'outlays') {
+
+		createPlaceholder ('manage-outlay');
 		
 		for (var key in dataDayly[todayKeyWord].outlays) {
-			createInputsField('manage-outlay', key, dataDayly[todayKeyWord].outlays[key].cat, dataDayly[todayKeyWord].outlays[key].cost, 'Outlay');
+			createInputsField('manage-outlay-placeholder', key, dataDayly[todayKeyWord].outlays[key].cat, dataDayly[todayKeyWord].outlays[key].cost, 'Outlay');
 		}
 
-		var button = createButton('submit-edited-outlays', '', 'Submit');
+	
+		var button = createButton('submit-manage-outlay', '', 'Submit');
 		document.getElementById('manage-outlay').appendChild(button);
 
 	} else if ( type === 'incomes' ) {
 
+		createPlaceholder ('manage-income');
+
 		for (var key in dataDayly[todayKeyWord].incomes) {
-			createInputsField('manage-income', key, dataDayly[todayKeyWord].incomes[key].cat, dataDayly[todayKeyWord].incomes[key].cost, 'Income');
+			createInputsField('manage-income-placeholder', key, dataDayly[todayKeyWord].incomes[key].cat, dataDayly[todayKeyWord].incomes[key].cost, 'Income');
 		}
 
-		var button = createButton('submit-edited-outlays', '', 'Submit');
+		var button = createButton('submit-manage-income', '', 'Submit');
 		document.getElementById('manage-income').appendChild(button);
 
 	}
 }
+	function createPlaceholder (idPiece) {
+		var element = document.getElementById(idPiece + '-placeholder');
+
+		if (element !== null) {
+			element.remove();
+			document.getElementById('submit-' + idPiece).remove();
+
+			var placeholder = document.createElement('div');
+			placeholder.id = idPiece + '-placeholder';
+
+			document.getElementById(idPiece).appendChild(placeholder);	
+		} else {
+			var placeholder = document.createElement('div');
+			placeholder.id = idPiece + '-placeholder';
+
+			document.getElementById(idPiece).appendChild(placeholder);	
+		}
+	}
 
 	function createInputsField (placeholderId, key, categoryValue, costValue, legendTitle) {
 		var fieldset, categoryInput, costInput, deleteButton;
