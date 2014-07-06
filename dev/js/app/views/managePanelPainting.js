@@ -1,4 +1,5 @@
 function managePanelPainting (type) {
+
 	if (type === 'outlays') {
 		
 		for (var key in dataDayly[todayKeyWord].outlays) {
@@ -15,8 +16,10 @@ function managePanelPainting (type) {
 		}
 
 		var button = createButton('submit-edited-outlays', '', 'Submit');
-		document.getElementById('manage-income').appendChild(button);
+		document.getElementById('manage-outlay').appendChild(button);
 
+	} else {
+		console.log('error(outlayManagePainting.js)');
 	}
 }
 
