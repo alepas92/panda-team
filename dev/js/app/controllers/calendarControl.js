@@ -5,8 +5,9 @@ function callendarDayClick() {
         tableLink[j].classList.remove('myCssClass')
     };
     var k = this;
-    console.log(LS.get(k.firstChild.getAttribute('data-day')))
+    console.log(k.firstChild.getAttribute('data-day'))
     k.firstChild.classList.add('myCssClass');
+    paintIncOut(k.firstChild.getAttribute('data-day'));
 }
 
 function callendarMonthClick() {
