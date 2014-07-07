@@ -37,7 +37,6 @@ DataCategories.prototype.removeCategory = function(category, type){
 	removeCat[type].forEach(function(value, index, ar){
 		if (value == category) {
 			ind = index;
-			console.log(ind)
 		} 
 	})
 	if (ind >= 0) {
@@ -55,11 +54,6 @@ DataCategories.prototype.removeCategory = function(category, type){
 
 var dataCategories = new DataCategories();
 dataCategories.getCategories();
-dataCategories.setCategory('car', 'incomes');
-dataCategories.setCategory('car', 'outlays');
-dataCategories.setCategory('car1', 'incomes');
-dataCategories.setCategory('car2', 'outlays');
-dataCategories.setCategory('car3', 'incomes');
 dataCategories.setCategory('car4', 'outlays');
-// dataCategories.removeCategory('transport', 'outlays');
+//dataCategories.removeCategory('transport', 'outlays');
 console.log('dataCategories  -  ' + dataCategories)

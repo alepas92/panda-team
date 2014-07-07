@@ -255,11 +255,11 @@ form {
   left: 17%;
   top: 20%;
   width: 66%;
-  height: 60%;
   background: #fff;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
-  border-radius: 10px; }
+  border-radius: 10px;
+  padding-top: 45px; }
   #manage-block header {
     position: absolute;
     top: 0px;
@@ -274,6 +274,34 @@ form {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     text-align: center; }
+    #manage-block header .tab-links {
+      background: none;
+      margin-left: 10px; }
+      #manage-block header .tab-links li {
+        position: relative;
+        background: none;
+        width: auto;
+        margin-right: 10px; }
+        #manage-block header .tab-links li ul {
+          position: absolute;
+          display: none;
+          background: #849d64;
+          padding: 0; }
+          #manage-block header .tab-links li ul li {
+            width: 100%;
+            margin-right: 0px; }
+          #manage-block header .tab-links li ul a {
+            width: 100%;
+            padding: 10px 0px; }
+      #manage-block header .tab-links a {
+        padding: 9px 15px;
+        color: white; }
+      #manage-block header .tab-links li.active > a {
+        background: rgba(255, 255, 255, 0.45); }
+      #manage-block header .tab-links li:hover > a {
+        background: rgba(255, 255, 255, 0.2); }
+      #manage-block header .tab-links li:hover > ul {
+        display: block; }
     #manage-block header img {
       position: absolute;
       right: 5px;
@@ -286,9 +314,21 @@ form {
       top: 9px;
       width: 22px;
       height: 22px; }
-    #manage-block header h2 {
-      margin-top: 10px;
-      color: white; }
+  #manage-block .tab-content {
+    padding: 10px;
+    box-sizing: border-box; }
+  #manage-block h2 {
+    font-weight: bold; }
+
+#outlays-list-tools-panel, #incomes-list-tools-panel {
+  margin-top: 0; }
+
+.categories-list {
+  width: 50%;
+  float: left; }
+
+.categories-lists-container {
+  overflow: hidden; }
 
 /* Laptop/Tablet (1024px) */
 @media only screen and (min-width: 481px) and (max-width: 1024px) and (orientation: landscape) {

@@ -191,11 +191,57 @@
 
             <div id="shadow-layer">	
 </div>
-<section id="manage-block">
+<section class="tabs" id="manage-block">
 	<header>
-		<h2>Manage your information</h2>
+		<ul class="tab-links">
+			<li class="active"><a href="#categories-tools-panel">Categories</a></li>
+			<li><a href="#">Incomes</a>
+				<ul>
+					<li><a href="#dayly-incomes-tools-panel">Dayly</a></li>
+					<li><a href="#regular-incomes-tools-panel">Regular</a></li>
+				</ul>
+			</li>
+			
+			<li><a href="#">Outlays</a>
+				<ul>
+					<li><a href="#dayly-outlays-tools-panel">Dayly</a></li>
+					<li><a href="#regular-outlays-tools-panel">Rerular</a></li>
+				</ul>
+			</li>
+		</ul>
+
 		<img id="close-manage-block" src="img/main/close3.svg">
 	</header>
+
+	<div class="tab-content">
+		<div class="categories-tools-panel tab active" id="categories-tools-panel">
+			<div class="categories-lists-container">
+				
+				<div id="outlays-list-tools-panel" class="categories-list">
+					<h2>Outlays: </h2>
+				</div>
+				
+				<div id="incomes-list-tools-panel" class="categories-list">
+					<h2>Incomes: </h2>
+				</div>
+			</div>
+			
+			<div class="add-category-container" style="display: none">
+				<h2>Add category</h2>
+				<label>New category name: 
+					<input type="text" id="newCategoryName" class="inp-cat">
+				</label>
+				<input type="button" value="Add" class="btn-add">
+			</div>
+		</div>
+
+		<div class="incomes-tools-panel tab" id="dayly-incomes-tools-panel">Dayly incomes</div>
+		<div class="incomes-tools-panel tab" id="regular-incomes-tools-panel">Regular incomes</div>
+
+		<div class="outlays-tools-panel tab" id="dayly-outlays-tools-panel">Dayly outlay</div>
+		<div class="outlays-tools-panel tab" id="regular-outlays-tools-panel">Regular outlay</div>
+	</div>
+
 </section>
 
         </div>
