@@ -47,7 +47,7 @@ module.exports = function(grunt) {
                     {src: "dev/manage-balance.html", dest: "build/index.html", match: "<!--Stuff manage balance section here-->"},
                     {src: "dev/statistics.html", dest: "build/index.html", match: "<!--Stuff statistics section here-->"},
                     {src: "dev/footer.html", dest: "build/index.html", match: "<!--Stuff footer here-->"},
-                    {src: "dev/manage-layer.html", dest: "build/index.html", match: "<!--Stuff manage-layer here-->"},
+                    {src: "dev/tools-panel.html", dest: "build/index.html", match: "<!--Stuff manage-layer here-->"},
                 ],
             },
         },

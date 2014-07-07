@@ -289,11 +289,12 @@ form {
 	left: 17%;
 	top: 20%;
 	width: 66%;
-	height: 60%;
 	background: #fff;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
+	padding-top: 45px;
+
 	header {
 		position: absolute;
 		top: 0px;
@@ -308,6 +309,53 @@ form {
 		border-top-left-radius: 10px;
 		border-top-right-radius: 10px;
 		text-align: center;
+		
+		.tab-links {
+			background: none;
+			margin-left: 10px;
+
+			li {
+				position: relative;
+				background: none;
+				width: auto;
+				margin-right: 10px;
+				
+				ul {
+					position: absolute;
+					display: none;
+					background: #849d64;
+					padding: 0;
+
+					li {
+						width: 100%;
+						margin-right: 0px;
+					}
+
+					a {
+						width: 100%;
+						padding: 10px 0px;
+					}
+				}
+			}
+
+			a {
+				padding: 9px 15px;
+				color: white;
+			}
+			
+			li.active > a {
+				background: rgba(255,255,255,.45);
+			}
+
+			li:hover > a{
+				background: rgba(255,255,255,.20);	
+			}
+
+			li:hover > ul{
+				display: block;
+			}
+		}
+
 		img {
 			position: absolute;
 			right: 5px;
@@ -316,15 +364,33 @@ form {
 			height: 20px;
 			float: right;
 		}
+
 		img:hover {
 			right: 4px;
 			top: 9px;
 			width: 22px;
 			height: 22px;
 		}
-		h2 {
-			margin-top: 10px;
-			color: white;
-		}
+	}
+
+	.tab-content {
+		padding: 10px;
+		box-sizing: border-box;
+	}
+
+	h2 {
+		font-weight: bold;
 	}
 }
+	#outlays-list-tools-panel, #incomes-list-tools-panel {
+		margin-top: 0;
+	}
+
+	.categories-list {
+		width: 50%;
+		float: left;
+	}
+
+	.categories-lists-container {
+		overflow: hidden;
+	}

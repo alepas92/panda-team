@@ -1,7 +1,7 @@
 function managePanelPainting (type) {
 	if (type === 'outlays') {
 
-		createPlaceholder ('manage-outlay');
+		createPlaceholderManagePanel ('manage-outlay');
 		
 		for (var key in dataDayly[todayKeyWord].outlays) {
 			createInputsField('manage-outlay-placeholder', key, dataDayly[todayKeyWord].outlays[key].cat, dataDayly[todayKeyWord].outlays[key].cost, 'Outlay');
@@ -13,7 +13,7 @@ function managePanelPainting (type) {
 
 	} else if ( type === 'incomes' ) {
 
-		createPlaceholder ('manage-income');
+		createPlaceholderManagePanel ('manage-income');
 
 		for (var key in dataDayly[todayKeyWord].incomes) {
 			createInputsField('manage-income-placeholder', key, dataDayly[todayKeyWord].incomes[key].cat, dataDayly[todayKeyWord].incomes[key].cost, 'Income');
@@ -24,7 +24,7 @@ function managePanelPainting (type) {
 
 	}
 }
-	function createPlaceholder (idPiece) {
+	function createPlaceholderManagePanel (idPiece) {
 		var element = document.getElementById(idPiece + '-placeholder');
 
 		if (element !== null) {
@@ -91,6 +91,7 @@ function managePanelPainting (type) {
 		button.id = id;
 		button.className = buttonClass;
 		button.value = value;
+		button.onclick
 
 		return button
 	}

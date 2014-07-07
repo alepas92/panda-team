@@ -327,7 +327,25 @@ $(function(){
 
 $('#manage-incomes-painting').click(function() {
 	managePanelPainting('incomes');
-});;function LS () {}
+});;document.getElementsByClassName("manage-button")[0].onclick = function() {
+	showManagePanel();
+	paintManagePanelCategories();
+}
+
+document.getElementById("close-manage-block").onclick = function() {
+	hideManagePanel();
+}
+
+
+function removeOutlayCategory() { 
+	dataCategories.removeCategory(this.id, 'outlays');
+	this.parentNode.remove();
+}
+
+function removeIncomeCategory() {
+	dataCategories.removeCategory(this.id, 'incomes');
+	this.parentNode.remove();
+};function LS () {}
 
 LS.get = function (keyWord) {
 	if (localStorage[keyWord] !== null && localStorage[keyWord] !== undefined ) {
@@ -396,7 +414,6 @@ DataCategories.prototype.removeCategory = function(category, type){
 	removeCat[type].forEach(function(value, index, ar){
 		if (value == category) {
 			ind = index;
-			console.log(ind)
 		} 
 	})
 	if (ind >= 0) {
@@ -414,13 +431,8 @@ DataCategories.prototype.removeCategory = function(category, type){
 
 var dataCategories = new DataCategories();
 dataCategories.getCategories();
-dataCategories.setCategory('car', 'incomes');
-dataCategories.setCategory('car', 'outlays');
-dataCategories.setCategory('car1', 'incomes');
-dataCategories.setCategory('car2', 'outlays');
-dataCategories.setCategory('car3', 'incomes');
 dataCategories.setCategory('car4', 'outlays');
-// dataCategories.removeCategory('transport', 'outlays');
+//dataCategories.removeCategory('transport', 'outlays');
 console.log('dataCategories  -  ' + dataCategories);var date = getDate();
 var todayKeyWord = 'day' + date.day + '_' + date.month + '_' + date.year;
 
@@ -1514,31 +1526,17 @@ function appearInfoBlock() {
 }
 
 
-;;window.onscroll = function() {
+;window.onscroll = function() {
 	var leftNavBar = document.getElementsByClassName("leftNavBar")[0];
 	if (window.pageYOffset > 96) {
 		leftNavBar.style.display = "block";
 	} else {
 		leftNavBar.style.display = "none";
 	}
-};document.getElementsByClassName("manage-button")[0].onclick = function() {
-	var shadowLayer = document.getElementById("shadow-layer"),
-		manageBlock = document.getElementById("manage-block");
-	shadowLayer.style.display = "block";
-	manageBlock.style.display = "block";
-}
-
-document.getElementById("close-manage-block").onclick = function() {
-	var shadowLayer = document.getElementById("shadow-layer"),
-		manageBlock = document.getElementById("manage-block");
-	shadowLayer.style.display = "none";
-	manageBlock.style.display = "none";
-}
-
-;function managePanelPainting (type) {
+};function managePanelPainting (type) {
 	if (type === 'outlays') {
 
-		createPlaceholder ('manage-outlay');
+		createPlaceholderManagePanel ('manage-outlay');
 		
 		for (var key in dataDayly[todayKeyWord].outlays) {
 			createInputsField('manage-outlay-placeholder', key, dataDayly[todayKeyWord].outlays[key].cat, dataDayly[todayKeyWord].outlays[key].cost, 'Outlay');
@@ -1550,7 +1548,7 @@ document.getElementById("close-manage-block").onclick = function() {
 
 	} else if ( type === 'incomes' ) {
 
-		createPlaceholder ('manage-income');
+		createPlaceholderManagePanel ('manage-income');
 
 		for (var key in dataDayly[todayKeyWord].incomes) {
 			createInputsField('manage-income-placeholder', key, dataDayly[todayKeyWord].incomes[key].cat, dataDayly[todayKeyWord].incomes[key].cost, 'Income');
@@ -1561,7 +1559,7 @@ document.getElementById("close-manage-block").onclick = function() {
 
 	}
 }
-	function createPlaceholder (idPiece) {
+	function createPlaceholderManagePanel (idPiece) {
 		var element = document.getElementById(idPiece + '-placeholder');
 
 		if (element !== null) {
@@ -1628,6 +1626,7 @@ document.getElementById("close-manage-block").onclick = function() {
 		button.id = id;
 		button.className = buttonClass;
 		button.value = value;
+		button.onclick
 
 		return button
 	}
@@ -1649,4 +1648,81 @@ document.getElementById("close-manage-block").onclick = function() {
  
         e.preventDefault();
     });
-});
+});;function showManagePanel () {
+	var shadowLayer = document.getElementById('shadow-layer'),
+		manageBlock = document.getElementById('manage-block');
+	
+	shadowLayer.style.display = 'block';
+	manageBlock.style.display = 'block';
+}
+
+function hideManagePanel () {
+	var shadowLayer = document.getElementById('shadow-layer'),
+		manageBlock = document.getElementById('manage-block');
+	shadowLayer.style.display = 'none';
+	manageBlock.style.display = 'none';
+}
+
+function paintManagePanelCategories() {
+	var catTools, button, placeholder;
+
+	placeholder = createPlaceholderToolsPanel('ul','outlays-list-tools-panel-ul', 'outlays-list-tools-panel');
+
+	catTools = document.getElementById('outlays-list-tools-panel-ul');
+	for (var i = 0; i < dataCategories.categories.outlays.length; i++) {
+		var li = document.createElement('li');
+			li.textContent = dataCategories.categories.outlays[i];
+		
+		
+		button = createDeleteCategoryButton(dataCategories.categories.outlays[i], 'outlays');
+		li.appendChild(button);
+
+		catTools.appendChild(li);
+	}
+	placeholder = createPlaceholderToolsPanel('ul','incomes-list-tools-panel-ul', 'incomes-list-tools-panel');
+
+	catTools = document.getElementById('incomes-list-tools-panel-ul');
+	for (var i = 0; i < dataCategories.categories.incomes.length; i++) {
+		var li = document.createElement('li');
+			li.textContent = dataCategories.categories.incomes[i];
+		
+
+		button = createDeleteCategoryButton(dataCategories.categories.incomes[i], 'incomes');
+		li.appendChild(button);
+
+		catTools.appendChild(li);
+	}
+}
+
+function createPlaceholderToolsPanel (elementTag, id, place) {
+	var element = document.getElementById(id);
+	
+	if (element !== null){
+		element.remove();
+
+		var placeholder = document.createElement(elementTag);
+		placeholder.id = id;
+		
+		document.getElementById(place).appendChild(placeholder);
+	} else {
+		var placeholder = document.createElement(elementTag);
+		placeholder.id = id;
+		
+		document.getElementById(place).appendChild(placeholder);
+	}
+}
+
+function createDeleteCategoryButton (id, type) {
+	var button = document.createElement('input');
+
+	button.type = 'button';
+	button.id = id;
+	button.className = 'btn-delete';
+	button.value = 'Delete';
+	if (type === 'incomes') {
+		button.onclick = removeIncomeCategory;
+	} else {
+		button.onclick = removeOutlayCategory;
+	}
+	return button
+}
