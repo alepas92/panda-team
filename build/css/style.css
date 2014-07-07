@@ -330,6 +330,11 @@ form {
 .categories-lists-container {
   overflow: hidden; }
 
+.text-tools-panel-list {
+  display: inline-block;
+  width: 250px;
+  text-align: left; }
+
 /* Laptop/Tablet (1024px) */
 @media only screen and (min-width: 481px) and (max-width: 1024px) and (orientation: landscape) {
   #logo {
