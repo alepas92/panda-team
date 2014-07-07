@@ -8,7 +8,7 @@ function managePanelPainting (type) {
 		}
 
 	
-		var button = createButton('submit-manage-outlay', '', 'Submit');
+		var button = createButton('submit-manage-outlay', 'btn-submit', 'Submit');
 		document.getElementById('manage-outlay').appendChild(button);
 
 	} else if ( type === 'incomes' ) {
@@ -19,7 +19,7 @@ function managePanelPainting (type) {
 			createInputsField('manage-income-placeholder', key, dataDayly[todayKeyWord].incomes[key].cat, dataDayly[todayKeyWord].incomes[key].cost, 'Income');
 		}
 
-		var button = createButton('submit-manage-income', '', 'Submit');
+		var button = createButton('submit-manage-income', 'btn-submit', 'Submit');
 		document.getElementById('manage-income').appendChild(button);
 
 	}
@@ -48,8 +48,8 @@ function managePanelPainting (type) {
 		var placeholder = document.getElementById(placeholderId);
 
 		fieldset = createFieldset(key, legendTitle);
-		categoryInput = createInputLabel('Category: ', categoryValue);
-		costInput = createInputLabel('Cost: ', costValue);
+		categoryInput = createInputLabel('Category: ', categoryValue, 'sel-cat');
+		costInput = createInputLabel('Cost: ', costValue, 'inp-cos');
 		deleteButton = createButton(key, 'manage-delete-button', 'delete');
 
 		placeholder.appendChild(fieldset).appendChild(categoryInput);
@@ -71,12 +71,13 @@ function managePanelPainting (type) {
 		return fieldset
 	}
 
-	function createInputLabel (labelValue, inputValue) {
+	function createInputLabel (labelValue, inputValue, inputClass) {
 		var label = createLable(labelValue),
 		input = document.createElement('input');
 		
 		input.type = 'text';
 		input.value = inputValue;
+		input.className = inputClass;
 
 		label.appendChild(input);
 
