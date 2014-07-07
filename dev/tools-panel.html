@@ -1,0 +1,36 @@
+
+<section class="box tabs" id="tools-panel">
+	<a href="#" id="close-tools-panel">CLOSE</a>
+	
+	<ul class="tab-links">
+		<li class="active"><a href="#categories-tools-panel">Categories</a></li>
+		<li><a href="#incomes-tools-panel">Incomes</a></li>
+	</ul>
+	
+	<div class="tab-content">
+		<div class="box categories-tools-panel tab active" id="categories-tools-panel">
+			<div class="categories-lists-container">
+				
+				<div class="categories-list">
+					<h3>Outlays: </h3>
+					<ul id="outlays-list-tools-panel"></ul>
+				</div>
+				
+				<div class="categories-list">
+					<h3>Incomes: </h3>
+					<ul id="incomes-list-tools-panel"></ul>
+				</div>
+			</div>
+			
+			<div class="add-category-container">
+				<h2>Add category</h2>
+				<label>New category name: 
+					<input type="text" id="newCategoryName">
+				</label>
+				<input type="button" value="Add" onclick="addCategoryIntoLS()">
+			</div>
+		</div>
+
+		<div class="box incomes-tools-panel tab" id="incomes-tools-panel"></div>
+	</div>
+</section>
