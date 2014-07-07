@@ -1337,6 +1337,12 @@ console.log('dataTotalStat  -  ' + dataTotalStat);
 // dataTotalStat.setTotalTimeStat('bla', 1111, 'month', 9, 2019, 'incomes');
 // dataTotalStat.setTotalTimeStat('vla1', 555555, 'year', '', 2019, 'outlays');
 // dataTotalStat.remTotalTimeStat('habar11', 1111, 'month', 7, 2014, 'incomes');
+;function parseCurrentDate() {
+	var currentDate = getDate();
+	parsedDateValue = "day" + currentDate.day + "_" + currentDate.month + "_" + currentDate.year;
+	console.log(parsedDateValue); 
+};
+
 ;function paintIncOut(dayData){
 	if (dayData < todayKeyWord) {
 		writeErrorMessage(dayData);
@@ -1515,7 +1521,23 @@ function appearInfoBlock() {
 	} else {
 		leftNavBar.style.display = "none";
 	}
-};function managePanelPainting (type) {
+};document.getElementsByClassName("manage-button")[0].onclick = function() {
+	var shadowLayer = document.getElementById("shadow-layer"),
+		manageBlock = document.getElementById("manage-block");
+	shadowLayer.style.display = "block";
+	manageBlock.style.display = "block";
+	window.onmousewheel = document.onmousewheel = window.onscroll = document.onscroll = function (e) {return false;};
+}
+
+document.getElementById("close-manage-block").onclick = function() {
+	var shadowLayer = document.getElementById("shadow-layer"),
+		manageBlock = document.getElementById("manage-block");
+	shadowLayer.style.display = "none";
+	manageBlock.style.display = "none";
+	window.onmousewheel = document.onmousewheel = window.onscroll = document.onscroll = function (e) {return true;};
+}
+
+;function managePanelPainting (type) {
 	if (type === 'outlays') {
 
 		createPlaceholder ('manage-outlay');
