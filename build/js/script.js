@@ -162,6 +162,7 @@ $('#new-outlay .btn-submit').click(function() {
 		$('#new-outlay input.sel-cat').val('');
 		$('#new-outlay .inp-cos').val('');
 	}
+	changeCurrentBalance('outlays', cost)
 });
 
 
@@ -179,6 +180,7 @@ $('#new-income .btn-submit').click(function() {
 		$('#new-income .inp-cos').val('');
 		appearInfoBlock();
 	}
+	changeCurrentBalance('incomes', cost)
 });
 
 
@@ -366,8 +368,13 @@ $('#manage-balance .btn-add').click(function() {
 	var cost = $('#manage-balance .inp-cos').val();
 	if (cost && isNonNegative(cost)) {
 		dataTotalStat.setTotalCurrentStat('balance', cost );
-		$('#curBalance').html('Your current balance:' +cost);
-			appearInfoBlock();
+		var balance=dataTotalStat.totalStatistic['currentBalance'];
+		console.log(balance + '     ' + typeof balance);
+		var balanceBlock = document.createElement('span');
+		balanceBlock.setAttribute('id', 'currBalanceCont');
+		balanceBlock.innerHTML =balance;
+		if(balance!==null)
+			$('#curBalance').html('<span class="currBalanceTitle">Your current balance: <span>').append(balanceBlock);
 		$('#manage-balance .inp-cos').val('');
 	} else{
 
@@ -382,9 +389,35 @@ $('#manage-balance .btn-add').click(function() {
 $(function(){
 
 	var balance=dataTotalStat.totalStatistic['currentBalance'];
+	console.log(balance + '     ' + typeof balance);
+	var balanceBlock = document.createElement('span');
+	balanceBlock.setAttribute('id', 'currBalanceCont');
+	balanceBlock.innerHTML =balance;
 	if(balance!==null)
-		$('#curBalance').html('Your current balance:' +balance);
-});$('#manage-outlay-painting').click(function() {
+		$('#curBalance').html('<span class="currBalanceTitle">Your current balance: <span>').append(balanceBlock);
+});function changeCurrentBalance(type, cost) {
+	var curBalance = LS.get('totalStatistic');
+	var newBalance;
+	if (type == 'incomes') {
+		newBalance = parseFloat(curBalance.currentBalance) + parseFloat(cost);
+		// newBalance = 1000;
+		setNewBalance(curBalance, newBalance)
+	} else if (type == 'outlays') {
+		newBalance = parseFloat(curBalance.currentBalance) - parseFloat(cost);
+		setNewBalance(curBalance, newBalance)
+		// newBalance = 1000;
+	}
+}
+
+function setNewBalance(obj, val) {
+	var newVal = val.toFixed(2);
+	obj.currentBalance = newVal;
+	LS.set('totalStatistic', obj);
+	dataTotalStat.setTotalCurrentStat('balance', newVal);
+	var enterPVal = document.getElementById('currBalanceCont');
+	console.log(newVal);
+	enterPVal.innerHTML = newVal;
+};$('#manage-outlay-painting').click(function() {
 	
 	
 	managePanelPainting('outlays');

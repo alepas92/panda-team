@@ -12,6 +12,7 @@ $('#new-outlay .btn-submit').click(function() {
 		$('#new-outlay input.sel-cat').val('');
 		$('#new-outlay .inp-cos').val('');
 	}
+	changeCurrentBalance('outlays', cost)
 });
 
 
@@ -29,6 +30,7 @@ $('#new-income .btn-submit').click(function() {
 		$('#new-income .inp-cos').val('');
 		appearInfoBlock();
 	}
+	changeCurrentBalance('incomes', cost)
 });
 
 

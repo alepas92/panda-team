@@ -171,7 +171,9 @@ form {
   width: 100%; }
 
 #manage-outlay {
-  width: 100%; }
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%; }
 
 #income-section {
   width: 100%; }
@@ -180,7 +182,9 @@ form {
   width: 100%; }
 
 #manage-income {
-  width: 100%; }
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%; }
 
 #manage-forecast {
   width: 100%;
@@ -359,6 +363,20 @@ form {
     font-weight: bold;
     font-size: 16px; }
 
+#curBalance {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 20px;
+  margin-bottom: 10px; }
+  #curBalance .currBalanceTitle {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333; }
+  #curBalance #currBalanceCont {
+    font-weight: bold;
+    font-size: 18px;
+    color: #000; }
+
 /* Laptop/Tablet (1024px) */
 @media only screen and (min-width: 481px) and (max-width: 1024px) and (orientation: landscape) {
   #logo {
@@ -388,7 +406,9 @@ form {
     width: 100%; }
 
   #manage-outlay {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #income-section {
     width: 100%; }
@@ -402,7 +422,9 @@ form {
     width: 100%; }
 
   #manage-income {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #manage-forecast {
     width: 100%; }
@@ -444,7 +466,9 @@ form {
     width: 100%; }
 
   #manage-outlay {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #income-section {
     width: 100%; }
@@ -458,7 +482,9 @@ form {
     width: 100%; }
 
   #manage-income {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #manage-forecast {
     width: 100%; }
@@ -506,7 +532,9 @@ form {
     width: 100%; }
 
   #manage-outlay {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #income-section {
     width: 100%; }
@@ -520,7 +548,9 @@ form {
     width: 100%; }
 
   #manage-income {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #manage-forecast {
     width: 100%; }
