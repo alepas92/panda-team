@@ -21,9 +21,9 @@ function Calendar2(id, year, month) {
             k = '0' + i;
         };
         if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth()) {
-            calendar += '<td class="today"><span data-day="' + 'day' + k + '_' + numbMonth + '_' + D.getFullYear() +'">' + i;
+            calendar += '<td class="today"><span class="stat-active" data-day="' + 'day' + k + '_' + numbMonth + '_' + D.getFullYear() +'">' + i;
         }else{
-            calendar += '<td><span data-day="' + 'day' + k + '_' + numbMonth + '_' + D.getFullYear() +'">' + i;
+            calendar += '<td><span class="stat-active" data-day="' + 'day' + k + '_' + numbMonth + '_' + D.getFullYear() +'">' + i;
         }
         if (new Date(D.getFullYear(),D.getMonth(),i).getDay() == 0) {
             calendar += '<tr>';
