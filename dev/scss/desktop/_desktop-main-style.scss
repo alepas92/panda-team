@@ -206,11 +206,11 @@ form {
 
 #new-outlay { }
 #regular-outlay { width: 100%; }
-#manage-outlay { width: 100%; }
+#manage-outlay { width: 80%; margin-left: 10%; margin-right: 10%; }
 #income-section { width: 100%; }
 #new-income { }
 #regular-income { width: 100%; }
-#manage-income { width: 100%; }
+#manage-income { width: 80%; margin-left: 10%; margin-right: 10%; }
 #manage-forecast { 
 	width: 100%;
 	text-align: center; 
@@ -478,5 +478,21 @@ form {
 		color: #0d3d3f;
 		margin-right: 5px;
 		font-weight: 700;
+	}
+}
+#curBalance {
+	width: 80%;
+	margin: 20px 10% 15px;
+
+	.currBalanceTitle {
+		font-size: 16px;
+		font-weight: bold;
+		color: #222;
+	}
+
+	#currBalanceCont {
+		font-size: 18px;
+		color: #000;
+		font-weight: bold;
 	}
 }

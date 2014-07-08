@@ -171,7 +171,9 @@ form {
   width: 100%; }
 
 #manage-outlay {
-  width: 100%; }
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%; }
 
 #income-section {
   width: 100%; }
@@ -180,7 +182,9 @@ form {
   width: 100%; }
 
 #manage-income {
-  width: 100%; }
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%; }
 
 #manage-forecast {
   width: 100%;
@@ -399,6 +403,18 @@ form {
     margin-right: 5px;
     font-weight: 700; }
 
+#curBalance {
+  width: 80%;
+  margin: 20px 10% 15px; }
+  #curBalance .currBalanceTitle {
+    font-size: 16px;
+    font-weight: bold;
+    color: #222; }
+  #curBalance #currBalanceCont {
+    font-size: 18px;
+    color: #000;
+    font-weight: bold; }
+
 /* Laptop/Tablet (1024px) */
 @media only screen and (min-width: 481px) and (max-width: 1024px) and (orientation: landscape) {
   #logo {
@@ -428,7 +444,9 @@ form {
     width: 100%; }
 
   #manage-outlay {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #income-section {
     width: 100%; }
@@ -442,7 +460,9 @@ form {
     width: 100%; }
 
   #manage-income {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #manage-forecast {
     width: 100%; }
@@ -484,7 +504,9 @@ form {
     width: 100%; }
 
   #manage-outlay {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #income-section {
     width: 100%; }
@@ -498,7 +520,9 @@ form {
     width: 100%; }
 
   #manage-income {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #manage-forecast {
     width: 100%; }
@@ -546,7 +570,9 @@ form {
     width: 100%; }
 
   #manage-outlay {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #income-section {
     width: 100%; }
@@ -560,7 +586,9 @@ form {
     width: 100%; }
 
   #manage-income {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #manage-forecast {
     width: 100%; }

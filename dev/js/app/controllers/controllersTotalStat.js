@@ -3,8 +3,13 @@ $('#manage-balance .btn-add').click(function() {
 	var cost = $('#manage-balance .inp-cos').val();
 	if (cost && isNonNegative(cost)) {
 		dataTotalStat.setTotalCurrentStat('balance', cost );
-		$('#curBalance').html('Your current balance:' +cost);
-			appearInfoBlock();
+		var balance=dataTotalStat.totalStatistic['currentBalance'];
+		console.log(balance + '     ' + typeof balance);
+		var balanceBlock = document.createElement('span');
+		balanceBlock.setAttribute('id', 'currBalanceCont');
+		balanceBlock.innerHTML =balance;
+		if(balance!==null)
+			$('#curBalance').html('<span class="currBalanceTitle">Your current balance: <span>').append(balanceBlock);
 		$('#manage-balance .inp-cos').val('');
 	} else{
 
@@ -19,6 +24,10 @@ $('#manage-balance .btn-add').click(function() {
 $(function(){
 
 	var balance=dataTotalStat.totalStatistic['currentBalance'];
+	console.log(balance + '     ' + typeof balance);
+	var balanceBlock = document.createElement('span');
+	balanceBlock.setAttribute('id', 'currBalanceCont');
+	balanceBlock.innerHTML =balance;
 	if(balance!==null)
-		$('#curBalance').html('Your current balance:' +balance);
+		$('#curBalance').html('<span class="currBalanceTitle">Your current balance: <span>').append(balanceBlock);
 })
