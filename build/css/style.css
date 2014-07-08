@@ -290,6 +290,46 @@ form {
       margin-top: 10px;
       color: white; }
 
+/* Statistics design */
+.statistics {
+  width: 100%;
+  display: block;
+  margin-top: 90px; }
+  .statistics div {
+    width: 32%;
+    margin-left: 1%;
+    float: left;
+    background: #f3d796;
+    margin-bottom: 30px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px; }
+  .statistics div.statistic-by-categories {
+    width: 99%; }
+  .statistics span.statistics-mini-headers {
+    width: 100%;
+    height: 25px;
+    background: #eac263;
+    color: #221831;
+    text-align: center; }
+  .statistics span.rounded {
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px; }
+  .statistics span.statistics-subheaders {
+    font-weight: 700;
+    color: #221831; }
+  .statistics span {
+    display: block; }
+  .statistics span.calculated-data {
+    float: right;
+    color: #0d3d3f;
+    margin-right: 5px;
+    font-weight: 700; }
+
 /* Laptop/Tablet (1024px) */
 @media only screen and (min-width: 481px) and (max-width: 1024px) and (orientation: landscape) {
   #logo {
