@@ -496,3 +496,18 @@ form {
 		font-weight: bold;
 	}
 }
+
+.btn-delete {
+	border: 0px;
+	border-radius: 5px;
+	background: #e79367;
+	color: white;
+}
+
+.btn-delete:hover {
+	background: #ea9d73;
+}
+
+.btn-delete:active {
+	opacity: .6;
+}

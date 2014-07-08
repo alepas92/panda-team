@@ -54,6 +54,6 @@ DataCategories.prototype.removeCategory = function(category, type){
 
 var dataCategories = new DataCategories();
 dataCategories.getCategories();
-dataCategories.setCategory('car4', 'outlays');
+//dataCategories.setCategory('car4', 'outlays');
 //dataCategories.removeCategory('transport', 'outlays');
 console.log('dataCategories  -  ' + dataCategories)

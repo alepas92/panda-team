@@ -593,7 +593,7 @@ DataCategories.prototype.removeCategory = function(category, type){
 
 var dataCategories = new DataCategories();
 dataCategories.getCategories();
-dataCategories.setCategory('car4', 'outlays');
+//dataCategories.setCategory('car4', 'outlays');
 //dataCategories.removeCategory('transport', 'outlays');
 console.log('dataCategories  -  ' + dataCategories);var date = getDate();
 var todayKeyWord = 'day' + date.day + '_' + date.month + '_' + date.year;
@@ -2143,9 +2143,13 @@ function paintToolsPanelCategories() {
 	catTools = document.getElementById('outlays-list-tools-panel-ul');
 	for (var i = 0; i < dataCategories.categories.outlays.length; i++) {
 		var li = document.createElement('li');
-			li.textContent = dataCategories.categories.outlays[i];
 		
-		
+		var span = document.createElement('span');
+			span.textContent = dataCategories.categories.outlays[i];
+			span.className = 'text-tools-panel-list';
+
+		li.appendChild(span);
+
 		button = createDeleteCategoryButton(dataCategories.categories.outlays[i], 'outlays');
 		li.appendChild(button);
 
@@ -2158,8 +2162,12 @@ function paintToolsPanelCategories() {
 	catTools = document.getElementById('incomes-list-tools-panel-ul');
 	for (var i = 0; i < dataCategories.categories.incomes.length; i++) {
 		var li = document.createElement('li');
-			li.textContent = dataCategories.categories.incomes[i];
 		
+		var span = document.createElement('span');
+			span.textContent = dataCategories.categories.incomes[i];
+			span.className = 'text-tools-panel-list';
+
+		li.appendChild(span);
 
 		button = createDeleteCategoryButton(dataCategories.categories.incomes[i], 'incomes');
 		li.appendChild(button);
