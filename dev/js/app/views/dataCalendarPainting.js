@@ -1,6 +1,6 @@
 function paintIncOut(dayData){
 	if (dayData < todayKeyWord) {
-		writeErrorMessage(dayData);
+		showCalendarData(dayData);
 	} else if (dayData == todayKeyWord) {
 		showToday()
 	} else if (dayData > todayKeyWord) {
@@ -8,7 +8,7 @@ function paintIncOut(dayData){
 	}
 }
 
-function writeErrorMessage(dayData){
+function showCalendarData(dayData){
 	document.getElementById('last-day').innerHTML = '';
 	$('#last-day-butt').click();
 	var listOut =  document.getElementById('outlay-section').getElementsByTagName('ul')[0].getElementsByTagName('li');
