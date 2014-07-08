@@ -1,6 +1,6 @@
 function paintIncOut(dayData){
 	if (dayData < todayKeyWord) {
-		writeErrorMessage(dayData);
+		showCalendarData(dayData);
 	} else if (dayData == todayKeyWord) {
 		showToday()
 	} else if (dayData > todayKeyWord) {
@@ -8,7 +8,7 @@ function paintIncOut(dayData){
 	}
 }
 
-function writeErrorMessage(dayData){
+function showCalendarData(dayData){
 	document.getElementById('last-day').innerHTML = '';
 	$('#last-day-butt').click();
 	var listOut =  document.getElementById('outlay-section').getElementsByTagName('ul')[0].getElementsByTagName('li');
@@ -20,9 +20,7 @@ function writeErrorMessage(dayData){
 	document.getElementById('last-day').style.display = 'block';
 	var newDayObj = LS.get(dayData).outlays;
 	if (newDayObj) {
-		for (key in newDayObj) {
-			createInputsFieldF ('last-day', key, newDayObj[key].cat, newDayObj[key].cost, 'outlays');
-		}
+		paintTable('outlays', 'last-day', newDayObj)
 	} else {
 		console.log('some new kaka')
 		var messErr = document.createElement('div');
@@ -42,9 +40,7 @@ function writeErrorMessage(dayData){
 	document.getElementById('last-day-incForm').style.display = 'block';
 	var newDayObjInc = LS.get(dayData).incomes;
 	if (newDayObjInc) {
-		for (key in newDayObjInc) {
-			createInputsFieldF ('last-day-incForm', key, newDayObjInc[key].cat, newDayObjInc[key].cost, 'incomes');
-		}
+		paintTable('incomes', 'last-day-incForm', newDayObjInc)
 	} else {
 		var messErrInc = document.createElement('div');
 		messErrInc.className = 'ErrorMessage';
@@ -53,52 +49,37 @@ function writeErrorMessage(dayData){
 	}
 }
 
-	function createInputsFieldF (placeholderId, key, categoryValue, costValue, legendTitle) {
-		var fieldset, categoryInput, costInput;
-		var placeholder = document.getElementById(placeholderId);
-
-		fieldset = createFieldset(key, legendTitle);
-		categoryInput = createInputLabelf('Category: ', categoryValue);
-		costInput = createInputLabelf('Cost: ', costValue);
-
-		placeholder.appendChild(fieldset).appendChild(categoryInput);
-		placeholder.appendChild(fieldset).appendChild(costInput);
-
+	function paintTable(type, id, obj) {
+		var table = document.createElement('table');
+		table.className = 'beforeDaiInfo'
+		var caption = document.createElement('caption');
+		caption.innerHTML = type + ' for the previous days (view only)';
+		table.appendChild(caption);
+		var thead = document.createElement('thead');
+		var trThead = document.createElement('tr');
+		var thCat = document.createElement('th');
+		thCat.innerHTML = 'Category';
+		var thCost = document.createElement('th');
+		thCost.innerHTML = 'Cost';
+		trThead.appendChild(thCat);
+		trThead.appendChild(thCost);
+		thead.appendChild(trThead);
+		var tbody = document.createElement('tbody');
+		for (key in obj) {
+			// createInputsFieldF ('last-day-incForm', key, newDayObjInc[key].cat, newDayObjInc[key].cost, 'incomes');
+			var trTbody = document.createElement('tr');
+			var tdCat = document.createElement('td');
+			tdCat.innerHTML = obj[key].cat;
+			var tdCost = document.createElement('td');
+			tdCost.innerHTML = obj[key].cost + ' uah'
+			trTbody.appendChild(tdCat);
+			trTbody.appendChild(tdCost);
+			tbody.appendChild(trTbody);
+		}
+		table.appendChild(thead);
+		table.appendChild(tbody);
+		document.getElementById(id).appendChild(table);
 	}
-
-	function createFieldset (id, legendValue) {
-		var fieldset = document.createElement('fieldset');
-		fieldset.className = 'manage-panel-fieldset';
-		fieldset.id = id;
-
-		var legend = document.createElement('legend');
-		legend.innerHTML = legendValue;
-
-		fieldset.appendChild(legend); 
-		
-		return fieldset
-	}
-
-	function createInputLabelf (labelValue, inputValue) {
-		var label = createLable(labelValue),
-		input = document.createElement('input');
-		
-		input.type = 'text';
-		input.value = inputValue;
-		input.setAttribute('disabled', 'disabled');
-		input.className = 'inp-cat';
-		label.appendChild(input);
-
-		return label;
-	}
-
-	function createLable (text) {
-		var label = document.createElement('label');
-		label.textContent = text;
-
-		return label
-	}
-
 function showToday() {
 	var listOut =  document.getElementById('outlay-section').getElementsByTagName('ul')[0].getElementsByTagName('li');
 	for (var i = 0; i < listOut.length; i++) {

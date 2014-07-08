@@ -1,15 +1,15 @@
 /* Phone Landscape (480px) */
 @media only screen and (min-width: 321px) and (max-width: 480px) and (orientation: landscape) {
 	#logo { width: 100%; }
-	#nav-bar { width: 100%; }
-	#container { width: 100%; }
+	#nav-bar { width: 80%; margin: 0 10%;}
+	#container { width: 80%; margin-left: 10%; margin-right: 10%;}
 	#calendar-section { width: 100%; }
 	#outlay-section { width: 100%; }
-	#new-outlay { width: 100%; }
+	#new-outlay { width: 80%; margin-left: 10%; margin-right: 10%;}
 	#regular-outlay { width: 100%; }
 	#manage-outlay { width: 100%; }
 	#income-section { width: 100%; }
-	#new-income { width: 100%; }
+	#new-income {  width: 80%; margin-left: 10%; margin-right: 10%; }
 	#regular-income { width: 100%; }
 	#manage-income { width: 100%; }
 	#manage-forecast { width: 100%; }

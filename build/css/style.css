@@ -37,10 +37,12 @@ body {
   border: none; }
 
 .adapt-nav ul {
-  margin: 33px 0px; }
+  margin: 33px 0px;
+  padding: 0;
+  text-align: center; }
 .adapt-nav li {
   list-style: none;
-  float: left; }
+  display: inline-block; }
 .adapt-nav li + li {
   margin-left: 30px; }
 
@@ -125,7 +127,8 @@ body {
   margin-top: 2%; }
 
 .btn-add, .btn-submit {
-  width: 10%;
+  width: auto;
+  padding: 0 15px;
   float: right; }
 
 #calendar-section {
@@ -335,16 +338,40 @@ form {
   width: 250px;
   text-align: left; }
 
+.beforeDaiInfo {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px #F3E2A9 solid;
+  background: white;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px; }
+  .beforeDaiInfo caption {
+    font-size: 20px;
+    font-weight: bold; }
+  .beforeDaiInfo td, .beforeDaiInfo th {
+    border: 2px #F3E2A9 solid;
+    width: 50%;
+    padding: 5px 10px;
+    font-size: 14px; }
+  .beforeDaiInfo th {
+    font-weight: bold;
+    font-size: 16px; }
+
 /* Laptop/Tablet (1024px) */
 @media only screen and (min-width: 481px) and (max-width: 1024px) and (orientation: landscape) {
   #logo {
     width: 100%; }
 
   #nav-bar {
-    width: 100%; }
+    width: 80%;
+    margin: 0 10%; }
 
   #container {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #calendar-section {
     width: 100%; }
@@ -353,7 +380,9 @@ form {
     width: 100%; }
 
   #new-outlay {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #regular-outlay {
     width: 100%; }
@@ -365,7 +394,9 @@ form {
     width: 100%; }
 
   #new-income {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #regular-income {
     width: 100%; }
@@ -390,10 +421,13 @@ form {
     width: 100%; }
 
   #nav-bar {
-    width: 100%; }
+    width: 90%;
+    margin: 0 5%; }
 
   #container {
-    width: 100%; }
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%; }
 
   #calendar-section {
     width: 100%; }
@@ -402,7 +436,9 @@ form {
     width: 100%; }
 
   #new-outlay {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #regular-outlay {
     width: 100%; }
@@ -414,7 +450,9 @@ form {
     width: 100%; }
 
   #new-income {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #regular-income {
     width: 100%; }
@@ -432,17 +470,26 @@ form {
     width: 100%; }
 
   #footer {
-    width: 100%; } }
+    width: 100%; }
+
+  .adapt-nav li {
+    display: block; }
+
+  .adapt-nav li + li {
+    margin-left: 0; } }
 /* Phone Landscape (480px) */
 @media only screen and (min-width: 321px) and (max-width: 480px) and (orientation: landscape) {
   #logo {
     width: 100%; }
 
   #nav-bar {
-    width: 100%; }
+    width: 80%;
+    margin: 0 10%; }
 
   #container {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #calendar-section {
     width: 100%; }
@@ -451,7 +498,9 @@ form {
     width: 100%; }
 
   #new-outlay {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #regular-outlay {
     width: 100%; }
@@ -463,7 +512,9 @@ form {
     width: 100%; }
 
   #new-income {
-    width: 100%; }
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%; }
 
   #regular-income {
     width: 100%; }
