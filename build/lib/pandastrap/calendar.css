@@ -32,7 +32,8 @@
   border: 1px solid #fff;
 }
 #calendar2 tbody td span:hover{
-  background-color: #ddd;
+  background-color: #8fa670;
+  color: white;
 }
 
 #calendar2 thead tr:nth-child(1) td:nth-child(2) {
@@ -74,7 +75,7 @@
 }
 
 #calendar2 tbody td .myCssClass {
-  background-color: #61da08;
+  background-color: #8fa670;
   border: 1px solid #718e5c;
   color: #000;
 }
