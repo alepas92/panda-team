@@ -607,7 +607,7 @@ form {
     margin: 0; }
 
   #logo {
-    width: 320px; }
+    width: 100%; }
 
   #container {
     margin: 0;
@@ -617,7 +617,6 @@ form {
     width: 100%; }
 
   #outlay-section {
-    margin: 0;
     width: 100%; }
 
   #regular-outlay {
@@ -648,7 +647,18 @@ form {
     visibility: hidden; }
 
   #nav-bar {
-    display: none; }
+    width: 100%;
+    font-size: 1em; }
+
+  	/*#nav-bar li a{
+  		width: 10%;
+  	}
+  	.adapt-nav li + li{
+  		margin-left:  2%;
+  	}
+  */
+  .adapt-nav ul {
+    margin: 0; }
 
   .btn-add {
     margin: 1% 10% 10% 0;
@@ -659,16 +669,21 @@ form {
     width: 80%; }
 
   .triangle-block {
-    border: 4px; }
+    border-top-width: 13px;
+    border-bottom-width: 13px;
+    border-left-width: 26px; }
 
   .rectangle-block {
-    height: auto;
-    width: 50%; }
+    height: 22px;
+    width: 37%;
+    padding: 4px 0 0 0; }
 
   .rectangle-block h3 {
-    font-size: 1.5em;
     margin: 0;
     line-height: 1; }
+
+  html {
+    overflow-x: hidden; }
 
   #curBalance {
     margin: 80px 0 0 0;
@@ -677,14 +692,23 @@ form {
 
   .manage-button {
     width: 30px;
-    height: 30px; }
+    height: 30px;
+    top: 140px; }
 
   .info-block {
     top: 0px;
     height: 40px; }
 
   .info-block header {
-    display: none; } }
+    display: none; }
+
+  .statistics div {
+    width: 100%; }
+
+  #manage-block {
+    left: 1%;
+    top: 5%;
+    width: 98%; } }
 body {
   padding: 0px;
   margin: 0px; }
