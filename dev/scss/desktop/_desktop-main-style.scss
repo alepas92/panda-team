@@ -44,12 +44,14 @@ body {
 
 .adapt-nav {
 	ul {
-		margin: 33px 0px;		
+		margin: 33px 0px;	
+		padding: 0;
+		text-align: center;	
 	}
 
 	li {
 		list-style: none;
-		float: left;
+		display: inline-block;
 	}
 
 	li+li {
@@ -153,7 +155,8 @@ body {
 }
 
 .btn-add, .btn-submit {
-	width: 10%;
+	width: auto;
+	padding: 0 15px;
 	float: right;
 }
 
@@ -400,3 +403,31 @@ form {
 		width: 250px;
 		text-align: left;
 	}
+
+.beforeDaiInfo {
+	width: 100%;
+	border-collapse: collapse;
+	border: 2px #F3E2A9 solid;
+	background: white;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+
+	caption {
+		font-size: 20px;
+		font-weight: bold;
+	}
+
+	td, th {		
+		border: 2px #F3E2A9 solid;
+		width: 50%;
+		padding: 5px 10px;
+		font-size: 14px;
+	}
+	
+	th {
+		font-weight: bold;
+		font-size: 16px;
+	}
+}
