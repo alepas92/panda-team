@@ -5,8 +5,7 @@
 	width: 100%;
 	height: 35px;
 	text-align: center;
-	font-family: 'Times';
-	font-style: italic;
+	font-family: 'Comic Sans MS';
 	font-size: 1em;
 	border: 2px #F3E2A9 solid;
 	-webkit-border-radius: 10px;
@@ -24,8 +23,7 @@ input::-webkit-input-placeholder { color: #6E6E6E; }
 	width: 100%;
 	height: 35px;
 	text-align: center;
-	font-family: 'Times';
-	font-style: italic;
+	font-family: 'Comic Sans MS';
 	font-size: 1em;
 	border: 2px #F3E2A9 solid;
 	background: white;
@@ -43,8 +41,7 @@ input::-webkit-input-placeholder { color: #6E6E6E; }
 	width: 100%;
 	height: 35px;
 	text-align: center;
-	font-family: 'Times';
-	font-style: italic;
+	font-family: 'Comic Sans MS';
 	font-size: 1em;
 	border: 2px #F3E2A9 solid;
 	-webkit-border-radius: 10px;
@@ -65,8 +62,7 @@ input::-webkit-input-placeholder { color: #6E6E6E; }
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	font-family: 'Times';
-	font-style: italic;
+	font-family: 'Comic Sans MS';
 }
 
 .btn-add {
@@ -78,8 +74,7 @@ input::-webkit-input-placeholder { color: #6E6E6E; }
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	font-family: 'Times';
-	font-style: italic;
+	font-family: 'Comic Sans MS';
 	font-size: 1em;
 }
 
@@ -96,8 +91,7 @@ input::-webkit-input-placeholder { color: #6E6E6E; }
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	font-family: 'Times';
-	font-style: italic;
+	font-family: 'Comic Sans MS';
 	font-size: 1em;
 }
 
@@ -160,7 +154,7 @@ input::-webkit-input-placeholder { color: #6E6E6E; }
 	border-bottom: 3px #2A0A29 solid;
 	width: 20%;
 	height: 30px;
-	font-family: 'Times';
+	font-family: 'Comic Sans MS';
 	font-style: italic;
 	text-align: center;
 	padding-top: 9px;

@@ -9,6 +9,10 @@ function callendarDayClick() {
     k.firstChild.classList.add('myCssClass');
     paintIncOut(k.firstChild.getAttribute('data-day'));
     renderingData(k.firstChild.getAttribute('data-day'));
+    monthlyOutlaysStatistics(k.firstChild.getAttribute('data-day'));
+    monthlyOutlaysStatistics(k.firstChild.getAttribute('data-day'));
+    monthlyOutlaysStatisticsByCategories(k.firstChild.getAttribute('data-day'));
+    monthlyIncomesStatisticsByCategories(k.firstChild.getAttribute('data-day'));
 }
 
 function callendarMonthClick() {
@@ -1496,8 +1500,8 @@ function renderingData(currentDate) {
 	weeklyIncomesStatistics();
 	weeklyOutlaysStatisticsByCategories();
 	weeklyIncomesStatisticsByCategories();
-	monthlyOutlaysStatistics();
-	monthlyIncomesStatistics();
+	monthlyOutlaysStatistics(currentDate);
+	monthlyIncomesStatistics(currentDate);
 	monthlyOutlaysStatisticsByCategories(currentDate);
 	monthlyIncomesStatisticsByCategories(currentDate);
 
@@ -1719,12 +1723,12 @@ function weeklyIncomesStatisticsByCategories() {
 
 //Статистика від початку місяця і до сьогодні
 function monthlyOutlaysStatistics(currentDate) {
-	var currentDate = getDate(),
-		day = parseInt(currentDate.day),
+	var currentDate = currentDate,
+		day = 31, splitCurrentDate = currentDate.split("_"),
 		dates = [], datesValue, monthlyTotalOutlays = 0;
 		document.getElementById("monthly-total-outlays").innerHTML = "";
 		for (var counter = 0; counter < day; counter++) {
-			datesValue = "day0" + (counter+1) + "_" + currentDate.month + "_" + currentDate.year;
+			datesValue = "day0" + (counter+1) + "_" + splitCurrentDate[1] + "_" + splitCurrentDate[2];
 			dates.push(datesValue);
 		}
 		for (var counter = 0; counter < dates.length; counter++) {
@@ -1736,12 +1740,12 @@ function monthlyOutlaysStatistics(currentDate) {
 }
 
 function monthlyIncomesStatistics(currentDate) {
-	var currentDate = getDate(),
-		day = parseInt(currentDate.day),
+	var currentDate = currentDate,
+		day = 31, splitCurrentDate = currentDate.split("_"),
 		dates = [], datesValue, monthlyTotalIncomes = 0;
 		document.getElementById("monthly-total-incomes").innerHTML = "";
 		for (var counter = 0; counter < day; counter++) {
-			datesValue = "day0" + (counter+1) + "_" + currentDate.month + "_" + currentDate.year;
+			datesValue = "day0" + (counter+1) + "_" + splitCurrentDate[1] + "_" + splitCurrentDate[2];
 			dates.push(datesValue);
 		}
 		for (var counter = 0; counter < dates.length; counter++) {
@@ -1754,13 +1758,13 @@ function monthlyIncomesStatistics(currentDate) {
 
 //Статистика від початку місяця і до сьогодні по категоріям
 function monthlyOutlaysStatisticsByCategories(currentDate) {
-	var currentDate = getDate(),
-		day = parseInt(currentDate.day),
+	var currentDate = currentDate,
+		day = 31, splitCurrentDate = currentDate.split("_"),
 		dates = [], datesValue, monthlyTotalOutlayByCategory = 0, 
 		allDailyCategoryStatistics = [], className = "calculated-data";
 		document.getElementById("monthly-statistic-by-categories-outlays").innerHTML = "";
 	for (var counter = 0; counter < day; counter++) {
-		datesValue = "day0" + (counter+1) + "_" + currentDate.month + "_" + currentDate.year;
+		datesValue = "day0" + (counter+1) + "_" + splitCurrentDate[1] + "_" + splitCurrentDate[2];
 		dates.push(datesValue);
 	}
 	for (var counter = 0; counter < dates.length; counter++) {
@@ -1776,13 +1780,13 @@ function monthlyOutlaysStatisticsByCategories(currentDate) {
 }
 
 function monthlyIncomesStatisticsByCategories(currentDate) {
-	var currentDate = getDate(),
-		day = parseInt(currentDate.day),
+	var currentDate = currentDate,
+		day = 31, splitCurrentDate = currentDate.split("_"),
 		dates = [], datesValue, monthlyTotalIncomeByCategory = 0, 
 		allDailyCategoryStatistics = [], className = "calculated-data";
 		document.getElementById("monthly-statistic-by-categories-incomes").innerHTML = "";
 	for (var counter = 0; counter < day; counter++) {
-		datesValue = "day0" + (counter+1) + "_" + currentDate.month + "_" + currentDate.year;
+		datesValue = "day0" + (counter+1) + "_" + splitCurrentDate[1] + "_" + splitCurrentDate[2];
 		dates.push(datesValue);
 	}
 	for (var counter = 0; counter < dates.length; counter++) {

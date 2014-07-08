@@ -1,10 +1,12 @@
 /* Desktop */
 @import url(http://fonts.googleapis.com/css?family=Playball);
 @import url(http://fonts.googleapis.com/css?family=Bilbo+Swash+Caps);
+@import url(http://fonts.googleapis.com/css?family=Tangerine:700);
 
 body {
 	background-image: url(../img/main/background.jpg);
 	background-attachment: fixed;
+	font-family: 'Comic Sans MS';
 }
 
 .box { float: left; }
@@ -438,6 +440,7 @@ form {
 	width: 100%;
 	display: block;
 	margin-top: 90px;
+	line-height: 1.5;
 	div {
 		width: 32%;
 		margin-left: 1%;
@@ -479,4 +482,8 @@ form {
 		margin-right: 5px;
 		font-weight: 700;
 	}
+}
+
+#curBalance {
+	margin-left: 10%;
 }

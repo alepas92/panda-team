@@ -9,6 +9,10 @@ function callendarDayClick() {
     k.firstChild.classList.add('myCssClass');
     paintIncOut(k.firstChild.getAttribute('data-day'));
     renderingData(k.firstChild.getAttribute('data-day'));
+    monthlyOutlaysStatistics(k.firstChild.getAttribute('data-day'));
+    monthlyOutlaysStatistics(k.firstChild.getAttribute('data-day'));
+    monthlyOutlaysStatisticsByCategories(k.firstChild.getAttribute('data-day'));
+    monthlyIncomesStatisticsByCategories(k.firstChild.getAttribute('data-day'));
 }
 
 function callendarMonthClick() {
