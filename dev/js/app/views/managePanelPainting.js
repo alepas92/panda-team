@@ -84,14 +84,16 @@ function managePanelPainting (type) {
 		return label;
 	}
 
-	function createButton (id, buttonClass, value) {
+	function createButton (id, buttonClass, value, onclickEvent) {
 		var button = document.createElement('input');
 
 		button.type = 'button';
 		button.id = id;
 		button.className = buttonClass;
 		button.value = value;
-		button.onclick
+		if (onclickEvent) {
+			button.setAttribute('onclick',onclickEvent + '()');
+		}
 
 		return button
 	}
@@ -102,3 +104,7 @@ function managePanelPainting (type) {
 
 			return label
 		}
+
+function showTodayList(placeholder) {
+
+}

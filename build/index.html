@@ -195,17 +195,17 @@
 	<header>
 		<ul class="tab-links">
 			<li class="active"><a href="#categories-tools-panel">Categories</a></li>
-			<li><a href="#">Incomes</a>
+			<li id="dropdown-item"><a href="#empty">Incomes</a>
 				<ul>
-					<li><a href="#dayly-incomes-tools-panel">Dayly</a></li>
+					<li><a href="#daily-incomes-tools-panel">Daily</a></li>
 					<li><a href="#regular-incomes-tools-panel">Regular</a></li>
 				</ul>
 			</li>
 			
-			<li><a href="#">Outlays</a>
+			<li id="dropdown-item"><a href="#empty">Outlays</a>
 				<ul>
-					<li><a href="#dayly-outlays-tools-panel">Dayly</a></li>
-					<li><a href="#regular-outlays-tools-panel">Rerular</a></li>
+					<li><a href="#daily-outlays-tools-panel">Daily</a></li>
+					<li><a href="#regular-outlays-tools-panel">Regular</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -224,6 +224,7 @@
 				<div id="incomes-list-tools-panel" class="categories-list">
 					<h2>Incomes: </h2>
 				</div>
+				<div id="add-category-tools-panel"></div>
 			</div>
 			
 			<div class="add-category-container" style="display: none">
@@ -235,11 +236,23 @@
 			</div>
 		</div>
 
-		<div class="incomes-tools-panel tab" id="dayly-incomes-tools-panel">Dayly incomes</div>
-		<div class="incomes-tools-panel tab" id="regular-incomes-tools-panel">Regular incomes</div>
+		<div class="incomes-tools-panel tab" id="daily-incomes-tools-panel">
+			<h2>Daily incomes</h2>
+			<input type="date" class="inp-dat">
+		</div>
+		
+		<div class="incomes-tools-panel tab" id="regular-incomes-tools-panel">
+			<h2>Regular incomes</h2>
+		</div>
 
-		<div class="outlays-tools-panel tab" id="dayly-outlays-tools-panel">Dayly outlay</div>
-		<div class="outlays-tools-panel tab" id="regular-outlays-tools-panel">Regular outlay</div>
+		<div class="outlays-tools-panel tab" id="daily-outlays-tools-panel">
+			<h2>Daily outlays</h2>
+			<input type="date" class="inp-dat">
+		</div>
+		
+		<div class="outlays-tools-panel tab" id="regular-outlays-tools-panel">
+			<h2>Regular outlays</h2>
+		</div>
 	</div>
 
 </section>

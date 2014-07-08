@@ -430,7 +430,9 @@ $('#manage-incomes-painting').click(function() {
 	// }
 ;document.getElementsByClassName("manage-button")[0].onclick = function() {
 	showManagePanel();
-	paintManagePanelCategories();
+	paintToolsPanelCategories();
+	paintToolsPanelDaily('incomes');
+	paintToolsPanelDaily('outlays');
 }
 
 document.getElementById("close-manage-block").onclick = function() {
@@ -438,17 +440,44 @@ document.getElementById("close-manage-block").onclick = function() {
 }
 
 
-function removeOutlayCategory() { 
+function removeOutlayCategory () { 
 	dataCategories.removeCategory(this.id, 'outlays');
 	this.parentNode.remove();
 }
 
-function removeIncomeCategory() {
+function removeIncomeCategory () {
 	dataCategories.removeCategory(this.id, 'incomes');
 	this.parentNode.remove();
+<<<<<<< HEAD
 };function isNumber(obj) {return /^-?[\d.]+(?:e-?\d+)?$/.test(obj); }
 function isNonNegative(obj) { return (isNumber(obj) && obj>=0)}
 ;function LS () {}
+=======
+}
+
+function getCategoryInputFieldOutlay (btn) {	
+	paintingAddCategoryField('outlay', btn);
+}
+
+function getCategoryInputFieldIncome () {
+	alert('click');
+}
+
+function deleteDailyDataButton (button) {
+	var cat = button.getAttribute('data-cat'),
+	cost = button.getAttribute('data-cost'),
+	type = button.getAttribute('data-type');
+	
+	console.log(todayKeyWord, cat, cost, type);
+	dataDayly.removeDaily(todayKeyWord, cat, cost, type);
+
+	if (type === 'outlays') {
+		repaintDailyOutlaysPanelTools ()
+	} else {
+		repaintDailyIncomesPanelTools ()
+	}
+};function LS () {}
+>>>>>>> a742dd0d95c4858e3276f2c48dadc81c7672b2c7
 
 LS.get = function (keyWord) {
 	if (localStorage[keyWord] !== null && localStorage[keyWord] !== undefined ) {
@@ -1724,14 +1753,16 @@ function appearInfoBlock(message) {
 		return label;
 	}
 
-	function createButton (id, buttonClass, value) {
+	function createButton (id, buttonClass, value, onclickEvent) {
 		var button = document.createElement('input');
 
 		button.type = 'button';
 		button.id = id;
 		button.className = buttonClass;
 		button.value = value;
-		button.onclick
+		if (onclickEvent) {
+			button.setAttribute('onclick',onclickEvent + '()');
+		}
 
 		return button
 	}
@@ -1741,17 +1772,27 @@ function appearInfoBlock(message) {
 			label.textContent = text;
 
 			return label
-		};$(document).ready(function() {
+		}
+
+function showTodayList(placeholder) {
+
+};$(document).ready(function() {
     $('.tabs .tab-links a').on('click', function(e)  {
         var currentAttrValue = $(this).attr('href');
- 
-        // Show/Hide Tabs
-        $('.tabs ' + currentAttrValue).show().siblings().hide();
- 
-        // Change/remove current tab to active
-        $(this).parent('li').addClass('active').siblings().removeClass('active');
- 
-        e.preventDefault();
+ 		
+ 		console.log();
+
+
+        if ($(this).attr('href') === "#empty") {
+        } else if ($(this).parents('li:eq(1)').attr('id') === 'dropdown-item') {
+        	$('.tabs ' + currentAttrValue).show().siblings().hide();
+ 			$(this).parents('li:eq(1)').addClass('active').siblings().removeClass('active');
+ 			e.preventDefault();
+ 		} else {
+ 			$('.tabs ' + currentAttrValue).show().siblings().hide();
+	        $(this).parent('li').addClass('active').siblings().removeClass('active');
+	        e.preventDefault();
+ 		}
     });
 });;function showManagePanel () {
 	var shadowLayer = document.getElementById('shadow-layer'),
@@ -1768,7 +1809,7 @@ function hideManagePanel () {
 	manageBlock.style.display = 'none';
 }
 
-function paintManagePanelCategories() {
+function paintToolsPanelCategories() {
 	var catTools, button, placeholder;
 
 	placeholder = createPlaceholderToolsPanel('ul','outlays-list-tools-panel-ul', 'outlays-list-tools-panel');
@@ -1784,8 +1825,10 @@ function paintManagePanelCategories() {
 
 		catTools.appendChild(li);
 	}
-	placeholder = createPlaceholderToolsPanel('ul','incomes-list-tools-panel-ul', 'incomes-list-tools-panel');
+	//button = createButton('add-outlay-category-button', 'btn-add-category', 'Add outlay category', 'getCategoryInputFieldOutlay(this)');
+	//catTools.appendChild(button);
 
+	placeholder = createPlaceholderToolsPanel('ul','incomes-list-tools-panel-ul', 'incomes-list-tools-panel');
 	catTools = document.getElementById('incomes-list-tools-panel-ul');
 	for (var i = 0; i < dataCategories.categories.incomes.length; i++) {
 		var li = document.createElement('li');
@@ -1797,6 +1840,8 @@ function paintManagePanelCategories() {
 
 		catTools.appendChild(li);
 	}
+	//button = createButton('add-income-category-button', 'btn-add-category', 'Add income category', 'getCategoryInputFieldIncome(this)');
+	//catTools.appendChild(button);
 }
 
 function createPlaceholderToolsPanel (elementTag, id, place) {
@@ -1830,4 +1875,66 @@ function createDeleteCategoryButton (id, type) {
 		button.onclick = removeOutlayCategory;
 	}
 	return button
+}
+
+function paintingAddCategoryField (type, placeholder) {
+	var field = createInputLabel('New '+ type + 'category name: ' , '', 'inp-cat');
+	placeholder.parentNode.appendChild(field);
+}
+
+function paintToolsPanelDaily (type) {
+	var key, placeholder;
+
+	if (type === 'incomes') {
+		createPlaceholderToolsPanel('ul','daily-incomes-tools-panel-ul', 'daily-incomes-tools-panel');
+		for (key in dataDayly[todayKeyWord].incomes) {
+			createDailyListElement ('incomes', 'daily-incomes-tools-panel-ul', dataDayly[todayKeyWord].incomes[key], key);
+		}
+	} else if (type === 'outlays') {
+		createPlaceholderToolsPanel('ul','daily-outlays-tools-panel-ul', 'daily-outlays-tools-panel');
+		for (key in dataDayly[todayKeyWord].outlays) {
+			createDailyListElement ('outlays', 'daily-outlays-tools-panel-ul', dataDayly[todayKeyWord].outlays[key], key);
+		}
+	}
+}
+
+function createDailyListElement (type, placeholderId, value, keyForButton) {
+	var placeholder, li, span, button;
+
+	placeholder = document.getElementById(placeholderId);
+	li = document.createElement('li');
+
+	span = document.createElement('span');
+	span.className = 'text-tools-panel-list';
+	span.textContent = 'Category: ' + value.cat + '; Cost: ' + (value.cost) + ' uah';
+
+	button = createRemoveButton(key, 'deleteDailyDataButton(this)', type, value.cat, value.cost);
+	li.appendChild(span);
+	li.appendChild(button);
+	placeholder.appendChild(li);
+}
+
+	function createRemoveButton (id, fctName, type, cat, cost) {
+		var btn = document.createElement('input');
+		btn.type = 'button';
+		btn.value = 'Delete';
+		btn.id = id;
+		
+		if (fctName) {
+			btn.setAttribute('onclick', fctName);			
+		}
+
+		btn.setAttribute('data-cat', cat);
+		btn.setAttribute('data-cost', cost);
+		btn.setAttribute('data-type', type);
+
+		return btn
+	}
+
+function repaintDailyIncomesPanelTools () {
+	createPlaceholderToolsPanel('ul','daily-incomes-tools-panel-ul', 'daily-incomes-tools-panel');
+}
+
+function repaintDailyOutlaysPanelTools () {
+	createPlaceholderToolsPanel('ul','daily-outlays-tools-panel-ul', 'daily-outlays-tools-panel');
 }
