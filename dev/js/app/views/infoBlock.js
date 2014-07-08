@@ -21,10 +21,12 @@ var checkInfoBlock = function checkInfoBlock() {
 
 setInterval(checkInfoBlock, 1000);
 
-function appearInfoBlock() {
+function appearInfoBlock(message) {
+	if(message==undefined)
+		message="Information successfully updated!";
 	var infoBlock = document.getElementsByClassName("info-block")[0];
 	infoBlock.style.display = "block";
-	infoBlock.innerHTML = "	<header><h3>New message</h3></header>Information successfully updated!";
+	infoBlock.innerHTML = "	<header><h3>New message</h3></header>"+message;
 	checkInfoBlock();
 }
 

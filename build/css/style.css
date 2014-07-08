@@ -479,34 +479,27 @@ form {
     width: 100%; } }
 /* Phone Portrait (320px) */
 @media only screen and (max-width: 320px) {
-  #logo {
-    width: 100%; }
+  body {
+    margin: 0; }
 
-  #nav-bar {
-    width: 100%; }
+  #logo {
+    width: 320px; }
 
   #container {
+    margin: 0;
     width: 100%; }
 
   #calendar-section {
     width: 100%; }
 
   #outlay-section {
-    width: 100%; }
-
-  #new-outlay {
+    margin: 0;
     width: 100%; }
 
   #regular-outlay {
     width: 100%; }
 
   #manage-outlay {
-    width: 100%; }
-
-  #income-section {
-    width: 100%; }
-
-  #new-income {
     width: 100%; }
 
   #regular-income {
@@ -525,7 +518,49 @@ form {
     width: 100%; }
 
   #footer {
-    width: 100%; } }
+    width: 100%; }
+
+  .leftNavBar {
+    visibility: hidden; }
+
+  #nav-bar {
+    display: none; }
+
+  .btn-add {
+    margin: 1% 10% 10% 0;
+    width: 80%; }
+
+  .btn-submit {
+    margin: 1% 10% 10% 0;
+    width: 80%; }
+
+  .triangle-block {
+    border: 4px; }
+
+  .rectangle-block {
+    height: auto;
+    width: 50%; }
+
+  .rectangle-block h3 {
+    font-size: 1.5em;
+    margin: 0;
+    line-height: 1; }
+
+  #curBalance {
+    margin: 80px 0 0 0;
+    font-size: 1.2em;
+    text-align: center; }
+
+  .manage-button {
+    width: 30px;
+    height: 30px; }
+
+  .info-block {
+    top: 0px;
+    height: 40px; }
+
+  .info-block header {
+    display: none; } }
 body {
   padding: 0px;
   margin: 0px; }

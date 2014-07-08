@@ -2,14 +2,16 @@
 $('#new-outlay .btn-submit').click(function() {	
 	var category = $( '#new-outlay input.sel-cat' ).val(),
 		cost = $('#new-outlay .inp-cos').val();
-	if (category && cost) {
+	if (!category){
+		appearInfoBlock('Select a category please');
+	} else if (!isNonNegative(cost)){
+		appearInfoBlock('Invalid cost value');
+	} else {
 		dataDayly.setDaily(todayKeyWord, category, cost, 'outlays' );
-	} else{
-		console.log('you have some problem with data')
-	};
-	$('#new-outlay input.sel-cat').val('');
-	$('#new-outlay .inp-cos').val('');
-	appearInfoBlock();
+		appearInfoBlock();
+		$('#new-outlay input.sel-cat').val('');
+		$('#new-outlay .inp-cos').val('');
+	}
 });
 
 
@@ -17,20 +19,22 @@ $('#new-outlay .btn-submit').click(function() {
 $('#new-income .btn-submit').click(function() {	
 	var category = $( '#new-income input.sel-cat' ).val(),
 		cost = $('#new-income .inp-cos').val();
-	if (category && cost) {
+	if (!category){
+		appearInfoBlock('Select a category please');
+	} else if (!isNonNegative(cost)){
+		appearInfoBlock('Invalid cost value');
+	} else  {
 		dataDayly.setDaily(todayKeyWord, category, cost, 'incomes' );
-	} else{
-		console.log('you have some problem with data')
-	};
-	$( '#new-income input.sel-cat' ).val('');
-	$('#new-income .inp-cos').val('');
-	appearInfoBlock();
+		$( '#new-income input.sel-cat' ).val('');
+		$('#new-income .inp-cos').val('');
+		appearInfoBlock();
+	}
 });
 
 
 
-
-function removeDailyOutlays(){
+//to do
+/*function removeDailyOutlays(){
 	var category = $( '' ).val(),
 		cost = $('').val();
 		if (category && cost) {
@@ -82,4 +86,4 @@ function changeDailyIncomes(){
 $('').click(function() {	
 	
 	readDailyIncomes();
-});
+});*/

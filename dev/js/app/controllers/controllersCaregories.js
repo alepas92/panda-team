@@ -6,10 +6,13 @@ $('#new-outlay .btn-add').click(function() {
 	
 	if(dataCategories.setCategory(category, 'outlays' )){
 		optionPainting('outlays', category);
+		appearInfoBlock();
 	}
-	
+	else{
+		appearInfoBlock('Category already exists');
+	}
 	$('#new-outlay .inp-cat').val('');
-	appearInfoBlock();
+	
 });
 //Daily Incomes
 $('#new-income .btn-add').click(function() {	
@@ -17,46 +20,13 @@ $('#new-income .btn-add').click(function() {
 	
 	if (dataCategories.setCategory(category, 'incomes' )){
 		optionPainting('incomes', category);
+		appearInfoBlock()
+	}else{
+		appearInfoBlock('Category already exists');
 	}
 	$( '#new-income .inp-cat' ).val('');
-	appearInfoBlock()
-});
-
-$("#new-income .inp-cat").keyup( function(e) {
-
-    if ( e.keyCode !== 8) {
-
-    }
-
-    if ( e.keyCode !== 46 ) {
-
-            
-
-    }
-    
-});
-
-
-
-
-function removeCategoryOutlays(){
 	
-	var category = $( '' ).val();
-	dataCategories.setCategory(category, 'outlays' );
-}
-
-$('').click(function() {	
-	
-	removeCategoryOutlays();
 });
 
 
-function removeCategoryIncomes(){
-	var category = $( '' ).val();
-	dataCategories.setCategory(category, 'incomes' );
-}
 
-$('').click(function() {	
-	
-	removeCategoryIncomes();
-});
