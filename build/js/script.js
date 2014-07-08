@@ -252,7 +252,7 @@ $('#manage-forecast .sel-cat').change(function() {
 	
 });
 $('#manage-forecast .sel-cat').click(function() {
-	if($(this).attr(disabled))
+	if($(this).attr('disabled')!== undefined)
 		appearInfoBlock('You can choose either incomes or outlays category');
 
 });
