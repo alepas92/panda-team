@@ -124,10 +124,13 @@ $('#new-outlay .btn-add').click(function() {
 	
 	if(dataCategories.setCategory(category, 'outlays' )){
 		optionPainting('outlays', category);
+		appearInfoBlock();
 	}
-	
+	else{
+		appearInfoBlock('Category already exists');
+	}
 	$('#new-outlay .inp-cat').val('');
-	appearInfoBlock();
+	
 });
 //Daily Incomes
 $('#new-income .btn-add').click(function() {	
@@ -135,60 +138,30 @@ $('#new-income .btn-add').click(function() {
 	
 	if (dataCategories.setCategory(category, 'incomes' )){
 		optionPainting('incomes', category);
+		appearInfoBlock()
+	}else{
+		appearInfoBlock('Category already exists');
 	}
 	$( '#new-income .inp-cat' ).val('');
-	appearInfoBlock()
-});
-
-$("#new-income .inp-cat").keyup( function(e) {
-
-    if ( e.keyCode !== 8) {
-
-    }
-
-    if ( e.keyCode !== 46 ) {
-
-            
-
-    }
-    
+	
 });
 
 
 
-
-function removeCategoryOutlays(){
-	
-	var category = $( '' ).val();
-	dataCategories.setCategory(category, 'outlays' );
-}
-
-$('').click(function() {	
-	
-	removeCategoryOutlays();
-});
-
-
-function removeCategoryIncomes(){
-	var category = $( '' ).val();
-	dataCategories.setCategory(category, 'incomes' );
-}
-
-$('').click(function() {	
-	
-	removeCategoryIncomes();
-});;//read Daily Outlays
+;//read Daily Outlays
 $('#new-outlay .btn-submit').click(function() {	
 	var category = $( '#new-outlay input.sel-cat' ).val(),
 		cost = $('#new-outlay .inp-cos').val();
-	if (category && cost) {
+	if (!category){
+		appearInfoBlock('Select a category please');
+	} else if (!isNonNegative(cost)){
+		appearInfoBlock('Invalid cost value');
+	} else {
 		dataDayly.setDaily(todayKeyWord, category, cost, 'outlays' );
-	} else{
-		console.log('you have some problem with data')
-	};
-	$('#new-outlay input.sel-cat').val('');
-	$('#new-outlay .inp-cos').val('');
-	appearInfoBlock();
+		appearInfoBlock();
+		$('#new-outlay input.sel-cat').val('');
+		$('#new-outlay .inp-cos').val('');
+	}
 });
 
 
@@ -196,20 +169,22 @@ $('#new-outlay .btn-submit').click(function() {
 $('#new-income .btn-submit').click(function() {	
 	var category = $( '#new-income input.sel-cat' ).val(),
 		cost = $('#new-income .inp-cos').val();
-	if (category && cost) {
+	if (!category){
+		appearInfoBlock('Select a category please');
+	} else if (!isNonNegative(cost)){
+		appearInfoBlock('Invalid cost value');
+	} else  {
 		dataDayly.setDaily(todayKeyWord, category, cost, 'incomes' );
-	} else{
-		console.log('you have some problem with data')
-	};
-	$( '#new-income input.sel-cat' ).val('');
-	$('#new-income .inp-cos').val('');
-	appearInfoBlock();
+		$( '#new-income input.sel-cat' ).val('');
+		$('#new-income .inp-cos').val('');
+		appearInfoBlock();
+	}
 });
 
 
 
-
-function removeDailyOutlays(){
+//to do
+/*function removeDailyOutlays(){
 	var category = $( '' ).val(),
 		cost = $('').val();
 		if (category && cost) {
@@ -261,7 +236,57 @@ function changeDailyIncomes(){
 $('').click(function() {	
 	
 	readDailyIncomes();
-});;//неточність введення з сторінки
+});*/;
+
+$('#manage-forecast .sel-cat').change(function() {
+	if($(this).val()!=''){
+		
+		$(this).siblings('.sel-cat').prop('disabled', true);
+		
+	}
+	else{
+		
+		$(this).siblings('.sel-cat').prop('disabled', false);
+		
+	}
+	
+});
+$('#manage-forecast .sel-cat').click(function() {
+	if($(this).attr('disabled')!== undefined)
+		appearInfoBlock('You can choose either incomes or outlays category');
+
+});
+
+
+$('#manage-forecast .btn-submit').click(function(){
+	var cost = $('#manage-forecast .inp-cos').val();
+	if(!isNonNegative(cost)) {
+		appearInfoBlock('Invalid cost value');
+	}
+	else if($("#manage-forecast .sel-cat[list='outlaysCategoriesDatalist']").val()){
+		console.log('outl');
+		var cat=$("#manage-forecast .sel-cat[list='outlaysCategoriesDatalist']").val();
+		dataForecast.setForecast(cat,cost,'month','outlays');
+		appearInfoBlock();
+		$("#manage-forecast .sel-cat[list='outlaysCategoriesDatalist']").val('');
+		$('#manage-forecast .inp-cos').val('');
+	}
+	else if($("#manage-forecast .sel-cat[list='incomesCategoriesDatalist']").val()){		
+		console.log('incm');
+		var cat=$("#manage-forecast .sel-cat[list='incomesCategoriesDatalist']").val();
+
+		dataForecast.setForecast(cat,cost,'month','incomes');
+		appearInfoBlock();
+		$("#manage-forecast .sel-cat[list='incomesCategoriesDatalist']").val('');
+		$('#manage-forecast .inp-cos').val('');
+	}	
+	else{
+		appearInfoBlock('Select a category please');
+	}
+	
+
+});
+//неточність введення з сторінки
 /*function readForecastOutlays(){
 	var category = $( '#manage-forecast select.sel-cat' ).val();
 	var cost = $('#manage-forecast .inp-cos').val();
@@ -294,27 +319,65 @@ function changeForecastOutlays(){
 $('').click(function() {	
 	
 	removeForecastOutlays();
-});*/;function readRegularOutlays(){
-	var category = $( '#regular-outlay .sel-cat' ).val(),
-		cost = $('#regular-outlay .inp-cos').val();
-		//time = $('#regular-outlay .inp-dat').val();
-	dataRegular.setRegular(category, cost, 'day', 'outlays' );
-}
+});*/;
 
-$('#regular-outlay .btn-submit').click(function() {	
+$('#regular-outlays .btn-submit').click(function() {	
 	
-	readRegularOutlays();
+	var category = $( '#regular-outlays .sel-cat' ).val(),
+	//time = $('#regular-outlay .inp-dat').val();
+		
+		cost = $('#regular-outlays .inp-cos').val();
+		if(!category){
+			appearInfoBlock('Select a categoty please');
+		}else
+		if(!isNonNegative(cost)){
+			appearInfoBlock('Invalid cost value');
+		}
+		else{
+			dataRegular.setRegular(category, cost, 'month', 'outlays' );
+			appearInfoBlock();
+			$( '#regular-outlays .sel-cat' ).val('');
+			$('#regular-outlays .inp-cos').val('');
+		}
+
+});
+
+
+$('#regular-incomes .btn-submit').click(function() {	
+	
+	var category = $( '#regular-incomes .sel-cat' ).val(),
+		cost = $('#regular-incomes .inp-cos').val();
+		//time = $('#regular-outlay .inp-dat').val();
+		if(!category){
+			appearInfoBlock('Select a categoty please');
+		}else
+		if(!isNonNegative(cost)){
+			appearInfoBlock('Invalid cost value');
+		}
+		else{
+			dataRegular.setRegular(category, cost, 'month', 'incomes' );
+			appearInfoBlock();
+			$( '#regular-incomes .sel-cat' ).val('');
+			$('#regular-incomes .inp-cos').val('');
+		}
+
 });;
 $('#manage-balance .btn-add').click(function() {	
-	var cost = $('#manage-balance .inp-cat').val();
-	if (cost) {
+	var cost = $('#manage-balance .inp-cos').val();
+	if (cost && isNonNegative(cost)) {
 		dataTotalStat.setTotalCurrentStat('balance', cost );
+		$('#curBalance').html('Your current balance:' +cost);
+			appearInfoBlock();
+		$('#manage-balance .inp-cos').val('');
 	} else{
-		console.log('you have some problem with data')
+
+		console.log('you have some problem with data');
+		appearInfoBlock("Invalid balance value");
+
 	};
-	$('#manage-balance .inp-cat').val('');
-	$('#curBalance').html('Your current balance:' +cost);
-	appearInfoBlock();
+	
+	
+
 });
 $(function(){
 
@@ -322,12 +385,50 @@ $(function(){
 	if(balance!==null)
 		$('#curBalance').html('Your current balance:' +balance);
 });$('#manage-outlay-painting').click(function() {
+	
+	
 	managePanelPainting('outlays');
+	$(" .manage-delete-button").click(function() {
+		//alert('type');
+		var cat=$(this).siblings().children('input.sel-cat').val();
+		var cost=$(this).siblings().children('input.inp-cos').val();
+		console.log(cat);
+		console.log(cost);
+		dataDayly.removeDaily(todayKeyWord, cat,cost, 'outlays');		
+		$(this).parent().hide();
+
+
+	}
+	);
 });
 
 $('#manage-incomes-painting').click(function() {
+
 	managePanelPainting('incomes');
-});;document.getElementsByClassName("manage-button")[0].onclick = function() {
+
+	$(" .manage-delete-button").click(function() {
+	//	alert('incomes');
+		var cat=$(this).siblings().children('input.sel-cat').val();
+		var cost=$(this).siblings().children('input.inp-cos').val();
+		console.log(cat);
+		console.log(cost);
+		dataDayly.removeDaily(todayKeyWord, cat,cost, 'incomes');		
+		$(this).parent().hide();
+
+
+	}
+	);
+});
+	// function deleteDaily(type){
+	// 	alert(type);
+	// 	var cat=$(this).siblings().children('input.sel-cat').val();
+	// 	var cost=$(this).siblings().children('input.inp-cos').val();
+	// 	console.log(cat);
+	// 	console.log(cost);
+	// 	dataDayly.removeDaily(todayKeyWord, cat,cost, type);		
+	// 	$(this).parent().remove();
+	// }
+;document.getElementsByClassName("manage-button")[0].onclick = function() {
 	showManagePanel();
 	paintToolsPanelCategories();
 	paintToolsPanelDaily('incomes');
@@ -347,6 +448,11 @@ function removeOutlayCategory () {
 function removeIncomeCategory () {
 	dataCategories.removeCategory(this.id, 'incomes');
 	this.parentNode.remove();
+<<<<<<< HEAD
+};function isNumber(obj) {return /^-?[\d.]+(?:e-?\d+)?$/.test(obj); }
+function isNonNegative(obj) { return (isNumber(obj) && obj>=0)}
+;function LS () {}
+=======
 }
 
 function getCategoryInputFieldOutlay (btn) {	
@@ -371,6 +477,7 @@ function deleteDailyDataButton (button) {
 		repaintDailyIncomesPanelTools ()
 	}
 };function LS () {}
+>>>>>>> a742dd0d95c4858e3276f2c48dadc81c7672b2c7
 
 LS.get = function (keyWord) {
 	if (localStorage[keyWord] !== null && localStorage[keyWord] !== undefined ) {
@@ -1543,10 +1650,12 @@ var checkInfoBlock = function checkInfoBlock() {
 
 setInterval(checkInfoBlock, 1000);
 
-function appearInfoBlock() {
+function appearInfoBlock(message) {
+	if(message==undefined)
+		message="Information successfully updated!";
 	var infoBlock = document.getElementsByClassName("info-block")[0];
 	infoBlock.style.display = "block";
-	infoBlock.innerHTML = "	<header><h3>New message</h3></header>Information successfully updated!";
+	infoBlock.innerHTML = "	<header><h3>New message</h3></header>"+message;
 	checkInfoBlock();
 }
 
